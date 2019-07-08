@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "noEmit": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "skipLibCheck": true
+  },
+  "include": ["./client/src/**/*"],
+  "exclude": ["./node_modules", "**/*.spec.ts"]
+}

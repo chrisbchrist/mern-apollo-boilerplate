@@ -20,13 +20,20 @@ module.exports = {
         }
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'awesome-typescript-loader'
+        }
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   plugins: [htmlPlugin]
 };

@@ -1,0 +1,1 @@
+A MERN app boilerplate with GraphQL/Apollo for future projects configured following [Sysgears' Guide](https://sysgears.com/articles/how-to-create-an-apollo-react-express-application/). Resolved issues with webpack and import paths.
