@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { withPosts } from '../providers';
 import { PostList, PostForm } from '../components';
 
@@ -7,7 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import '../styles/styles.css';
 
 /**
- * Wrap a component using the withPosts provider
+ * Class decorator wraps a component using the withPosts provider
  * to get data retrieved with GraphQL.
  */
 @withPosts
@@ -16,7 +15,7 @@ export default class PostRoot extends Component {
     const { posts, postsLoading } = this.props;
 
     return (
-      <Container>
+      <div>
         <h2 className="posts-title">Posts Module</h2>
         <hr />
         <Row>
@@ -27,7 +26,7 @@ export default class PostRoot extends Component {
             <PostForm />
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

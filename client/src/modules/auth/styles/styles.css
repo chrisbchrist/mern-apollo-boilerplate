@@ -1,0 +1,20 @@
+.login__wrapper {
+  padding: 20px;
+  margin: auto;
+  max-width: 340px;
+}
+
+.login__title {
+  font-family: Raleway;
+  text-align: center;
+}
+
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}

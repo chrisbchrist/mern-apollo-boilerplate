@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  color: #fff;
+}
+
+.logo__text {
+  font-size: 22px;
+  font-family: 'Raleway Dots';
+}
+
+.ant-menu-horizontal .ant-menu-item {
+  float: right;
+  display: flex;
+  align-items: center;
+}
