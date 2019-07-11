@@ -11,7 +11,7 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
-    token: String!
+    password: String!
   }
   input UserInput {
     email: String!
@@ -20,6 +20,7 @@ const typeDefs = gql`
   }
   type Query {
     posts: [Post]
+    users: [User]
     login(email: String!, password: String!): User
     verifyToken(token: String!): User
   }

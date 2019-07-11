@@ -11,7 +11,7 @@ import {
 import * as yup from 'yup';
 import '../styles/styles.css';
 
-interface ILogin {
+interface IRegister {
   email: string;
   password: string;
 }
@@ -35,28 +35,27 @@ const initialValues = {
   password: ''
 };
 
-const LoginForm: FunctionComponent<any> = () => {
+const SignUpForm: FunctionComponent<any> = () => {
   return (
     <div className="login__wrapper">
-      <h2 className="login__title">Log In</h2>
+      <h2 className="login__title">Sign Up</h2>
 
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         validateOnChange={true}
         validateOnBlur={true}
-        onSubmit={(values: ILogin, actions: FormikActions<ILogin>) => {
+        onSubmit={(values: IRegister, actions: FormikActions<IRegister>) => {
           actions.setSubmitting(true);
           actions.validateForm();
           console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
           actions.setSubmitting(false);
         }}
-        render={(formikBag: FormikProps<ILogin>) => (
+        render={(formikBag: FormikProps<IRegister>) => (
           <Form>
             <Field
               name="email"
-              render={({ field, form }: FieldProps<ILogin>) => (
+              render={({ field, form }: FieldProps<IRegister>) => (
                 <AntdForm.Item
                   hasFeedback
                   help={
@@ -86,7 +85,7 @@ const LoginForm: FunctionComponent<any> = () => {
             />
             <Field
               name="password"
-              render={({ field, form }: FieldProps<ILogin>) => (
+              render={({ field, form }: FieldProps<IRegister>) => (
                 <AntdForm.Item
                   hasFeedback
                   help={
@@ -130,47 +129,12 @@ const LoginForm: FunctionComponent<any> = () => {
               >
                 Log in
               </Button>
-              Or <a href="">register now!</a>
             </AntdForm.Item>
           </Form>
         )}
       />
-
-      {/* 
-      <AntdForm onSubmit={handleSubmit} className="login-form">
-        <AntdForm.Item>
-          <Input
-            size="large"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Username"
-          />
-        </AntdForm.Item>
-        <AntdForm.Item>
-          <Input
-            size="large"
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            type="password"
-            placeholder="Password"
-          />
-        </AntdForm.Item>
-        <AntdForm.Item>
-          <Checkbox>Remember me</Checkbox>
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-          <Button
-            size="large"
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-          Or <a href="">register now!</a>
-        </AntdForm.Item>
-      </AntdForm> */}
     </div>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
