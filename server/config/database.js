@@ -1,9 +1,10 @@
 // The file server/config/database.js
 // #1 Import mongoose
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // #2 Create a query string to connect to MongoDB server
-const DB_URI = 'mongodb://localhost:27017/mern-apollo';
+const DB_URI = process.env.DB_URI;
 
 // #3 Connect to MongoDB
 mongoose.connect(DB_URI, { useNewUrlParser: true });

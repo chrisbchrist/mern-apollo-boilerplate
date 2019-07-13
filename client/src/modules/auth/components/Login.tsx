@@ -1,5 +1,6 @@
 import React, { useState, FunctionComponent } from 'react';
 import { Form as AntdForm, Icon, Input, Button, Checkbox } from 'antd';
+import { Link } from 'react-router-dom';
 import {
   Formik,
   Field,
@@ -49,7 +50,6 @@ const LoginForm: FunctionComponent<any> = () => {
           actions.setSubmitting(true);
           actions.validateForm();
           console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
           actions.setSubmitting(false);
         }}
         render={(formikBag: FormikProps<ILogin>) => (
@@ -130,45 +130,11 @@ const LoginForm: FunctionComponent<any> = () => {
               >
                 Log in
               </Button>
-              Or <a href="">register now!</a>
+              Or <Link to="/register">register now!</Link>
             </AntdForm.Item>
           </Form>
         )}
       />
-
-      {/* 
-      <AntdForm onSubmit={handleSubmit} className="login-form">
-        <AntdForm.Item>
-          <Input
-            size="large"
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Username"
-          />
-        </AntdForm.Item>
-        <AntdForm.Item>
-          <Input
-            size="large"
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            type="password"
-            placeholder="Password"
-          />
-        </AntdForm.Item>
-        <AntdForm.Item>
-          <Checkbox>Remember me</Checkbox>
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-          <Button
-            size="large"
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-          Or <a href="">register now!</a>
-        </AntdForm.Item>
-      </AntdForm> */}
     </div>
   );
 };

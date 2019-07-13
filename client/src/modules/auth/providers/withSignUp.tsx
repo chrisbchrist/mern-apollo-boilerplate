@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { ReactComponentElement, ComponentType, Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
+import { UserInput } from '../../../../../types';
 
-const withSignUp = Component => props => {
+const CREATE_USER = gql`
+  mutation($userInput: UserInput) {
+    createUser(userInput: $userInput) {
+      _id
+      token
+      email
+    }
+  }
+`;
+
+const withSignUp = (Component: ComponentType<any>) => () => {
   return (
-    <Mutation mutation={ADD_POST}>
-      {addPost => {
+    <Mutation mutation={CREATE_USER}>
+      {(createUser: any) => {
         return (
           <Component
-            addPost={({ title, content }) =>
-              addPost({
-                variables: { title, content },
-                refetchQueries: [{ query: GET_POSTS }]
+            createUser={(userInput: UserInput) =>
+              createUser({
+                variables: { userInput }
               })
             }
           />

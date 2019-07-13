@@ -54,14 +54,16 @@ const Navbar: FunctionComponent<{}> = () => {
           <Icon type="info-circle" /> About
         </Menu.Item>
       </Menu>
-      <Button
-        type="primary"
-        icon="user-add"
-        size="large"
-        style={{ marginLeft: 10 }}
-      >
-        Sign Up!
-      </Button>
+      <Link to="/register">
+        <Button
+          type="primary"
+          icon="user-add"
+          size="large"
+          style={{ marginLeft: 15 }}
+        >
+          Sign Up!
+        </Button>
+      </Link>
     </Header>
   );
 };

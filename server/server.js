@@ -1,14 +1,16 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('./config/database');
+require('dotenv').config();
 
 // #3 Import GraphQL type definitions
-const typeDefs = require('./graphqlSchema');
+const typeDefs = require('./graphqlSchema.ts');
 
 // #4 Import GraphQL resolvers
-const resolvers = require('./resolvers');
+const resolvers = require('./resolvers.ts');
 const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
 

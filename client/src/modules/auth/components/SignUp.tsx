@@ -10,10 +10,18 @@ import {
 } from 'formik';
 import * as yup from 'yup';
 import '../styles/styles.css';
+import { InputField } from '../../common/components/InputField';
+import { UserInput } from '../../../../../types';
+import { withSignUp } from '../providers';
+
+interface SignUpProps {
+  createUser: (userInput: UserInput) => any;
+}
 
 interface IRegister {
   email: string;
   password: string;
+  confirm: string;
 }
 
 const validationSchema = yup.object().shape({
@@ -27,15 +35,21 @@ const validationSchema = yup.object().shape({
     .string()
     .min(5, 'Passwords must be 5-40 characters.')
     .max(40, 'Passwords must be 5-40 characters.')
+    .required(),
+  confirm: yup
+    .string()
+    .min(5, 'Passwords must be 5-40 characters.')
+    .max(40, 'Passwords must be 5-40 characters.')
     .required()
 });
 
 const initialValues = {
   email: '',
-  password: ''
+  password: '',
+  confirm: ''
 };
 
-const SignUpForm: FunctionComponent<any> = () => {
+const SignUpForm: FunctionComponent<SignUpProps> = ({ createUser }) => {
   return (
     <div className="login__wrapper">
       <h2 className="login__title">Sign Up</h2>
@@ -47,7 +61,10 @@ const SignUpForm: FunctionComponent<any> = () => {
         validateOnBlur={true}
         onSubmit={(values: IRegister, actions: FormikActions<IRegister>) => {
           actions.setSubmitting(true);
-          actions.validateForm();
+          actions.validateForm().then(res => {
+            console.log(res);
+            createUser(values).then((res: any) => console.log(res));
+          });
           console.log({ values, actions });
           actions.setSubmitting(false);
         }}
@@ -116,6 +133,46 @@ const SignUpForm: FunctionComponent<any> = () => {
                 </AntdForm.Item>
               )}
             />
+            <Field
+              name="confirm"
+              render={({ field, form }: FieldProps<IRegister>) => {
+                const fieldName = field.name as keyof typeof form.touched;
+
+                return (
+                  <AntdForm.Item
+                    hasFeedback
+                    help={
+                      form.touched[fieldName] &&
+                      form.errors[fieldName] &&
+                      form.errors[fieldName]
+                    }
+                    validateStatus={
+                      form.touched[fieldName]
+                        ? form.errors[fieldName]
+                          ? 'error'
+                          : 'success'
+                        : ''
+                    }
+                  >
+                    <Input
+                      value={field.value}
+                      name={field.name}
+                      onChange={field.onChange}
+                      onBlur={form.handleBlur}
+                      size="large"
+                      prefix={
+                        <Icon
+                          type="lock"
+                          style={{ color: 'rgba(0,0,0,.25)' }}
+                        />
+                      }
+                      type="password"
+                      placeholder="Password"
+                    />
+                  </AntdForm.Item>
+                );
+              }}
+            />
             <AntdForm.Item>
               <Checkbox>Remember me</Checkbox>
               <a className="login-form-forgot" href="">
@@ -137,4 +194,4 @@ const SignUpForm: FunctionComponent<any> = () => {
   );
 };
 
-export default SignUpForm;
+export default withSignUp(SignUpForm);
