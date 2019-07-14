@@ -20,6 +20,6 @@
       "yup"
     ]
   },
-  "include": ["./client/src/**/*"],
+  "include": ["./client/src/**/*", "./server/**/*"],
   "exclude": ["./node_modules", "**/*.spec.ts"]
 }
