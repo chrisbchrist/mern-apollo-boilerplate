@@ -1,5 +1,3 @@
-import {GraphQLError} from "graphql";
-
 const Post = require('./modules/post/models/post.model');
 const User = require('./modules/auth/models/user.model');
 const bcrypt = require('bcrypt');
@@ -44,7 +42,7 @@ const resolvers = {
             email: args.userInput.email,
             password: hashedPassword
           },
-          (err: GraphQLError) => {
+          (err: any) => {
             if (err) throw err;
           }
       );
