@@ -13,12 +13,13 @@ const CREATE_USER = gql`
   }
 `;
 
-const withSignUp = (Component: ComponentType<any>) => () => {
+const withSignUp = (Component: ComponentType<any>) => (props: any) => {
   return (
     <Mutation mutation={CREATE_USER}>
       {(createUser: any) => {
         return (
           <Component
+              {...props}
             createUser={(userInput: UserInput) =>
               createUser({
                 variables: { userInput }

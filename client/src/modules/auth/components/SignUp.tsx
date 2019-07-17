@@ -13,10 +13,14 @@ import '../styles/styles.css';
 import { InputField } from '../../common/components/InputField';
 import { UserInput } from '../../../../../types';
 import { withSignUp } from '../providers';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface SignUpProps {
-  createUser: (userInput: UserInput) => any;
+    createUser: (userInput: UserInput) => any;
+    setAuthUser: any;
 }
+
+
 
 interface IRegister {
   email: string;
@@ -49,7 +53,25 @@ const initialValues = {
   confirm: ''
 };
 
-const SignUpForm: FunctionComponent<SignUpProps> = ({ createUser }) => {
+const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ createUser, setAuthUser }) => {
+
+    const onSubmit = (values: IRegister, actions: FormikActions<IRegister>) => {
+        actions.setSubmitting(true);
+        actions.validateForm().then(res => {
+            createUser(values).then((res: any) => {
+                console.log(res);
+                const user = res.data.createUser;
+                const token = user.token;
+                localStorage.setItem('token', token);
+
+                setAuthUser({ email: user.email, id: user._id})
+
+            });
+        });
+        console.log({ values, actions });
+        actions.setSubmitting(false);
+    };
+
   return (
     <div className="login__wrapper">
       <h2 className="login__title">Sign Up</h2>
@@ -59,15 +81,7 @@ const SignUpForm: FunctionComponent<SignUpProps> = ({ createUser }) => {
         validationSchema={validationSchema}
         validateOnChange={true}
         validateOnBlur={true}
-        onSubmit={(values: IRegister, actions: FormikActions<IRegister>) => {
-          actions.setSubmitting(true);
-          actions.validateForm().then(res => {
-            console.log(res);
-            createUser(values).then((res: any) => console.log(res));
-          });
-          console.log({ values, actions });
-          actions.setSubmitting(false);
-        }}
+        onSubmit={onSubmit}
         render={(formikBag: FormikProps<IRegister>) => (
           <Form>
             <Field
@@ -167,7 +181,7 @@ const SignUpForm: FunctionComponent<SignUpProps> = ({ createUser }) => {
                         />
                       }
                       type="password"
-                      placeholder="Password"
+                      placeholder="Confirm password"
                     />
                   </AntdForm.Item>
                 );

@@ -19,6 +19,7 @@ const typeDefs = gql`
     confirm: String!
   }
   type Query {
+    me: User
     posts: [Post]
     users: [User]
     login(email: String!, password: String!): User
