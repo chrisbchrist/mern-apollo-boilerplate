@@ -10,24 +10,7 @@ const resolvers = {
     me: authHelper.authenticated((root, args, context) => context.currentUser),
     posts: () => Post.find({}),
     users: () => User.find({}),
-    login: async (args) => {
-      try {
-        if (!validator.isEmail(args.email)) throw new Error('Invalid email.');
 
-        const user = await User.findOne({ email: args.email });
-        if (!user) throw new Error('Email does not exist');
-
-        const passwordIsValid = await bcrypt.compare(args.password, user.password);
-        if (!passwordIsValid) throw new Error('Password incorrect');
-
-        const token = jwt.sign({ id: user._id }, process.env.SECRET);
-
-        return { token, password: null, ...user._doc };
-      }
-      catch (err) {
-        throw err;
-      }
-    },
     verifyToken: async (parent, args) => {
       console.log(args);
       try {
@@ -82,7 +65,26 @@ const resolvers = {
       const response = { token, password: null, ...user._doc };
       console.log(response);
       return response;
-    }
+    },
+    login: async (parent, args) => {
+      console.log(args);
+      try {
+        if (!validator.isEmail(args.email)) throw new Error('Invalid email.');
+
+        const user = await User.findOne({ email: args.email });
+        if (!user) throw new Error('Email does not exist');
+
+        const passwordIsValid = await bcrypt.compare(args.password, user.password);
+        if (!passwordIsValid) throw new Error('Password incorrect');
+
+        const token = jwt.sign({ id: user._id }, process.env.SECRET);
+
+        return { token, password: null, ...user._doc };
+      }
+      catch (err) {
+        throw err;
+      }
+    },
   }
 };
 

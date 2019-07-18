@@ -21,13 +21,13 @@ const typeDefs = gql`
   type Query {
     me: User
     posts: [Post]
-    users: [User]
-    login(email: String!, password: String!): User
+    users: [User] 
     verifyToken(token: String!): User
   }
   type Mutation {
     addPost(title: String!, content: String!): Post
     createUser(userInput: UserInput): User
+    login(email: String!, password: String!): User
   }
 `;
 

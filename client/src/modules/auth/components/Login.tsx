@@ -1,6 +1,7 @@
 import React, { useState, FunctionComponent } from 'react';
 import { Form as AntdForm, Icon, Input, Button, Checkbox } from 'antd';
 import { Link } from 'react-router-dom';
+import { withLogin } from '../providers/withLogin';
 import {
   Formik,
   Field,
@@ -36,7 +37,26 @@ const initialValues = {
   password: ''
 };
 
-const LoginForm: FunctionComponent<any> = () => {
+
+
+const LoginForm: FunctionComponent<any> = ({ login, setAuthUser }) => {
+    const onSubmit =  (values: ILogin, actions: FormikActions<ILogin>) => {
+        actions.setSubmitting(true);
+        actions.validateForm().then(res => {
+            const { email, password } = values;
+            login(email, password).then((res: any) => {
+                console.log(res);
+                const user = res.data.login;
+                const token = user.token;
+                localStorage.setItem('token', token);
+
+                setAuthUser({ email: user.email, id: user._id})
+
+            });
+        });
+        actions.setSubmitting(false);
+    };
+
   return (
     <div className="login__wrapper">
       <h2 className="login__title">Log In</h2>
@@ -46,12 +66,7 @@ const LoginForm: FunctionComponent<any> = () => {
         validationSchema={validationSchema}
         validateOnChange={true}
         validateOnBlur={true}
-        onSubmit={(values: ILogin, actions: FormikActions<ILogin>) => {
-          actions.setSubmitting(true);
-          actions.validateForm();
-          console.log({ values, actions });
-          actions.setSubmitting(false);
-        }}
+        onSubmit={onSubmit}
         render={(formikBag: FormikProps<ILogin>) => (
           <Form>
             <Field
@@ -139,4 +154,4 @@ const LoginForm: FunctionComponent<any> = () => {
   );
 };
 
-export default LoginForm;
+export default withLogin(LoginForm);

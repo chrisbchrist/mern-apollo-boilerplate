@@ -47,10 +47,10 @@ const App: FunctionComponent = () => {
     <ApolloProvider client={apolloClient}>
       <Router>
         <Layout>
-          <Navbar authUser={authUser} />
+          <Navbar authUser={authUser} setAuthUser={setAuthUser}/>
           <Content>
             <Switch>
-              <Route exact path="/login" component={LoginForm} />
+              <Route exact path="/login"  render={(props) => <LoginForm {...props} setAuthUser={setAuthUser}/>} />
               // @ts-ignore
               <Route exact path="/register" render={(props) => <SignUpForm {...props} setAuthUser={setAuthUser}/>} />
             </Switch>
