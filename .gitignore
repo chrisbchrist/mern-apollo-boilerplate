@@ -1,2 +1,4 @@
 node_modules
 .env
+.idea
+server/resolvers.ts___jb_tmp___

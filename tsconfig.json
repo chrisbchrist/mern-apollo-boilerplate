@@ -17,7 +17,8 @@
       "react-dom",
       "react-router-dom",
       "react-router",
-      "yup"
+      "yup",
+      "antd"
     ]
   },
   "include": ["./client/src/**/*", "./server/**/*"],

@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from 'react';
 import { Form as AntdForm, Icon, Input, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { withLogin } from '../providers/withLogin';
 import {
   Formik,
@@ -39,7 +39,7 @@ const initialValues = {
 
 
 
-const LoginForm: FunctionComponent<any> = ({ login, setAuthUser }) => {
+const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => {
     const onSubmit =  (values: ILogin, actions: FormikActions<ILogin>) => {
         actions.setSubmitting(true);
         actions.validateForm().then(res => {
@@ -56,6 +56,10 @@ const LoginForm: FunctionComponent<any> = ({ login, setAuthUser }) => {
         });
         actions.setSubmitting(false);
     };
+
+    if (authUser) {
+        return <Redirect to="/"/>
+    }
 
   return (
     <div className="login__wrapper">

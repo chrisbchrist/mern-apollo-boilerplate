@@ -8,10 +8,26 @@ const typeDefs = gql`
     title: String
     content: String
   }
+  
+  type Project {
+    _id: ID
+    user: User!
+    title: String
+    imgUrl: String
+    desc: String  
+  }
+  
+  type ProjectInput {
+    title: String
+    imgUrl: String
+    desc: String 
+  }
+  
   type User {
     _id: ID!
     email: String!
     token: String!
+    projects: [Project]
   }
   input UserInput {
     email: String!
@@ -22,6 +38,7 @@ const typeDefs = gql`
     me: User
     posts: [Post]
     users: [User] 
+    projects(userId: String!): [Project]
     verifyToken(token: String!): User
   }
   type Mutation {

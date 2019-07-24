@@ -78,7 +78,6 @@ const resolvers = {
         if (!passwordIsValid) throw new Error('Password incorrect');
 
         const token = jwt.sign({ id: user._id }, process.env.SECRET);
-
         return { token, password: null, ...user._doc };
       }
       catch (err) {

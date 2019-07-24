@@ -10,7 +10,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  },
+  projects: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Project"
+    }
+  ]
 });
 
 const User = mongoose.model('User', userSchema);

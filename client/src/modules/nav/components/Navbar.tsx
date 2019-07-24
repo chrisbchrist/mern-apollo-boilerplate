@@ -1,6 +1,7 @@
 import React, {useState, MouseEvent, FunctionComponent} from 'react';
 import {Layout, Menu, Icon, Button, Dropdown} from 'antd';
 import {Link} from 'react-router-dom';
+
 const {Header, Content, Footer} = Layout;
 const {SubMenu} = Menu;
 
@@ -26,8 +27,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({authUser, setAuthUser}) => {
     const menu = (
         <Menu>
             <Menu.Item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-                    1st menu item
+                <a>
+                    <Icon type="logout"/> Log out
                 </a>
             </Menu.Item>
             <Menu.Item>
@@ -43,7 +44,9 @@ const Navbar: FunctionComponent<NavbarProps> = ({authUser, setAuthUser}) => {
         </Menu>
     );
 
-    const avatar = authUser ? (<Dropdown overlay={menu}><div className="avatar"><Icon style={{ color: "#aaa" }} className="avatar__icon" type="user"/></div></Dropdown>) : (<Link to="/register">
+    const avatar = authUser ? (<Dropdown overlay={menu}>
+        <div className="avatar"><Icon style={{color: "#aaa"}} className="avatar__icon" type="user"/></div>
+    </Dropdown>) : (<Link to="/register">
         <Button
             type="primary"
             icon="user-add"
@@ -81,14 +84,16 @@ const Navbar: FunctionComponent<NavbarProps> = ({authUser, setAuthUser}) => {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={[]}
                 style={{lineHeight: '64px', marginLeft: 'auto'}}
             >
-                <Menu.Item key="2">
+                <Menu.Item className="nav-item" key="2">
                     {login}
                 </Menu.Item>
-                <Menu.Item key="1">
-                    <Icon type="info-circle"/> About
+                <Menu.Item className="nav-item" key="1">
+                    <Link to="/editor">
+                    <Icon type="edit"/> Editor
+                    </Link>
                 </Menu.Item>
             </Menu>
             {avatar}

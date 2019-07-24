@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './modules/nav/components/Navbar';
 import LoginForm from './modules/auth/components/Login';
 import SignUpForm from './modules/auth/components/SignUp';
+import { EditorContainer } from "./modules/Editor/containers/EditorContainer";
 import { Layout } from 'antd';
+import { PrivateRoute} from "./modules/common/components/PrivateRoute";
+
 
 const { Content } = Layout;
 
@@ -50,9 +53,11 @@ const App: FunctionComponent = () => {
           <Navbar authUser={authUser} setAuthUser={setAuthUser}/>
           <Content>
             <Switch>
-              <Route exact path="/login"  render={(props) => <LoginForm {...props} setAuthUser={setAuthUser}/>} />
+              <Route exact path="/login"  render={(props) => <LoginForm {...props} setAuthUser={setAuthUser} authUser={authUser}/>} />
               // @ts-ignore
               <Route exact path="/register" render={(props) => <SignUpForm {...props} setAuthUser={setAuthUser}/>} />
+              {/*<Route path="editor" component={EditorContainer}/>*/}
+                <PrivateRoute isAuthenticated={true} exact path="/editor" component={EditorContainer}/>
             </Switch>
           </Content>
         </Layout>
