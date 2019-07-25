@@ -42,9 +42,9 @@ export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({component, i
     const routeComponent = (props: any) => (
         isAuthenticated
             ? React.createElement(component, props)
-            : <Redirect to={{pathname: '/login'}}/>
+            : <Redirect  to={{pathname: '/login'}}/>
     );
-    return <Route render={routeComponent}/>;
+    return <Route {...rest} render={routeComponent}/>;
 };
 
 
