@@ -14,13 +14,15 @@ const typeDefs = gql`
     user: User!
     title: String
     imgUrl: String
-    desc: String  
+    desc: String
+    tags: [String] 
   }
   
-  type ProjectInput {
+  input ProjectInput {
     title: String
     imgUrl: String
-    desc: String 
+    desc: String
+    tags: [String] 
   }
   
   type User {
@@ -43,6 +45,7 @@ const typeDefs = gql`
   }
   type Mutation {
     addPost(title: String!, content: String!): Post
+    addProject(project: ProjectInput!): Project
     createUser(userInput: UserInput): User
     login(email: String!, password: String!): User
   }

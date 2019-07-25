@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { Drawer, Tabs, Icon } from "antd";
 import { InfoForm } from './InfoForm';
+import { ProjectsContainer} from "../containers/ProjectsContainer";
 
 const { TabPane } = Tabs;
 
@@ -39,7 +40,7 @@ export const EditDrawer: FunctionComponent<any> = ({
           }
           key="2"
         >
-          Tab 2
+          <ProjectsContainer/>
         </TabPane>
           <TabPane
               tab={

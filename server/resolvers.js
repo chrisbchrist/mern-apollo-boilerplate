@@ -1,5 +1,6 @@
 const Post = require('./modules/post/models/post.model');
 const User = require('./modules/auth/models/user.model');
+const Project = require('./modules/projects/models/project.model');
 const bcrypt = require('bcrypt');
 const authHelper = require('./modules/auth/helpers');
 const jwt = require('jsonwebtoken');
@@ -32,6 +33,9 @@ const resolvers = {
       const newPost = new Post({ title: post.title, content: post.content });
       // Save the record and return it
       return newPost.save();
+    },
+    addProject: (parent, args) => {
+
     },
     createUser: async (parent, args) => {
       const { email, password, confirm } = args.userInput;

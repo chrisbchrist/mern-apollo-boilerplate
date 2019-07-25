@@ -5,15 +5,19 @@ export const InputField: FunctionComponent<any> = ({
   field,
   form: { errors, touched, handleBlur },
   label,
-  icon
+  icon,
+    noValidate,
+    ...rest
 }) => {
+  const validateStatus = noValidate ? null : touched[field.name] ? (errors[field.name] ? 'error' : 'success') : '';
   return (
     <Form.Item
       hasFeedback
       help={touched[field.name] && errors[field.name] && errors[field.name]}
       validateStatus={
-        touched[field.name] ? (errors[field.name] ? 'error' : 'success') : ''
+        validateStatus
       }
+      label={label}
     >
       <Input
         value={field.value}
@@ -28,6 +32,7 @@ export const InputField: FunctionComponent<any> = ({
           field.name == 'password' || field.name == 'confirm' ? 'password' : ''
         }
         placeholder={label}
+        {...rest }
       />
     </Form.Item>
   );
