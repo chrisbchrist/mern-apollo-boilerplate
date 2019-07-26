@@ -50,7 +50,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
                 const token = user.token;
                 localStorage.setItem('token', token);
 
-                setAuthUser({ email: user.email, id: user._id})
+                setAuthUser({ email: user.email, id: user._id});
 
             });
         });

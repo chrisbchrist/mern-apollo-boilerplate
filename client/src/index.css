@@ -39,3 +39,28 @@ body {
     margin-bottom: 5px;
 }
 
+.projects__none-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.projects__start-img {
+    margin-top: 25%;
+    width: 250px;
+    display: block;
+}
+
+.projects__no-projects {
+    margin: 15px 0;
+}
+
+.projects-modal__footer {
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+

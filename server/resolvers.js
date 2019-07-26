@@ -11,7 +11,12 @@ const resolvers = {
     me: authHelper.authenticated((root, args, context) => context.currentUser),
     posts: () => Post.find({}),
     users: () => User.find({}),
+    projects: (root, args) => {
+      const userId = args.userId;
+      console.log(userId);
+      return Project.find({ 'user._id': userId });
 
+    },
     verifyToken: async (parent, args) => {
       console.log(args);
       try {
@@ -35,7 +40,9 @@ const resolvers = {
       return newPost.save();
     },
     addProject: (parent, args) => {
+      const newProject = new Project({ ...args.project });
 
+      return newProject.save();
     },
     createUser: async (parent, args) => {
       const { email, password, confirm } = args.userInput;

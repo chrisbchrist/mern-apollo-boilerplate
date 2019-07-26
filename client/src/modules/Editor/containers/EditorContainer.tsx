@@ -2,7 +2,7 @@ import React, { useState, useContext, FunctionComponent } from 'react';
 import { Button, Icon } from 'antd';
 import { EditDrawer } from "../components/EditDrawer";
 
-export const EditorContainer = () => {
+export const EditorContainer: FunctionComponent<any> = ({ authUser }) => {
     const [projects, setProjects] = useState([]);
     const [drawerVisibility, setDrawerVisibility] = useState<boolean>(false);
 

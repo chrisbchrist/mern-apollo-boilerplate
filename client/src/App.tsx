@@ -17,10 +17,10 @@ import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
 
+export const UserContext = React.createContext(null);
+
 const App: FunctionComponent = () => {
   const [authUser, setAuthUser] = useState(null);
-
-  const UserContext = React.createContext(null);
 
   // Auto log in user if token exists in storage
   useEffect(() => {
@@ -80,13 +80,13 @@ const App: FunctionComponent = () => {
                     <SignUpForm {...props} setAuthUser={setAuthUser} />
                   )}
                 />
-                {/*<Route path="editor" component={EditorContainer}/>*/}
-                <PrivateRoute
-                  isAuthenticated={true}
-                  exact
-                  path="/editor"
-                  component={EditorContainer}
-                />
+                <Route exact path="/editor" render={(props: any) => <EditorContainer  {...props} authUser={authUser} />}/>
+                {/*<PrivateRoute*/}
+                {/*  isAuthenticated={true}*/}
+                {/*  exact*/}
+                {/*  path="/editor"*/}
+                {/*  component={EditorContainer}*/}
+                {/*/>*/}
               </Switch>
             </Content>
           </Layout>

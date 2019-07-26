@@ -1,6 +1,10 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const projectSchema = new Schema({
+const projectSchema = new mongoose.Schema({
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
     title: String,
     imgUrl: String,
     desc: String,
@@ -8,6 +12,6 @@ const projectSchema = new Schema({
 
 });
 
-const Project = model('project', projectSchema);
+const Project = mongoose.model('project', projectSchema);
 
 module.exports = Project;

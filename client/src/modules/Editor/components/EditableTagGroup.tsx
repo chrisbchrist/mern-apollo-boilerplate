@@ -1,19 +1,12 @@
 import React, { useState, useEffect, useRef, FunctionComponent } from 'react';
 import { Tag, Input, Tooltip, Icon, Form } from 'antd';
 
-export const EditableTagGroup: FunctionComponent<any> = ({ form, handlePush, handleRemove, push, remove}) => {
-    const [tags, setTags] = useState<Array<string>>(['Unremovable', 'Tag 2', 'Tag 3']);
+export const EditableTagGroup: FunctionComponent<any> = ({ form, push, remove}) => {
     const [inputVisible, setInputVisible] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>('');
 
 
     useEffect(() => console.log(form, push, remove), []);
-
-    const handleClose = (removedTag: any) => {
-        const newTags: Array<string> = tags.filter((tag: string) => tag !== removedTag);
-        console.log(newTags);
-        setTags(newTags);
-    };
 
     const showInput = () => {
         setInputVisible(true);
