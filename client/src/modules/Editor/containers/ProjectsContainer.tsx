@@ -1,4 +1,9 @@
-import React, { useState, useContext, useEffect, FunctionComponent } from "react";
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  FunctionComponent
+} from "react";
 import { Button, List } from "antd";
 import { ProjectForm } from "../components/ProjectForm";
 import { UserContext } from "../../../App";
@@ -7,7 +12,7 @@ import { GET_PROJECTS } from "../../../queries";
 import { Project } from "../../../types";
 import { ProjectList } from "../components/ProjectList";
 
-interface ProjectsQueryVars {
+export interface ProjectsQueryVars {
   userId: string;
 }
 
@@ -19,9 +24,26 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
     setModalVisibility(!modalVisibility);
   };
 
-  const renderProjects = (projects: Array<Project>) => {
+  const renderProjects = (
+    projects: Array<Project>,
+    refetch: any
+  ): React.ReactNode => {
     if (projects.length >= 1) {
-      return <ProjectList projects={projects} />;
+      return (
+        <div>
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <Button
+              type="primary"
+              icon="plus"
+              style={{ marginBottom: 10 }}
+              onClick={toggleModal}
+            >
+              New
+            </Button>
+          </div>
+          <ProjectList projects={projects} />
+        </div>
+      );
     } else {
       return (
         <div className="projects__none-wrapper">
@@ -41,35 +63,38 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
           >
             Add Project
           </Button>
-          <ProjectForm
-            modalVisibility={modalVisibility}
-            toggleModal={toggleModal}
-            authUser={authUser}
-          />
         </div>
       );
     }
   };
 
   useEffect(() => {
-      console.log(authUser);
-  }, [])
-
-
+    console.log(authUser);
+  }, []);
 
   return (
     <div className="projects__wrapper">
-      <Query<Array<Project>, ProjectsQueryVars>
+      <Query<{ projects: Array<Project> }, ProjectsQueryVars>
         query={GET_PROJECTS}
         variables={{ userId: authUser.id }}
       >
-        {({ loading, error, data }) => {
-            console.log(data);
+        {({ loading, error, data, refetch }) => {
+          console.log(data);
           if (loading)
             return <div className="projects__loader">Loading...</div>;
           if (error) return <div className="projects__errors">Error!</div>;
 
-            return renderProjects(data);
+          return (
+            <div>
+              <ProjectForm
+                modalVisibility={modalVisibility}
+                toggleModal={toggleModal}
+                authUser={authUser}
+                refetchProjects={refetch}
+              />
+              {renderProjects(data.projects, refetch)}
+            </div>
+          );
         }}
       </Query>
     </div>

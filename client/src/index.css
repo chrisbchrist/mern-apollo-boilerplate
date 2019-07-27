@@ -13,6 +13,7 @@ body {
     color: #444;
     transform: translateX(50%);
     box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+    border: 1px solid #eee;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,5 +63,29 @@ body {
     border-top: 1px solid #eee;
     display: flex;
     justify-content: flex-end;
+}
+
+.project__img {
+    max-width: 100%;
+}
+
+.img-fallback__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 25px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.img-fallback__icon {
+    font-size: 35px;
+}
+
+.img-fallback__text {
+    margin-top: 15px;
 }
 

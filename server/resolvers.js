@@ -14,7 +14,7 @@ const resolvers = {
     projects: (root, args) => {
       const userId = args.userId;
       console.log(userId);
-      return Project.find({ 'user._id': userId });
+      return Project.find({ user: userId });
 
     },
     verifyToken: async (parent, args) => {

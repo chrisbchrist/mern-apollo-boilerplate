@@ -17,6 +17,7 @@ export const EditDrawer: FunctionComponent<any> = ({
       maskClosable={false}
       onClose={toggleDrawer}
       visible={drawerVisibility}
+      mask={false}
     >
         <div className="drawer__open" onClick={toggleDrawer}><Icon type="left" className={drawerVisibility ? ' drawer__icon drawer__icon--open' : ' drawer__icon drawer__icon--closed'}/></div>
       <Tabs defaultActiveKey="1">

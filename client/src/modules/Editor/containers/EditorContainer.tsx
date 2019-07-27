@@ -4,7 +4,7 @@ import { EditDrawer } from "../components/EditDrawer";
 
 export const EditorContainer: FunctionComponent<any> = ({ authUser }) => {
     const [projects, setProjects] = useState([]);
-    const [drawerVisibility, setDrawerVisibility] = useState<boolean>(false);
+    const [drawerVisibility, setDrawerVisibility] = useState<boolean>(true);
 
     const toggleDrawer = (): void => {
         setDrawerVisibility(!drawerVisibility);
