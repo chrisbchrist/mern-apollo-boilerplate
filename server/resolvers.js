@@ -40,8 +40,8 @@ const resolvers = {
       return newPost.save();
     },
     addProject: (parent, args) => {
-      const newProject = new Project({ ...args.project });
-
+      const { userId, title, imgUrl, desc, tags } = args.project;
+      const newProject = new Project({ user: userId, title, imgUrl, desc, tags });
       return newProject.save();
     },
     createUser: async (parent, args) => {

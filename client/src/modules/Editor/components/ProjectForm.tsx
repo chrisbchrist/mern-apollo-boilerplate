@@ -4,29 +4,31 @@ import { Formik, Form, Field, FieldArray, FormikActions } from "formik";
 import { InputField } from "../../common/components/InputField";
 import { EditableTagGroup } from "./EditableTagGroup";
 import { Mutation } from "react-apollo";
-import { ADD_PROJECT } from "../../../queries";
+import { ADD_PROJECT } from "../../../queries"
 
 interface ProjectFormProps {
   modalVisibility: boolean;
   toggleModal: any;
   projectToEdit?: any;
+  authUser: any;
 }
 
 interface ProjectFormValues {
   title: string;
   imgUrl: string;
-  description: string;
+  desc: string;
   tags: string[];
 }
 
 export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
   modalVisibility,
-  toggleModal
+  toggleModal,
+    authUser
 }) => {
   const initialValues: ProjectFormValues = {
     title: "",
     imgUrl: "",
-    description: "",
+    desc: "",
     tags: []
   };
 
@@ -46,6 +48,7 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
               values: ProjectFormValues,
               actions: FormikActions<ProjectFormValues>
             ) => {
+
               console.log(values);
               addProject({ variables: { project: values }})
             }}
@@ -67,7 +70,7 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
               />
               <Field
                 noValidate={true}
-                name="description"
+                name="desc"
                 label="Description"
                 component={InputField}
               />

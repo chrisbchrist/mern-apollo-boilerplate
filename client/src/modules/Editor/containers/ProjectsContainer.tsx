@@ -44,6 +44,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
           <ProjectForm
             modalVisibility={modalVisibility}
             toggleModal={toggleModal}
+            authUser={authUser}
           />
         </div>
       );

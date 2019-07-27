@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const ADD_PROJECT = gql`
-    mutation addProject($project: Project) {
+    mutation addProject($project: ProjectInput!) {
         addProject(project: $project) {
             _id
             title

@@ -19,6 +19,7 @@ const typeDefs = gql`
   }
   
   input ProjectInput {
+    userId: String!
     title: String
     imgUrl: String
     desc: String
