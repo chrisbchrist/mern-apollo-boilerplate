@@ -6,7 +6,7 @@ export const EditableTagGroup: FunctionComponent<any> = ({ form, push, remove}) 
     const [inputValue, setInputValue] = useState<string>('');
 
 
-    useEffect(() => console.log(form, push, remove), []);
+    //useEffect(() => console.log(form, push, remove), []);
 
     const showInput = () => {
         setInputVisible(true);
@@ -21,7 +21,7 @@ export const EditableTagGroup: FunctionComponent<any> = ({ form, push, remove}) 
     };
 
     const handleInputConfirm = () => {
-        push(inputValue);
+        inputValue && push(inputValue);
         setInputVisible(false);
         setInputValue('');
 

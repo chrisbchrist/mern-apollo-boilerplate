@@ -16,7 +16,16 @@ const userSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Project"
     }
-  ]
+  ],
+  info: {
+    name: String,
+    profilePhoto: String,
+    location: String,
+    about: String,
+    email: String,
+    phone: String,
+    github: String
+  }
 });
 
 const User = mongoose.model('User', userSchema);

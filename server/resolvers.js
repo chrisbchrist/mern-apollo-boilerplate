@@ -17,6 +17,9 @@ const resolvers = {
       return Project.find({ user: userId });
 
     },
+    getUserInfo: (parent, args) => {
+      return User.find({ _id: args.id });
+    },
     verifyToken: async (parent, args) => {
       console.log(args);
       try {
@@ -43,6 +46,10 @@ const resolvers = {
       const { userId, title, imgUrl, desc, tags } = args.project;
       const newProject = new Project({ user: userId, title, imgUrl, desc, tags });
       return newProject.save();
+    },
+    removeProject: (parent, args) => {
+      console.log(args);
+      return Project.findOneAndDelete({ _id: args.id});
     },
     createUser: async (parent, args) => {
       const { email, password, confirm } = args.userInput;
@@ -76,6 +83,9 @@ const resolvers = {
       const response = { token, password: null, ...user._doc };
       console.log(response);
       return response;
+    },
+    updateUserInfo: (parent, args) => {
+        return User.findOneAndUpdate({ _id: args.id}, { ...args.userInfo });
     },
     login: async (parent, args) => {
       console.log(args);

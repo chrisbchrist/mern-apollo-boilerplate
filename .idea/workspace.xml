@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d3e727f-f7e4-4f19-b73c-aa6531ef8af5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/EditDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/EditDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/EditableTagGroup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/EditableTagGroup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/InfoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/InfoForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/queries.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/graphqlSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/graphqlSchema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/modules/auth/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/modules/auth/models/user.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,7 +120,11 @@
       <workItem from="1564182953434" duration="294000" />
       <workItem from="1564183929831" duration="4353000" />
       <workItem from="1564188755124" duration="1310000" />
-      <workItem from="1564190335881" duration="4972000" />
+      <workItem from="1564190335881" duration="6077000" />
+      <workItem from="1564273749584" duration="3452000" />
+      <workItem from="1564351288194" duration="430000" />
+      <workItem from="1564353961872" duration="2550000" />
+      <workItem from="1564441558999" duration="3729000" />
     </task>
     <task id="LOCAL-00001" summary="Updated lodash">
       <created>1563138370590</created>
@@ -189,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564185858246</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Successfully adding/displaying user's project info">
+      <created>1564195372033</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564195372033</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +245,8 @@
     <MESSAGE value="Implemented editable tag group and integrated with Formik" />
     <MESSAGE value="Queries/Mutations to get/create projects, basic list component, consumed user context" />
     <MESSAGE value="Mutation to add projects for users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mutation to add projects for users" />
+    <MESSAGE value="Successfully adding/displaying user's project info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully adding/displaying user's project info" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

@@ -73,6 +73,9 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
               values.userId = authUser.id;
               console.log(values);
               addProject({ variables: { project: values } });
+              actions.setSubmitting(false);
+              actions.resetForm();
+              toggleModal();
             }}
             enableReinitialize={true}
             initialValues={initialValues}

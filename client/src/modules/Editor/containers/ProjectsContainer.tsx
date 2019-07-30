@@ -4,7 +4,7 @@ import React, {
   useEffect,
   FunctionComponent
 } from "react";
-import { Button, List } from "antd";
+import { Button, Spin } from "antd";
 import { ProjectForm } from "../components/ProjectForm";
 import { UserContext } from "../../../App";
 import { Query } from "react-apollo";
@@ -41,7 +41,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
               New
             </Button>
           </div>
-          <ProjectList projects={projects} />
+          <ProjectList projects={projects} refetchProjects={refetch}/>
         </div>
       );
     } else {
@@ -80,8 +80,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
       >
         {({ loading, error, data, refetch }) => {
           console.log(data);
-          if (loading)
-            return <div className="projects__loader">Loading...</div>;
+            if (loading) return <div className="projects__loader"><Spin tip="Loading..."/></div>;
           if (error) return <div className="projects__errors">Error!</div>;
 
           return (
