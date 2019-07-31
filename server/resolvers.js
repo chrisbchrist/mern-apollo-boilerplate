@@ -6,6 +6,11 @@ const authHelper = require('./modules/auth/helpers');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
 
+const prepare = (o) => {
+  o._id = o._id.toString()
+  return o
+};
+
 const resolvers = {
   Query: {
     me: authHelper.authenticated((root, args, context) => context.currentUser),
@@ -13,18 +18,19 @@ const resolvers = {
     users: () => User.find({}),
     projects: (root, args) => {
       const userId = args.userId;
-      console.log(userId);
+      //console.log(userId);
       return Project.find({ user: userId });
 
     },
-    getUserInfo: (parent, args) => {
-      return User.find({ _id: args.id });
+    getUser: async (parent, { id }) => {
+      return prepare(await User.findOne({ _id: id }));
+
     },
     verifyToken: async (parent, args) => {
       console.log(args);
       try {
         const decoded = jwt.verify(args.token, process.env.SECRET);
-        console.log(decoded);
+        //console.log(decoded);
         const user = await User.findOne({ _id: decoded.id });
         return {...user._doc }
       }
@@ -85,10 +91,11 @@ const resolvers = {
       return response;
     },
     updateUserInfo: (parent, args) => {
-        return User.findOneAndUpdate({ _id: args.id}, { ...args.userInfo });
+      //console.log(args);
+        return User.findOneAndUpdate({ _id: args.id}, { info: { ...args.userInfo }});
     },
     login: async (parent, args) => {
-      console.log(args);
+      //console.log(args);
       try {
         if (!validator.isEmail(args.email)) throw new Error('Invalid email.');
 

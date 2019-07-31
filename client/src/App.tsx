@@ -17,7 +17,7 @@ import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
 
-export const UserContext = React.createContext(null);
+export const UserContext = createContext(null);
 
 const App: FunctionComponent = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -46,6 +46,7 @@ const App: FunctionComponent = () => {
     }
 
     const token = localStorage.getItem("token");
+    console.log(token);
     if (token) {
       autoLogin(token);
     } else {

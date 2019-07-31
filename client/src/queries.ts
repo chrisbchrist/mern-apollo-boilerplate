@@ -30,18 +30,35 @@ export const REMOVE_PROJECT = gql`
 `;
 
 export const GET_USER = gql`
-  query getUserInfo($id: ID!) {
-    getUserInfo(id: $id) {
+  query getUser($id: ID!) {
+    getUser(id: $id) {
       _id
-      info
+      info {
+        name
+        profilePhoto
+        location
+        about
+        email
+        phone
+        github
+      }
     }
   }
 `;
 
 export const UPDATE_USER_INFO = gql`
-  mutation updateUserInfo($userInfo: UserInfoInput, $id: ID!) {
+  mutation updateUserInfo($userInfo: UserInfoInput!, $id: ID!) {
     updateUserInfo(userInfo: $userInfo, id: $id) {
-      _
+      _id
+      info {
+        name
+        profilePhoto
+        location
+        about
+        email
+        phone
+        github
+      }
     }
   }
 `;

@@ -31,6 +31,7 @@ const typeDefs = gql`
     email: String!
     token: String!
     projects: [Project]
+    info: UserInfo
   }
   input UserInput {
     email: String!
@@ -67,8 +68,8 @@ const typeDefs = gql`
     addPost(title: String!, content: String!): Post
     addProject(project: ProjectInput!): Project
     removeProject(id: ID!): Project
-    createUser(userInput: UserInput!, id: ID!): UserInfo
-    updateUserInfo(userInfo: UserInfoInput!): User
+    createUser(userInput: UserInput!, id: ID!): User
+    updateUserInfo(userInfo: UserInfoInput!, id: ID!): User
     login(email: String!, password: String!): User
   }
 `;
