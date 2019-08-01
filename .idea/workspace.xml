@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d3e727f-f7e4-4f19-b73c-aa6531ef8af5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/modules/common/components/TextAreaField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/InfoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/InfoForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/graphqlSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/graphqlSchema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +116,10 @@
       <workItem from="1564351288194" duration="430000" />
       <workItem from="1564353961872" duration="2550000" />
       <workItem from="1564441558999" duration="3729000" />
-      <workItem from="1564528819943" duration="5523000" />
+      <workItem from="1564528819943" duration="6219000" />
+      <workItem from="1564614430642" duration="65000" />
+      <workItem from="1564616054380" duration="2051000" />
+      <workItem from="1564620525968" duration="47000" />
     </task>
     <task id="LOCAL-00001" summary="Updated lodash">
       <created>1563138370590</created>
@@ -200,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564195372033</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed queries/mutations and form for editing/saving general user info">
+      <created>1564534993150</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564534993150</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +248,8 @@
     <MESSAGE value="Queries/Mutations to get/create projects, basic list component, consumed user context" />
     <MESSAGE value="Mutation to add projects for users" />
     <MESSAGE value="Successfully adding/displaying user's project info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully adding/displaying user's project info" />
+    <MESSAGE value="Fixed queries/mutations and form for editing/saving general user info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed queries/mutations and form for editing/saving general user info" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

@@ -61,7 +61,10 @@ export const InfoForm: FunctionComponent<any> = () => {
                         actions.setSubmitting(false);
                       }, 1000);
                     }}
-                    render={(props: FormikProps<IUserInfo>) => (
+                    render={(props: FormikProps<IUserInfo>) => {
+
+
+                      return (
                       <Form>
                         <Field
                           name="name"
@@ -120,7 +123,7 @@ export const InfoForm: FunctionComponent<any> = () => {
                           Save
                         </Button>
                       </Form>
-                    )}
+                    )}}
                   />
                 </div>
               </div>

@@ -13,7 +13,7 @@ import LoginForm from "./modules/auth/components/Login";
 import SignUpForm from "./modules/auth/components/SignUp";
 import { EditorContainer } from "./modules/Editor/containers/EditorContainer";
 import { Layout } from "antd";
-import { PrivateRoute } from "./modules/common/components/PrivateRoute";
+// import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
 
@@ -30,6 +30,9 @@ const App: FunctionComponent = () => {
           verifyToken(token: $token) {
             email
             _id
+            info {
+              profilePhoto
+            }
           }
         }
       `;
