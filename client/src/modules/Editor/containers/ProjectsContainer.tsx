@@ -18,10 +18,18 @@ export interface ProjectsQueryVars {
 
 export const ProjectsContainer: FunctionComponent<any> = () => {
   const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+  const [projectToEdit, setProjectToEdit] = useState<Project>(null);
+
   const authUser = useContext(UserContext);
 
   const toggleModal = () => {
     setModalVisibility(!modalVisibility);
+  };
+
+  const editProject = (project: Project) => {
+      setProjectToEdit(project);
+      toggleModal();
+
   };
 
   const renderProjects = (
@@ -36,12 +44,15 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
               type="primary"
               icon="plus"
               style={{ marginBottom: 10 }}
-              onClick={toggleModal}
+              onClick={() => {
+                  setProjectToEdit(null);
+                  toggleModal();
+              }}
             >
               New
             </Button>
           </div>
-          <ProjectList projects={projects} refetchProjects={refetch}/>
+          <ProjectList projects={projects} refetchProjects={refetch} editProject={editProject}/>
         </div>
       );
     } else {
@@ -79,7 +90,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
         variables={{ userId: authUser.id }}
       >
         {({ loading, error, data, refetch }) => {
-          console.log(data);
+          // console.log(data);
             if (loading) return <div className="projects__loader"><Spin tip="Loading..."/></div>;
           if (error) return <div className="projects__errors">Error!</div>;
 
@@ -90,6 +101,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
                 toggleModal={toggleModal}
                 authUser={authUser}
                 refetchProjects={refetch}
+                projectToEdit={projectToEdit}
               />
               {renderProjects(data.projects, refetch)}
             </div>

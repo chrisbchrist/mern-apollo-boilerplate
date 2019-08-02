@@ -60,6 +60,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ authUser, setAuthUser }) => {
     </Menu>
   );
 
+
   const avatar = authUser ? (
     <Dropdown overlay={userMenu}>
       <div className="avatar">

@@ -9,7 +9,8 @@ export const InputField: FunctionComponent<any> = ({
     noValidate,
     ...rest
 }) => {
-  const validateStatus = noValidate ? null : touched[field.name] ? (errors[field.name] ? 'error' : 'success') : '';
+  //This could be easier to read
+  const validateStatus = noValidate ? null : touched[field.name] ? (errors[field.name] ? 'error' : (noValidate ? null : 'success')) : '';
   return (
     <Form.Item
       hasFeedback

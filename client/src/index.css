@@ -41,6 +41,10 @@ body {
     margin-bottom: 5px;
 }
 
+.ant-card-body {
+    padding: 15px;
+}
+
 .projects__none-wrapper {
     display: flex;
     justify-content: center;
@@ -121,5 +125,9 @@ body {
 
 .project-card__desc {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.project-card__tags {
+    padding-top: 10px;
 }

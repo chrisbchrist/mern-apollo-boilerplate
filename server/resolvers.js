@@ -49,9 +49,13 @@ const resolvers = {
       return newPost.save();
     },
     addProject: (parent, args) => {
-      const { userId, title, imgUrl, desc, tags } = args.project;
-      const newProject = new Project({ user: userId, title, imgUrl, desc, tags });
+      const newProject = new Project({ ...args.project });
       return newProject.save();
+    },
+    updateProject: (parent, args) => {
+      const id = args.id;
+      const projectData = args.project;
+      return Project.findOneAndUpdate({ _id: id}, { ...project });
     },
     removeProject: (parent, args) => {
       console.log(args);
@@ -69,7 +73,7 @@ const resolvers = {
         throw new Error('User already exists!');
       }
 
-      if (password != confirm) {
+      if (password !== confirm) {
         throw new Error('Passwords must match!');
       }
       const hashedPassword = await bcrypt.hash(password, 10);

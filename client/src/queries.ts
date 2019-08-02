@@ -1,14 +1,5 @@
 import { gql } from "apollo-boost";
 
-export const ADD_PROJECT = gql`
-  mutation addProject($project: ProjectInput!) {
-    addProject(project: $project) {
-      _id
-      title
-    }
-  }
-`;
-
 export const GET_PROJECTS = gql`
   query projects($userId: String!) {
     projects(userId: $userId) {
@@ -19,6 +10,28 @@ export const GET_PROJECTS = gql`
       tags
     }
   }
+`;
+
+export const ADD_PROJECT = gql`
+  mutation addProject($project: ProjectInput!) {
+    addProject(project: $project) {
+      _id
+      title
+    }
+  }
+`;
+
+export const UPDATE_PROJECT = gql`
+    mutation updateProject($project: ProjectInput!, $id: ID!) {
+        updateProject(project: $project, id: $id) {
+            _id
+            user
+            title
+            imgUrl
+            desc
+            tags
+        }
+    }
 `;
 
 export const REMOVE_PROJECT = gql`

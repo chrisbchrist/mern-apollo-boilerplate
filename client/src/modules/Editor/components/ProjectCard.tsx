@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FunctionComponent } from "react";
-import { Card, Icon, Divider, Popconfirm } from "antd";
+import { Card, Icon, Divider, Popconfirm, Tag } from "antd";
 import { Project } from "../../../types";
 import { Mutation } from "react-apollo";
 import { REMOVE_PROJECT } from "../../../queries";
@@ -7,11 +7,13 @@ import { REMOVE_PROJECT } from "../../../queries";
 interface ProjectCardProps {
   project: Project;
   refetchProjects: any;
+  editProject: any;
 }
 
 export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
   project,
-  refetchProjects
+  refetchProjects,
+    editProject
 }) => {
   const [error, setError] = useState<boolean>(false);
 
@@ -51,6 +53,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
               <Icon
                 className="project-card__icon project-card__action--edit"
                 type="edit"
+                onClick={() => editProject(project)}
               />
               <Divider type="vertical" />
               <Popconfirm title="Are you sure you want to delete this project?" onConfirm={() => removeProject({ variables: { id: project._id } })}>
@@ -72,6 +75,9 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
           )}
           {error && errorFallback}
             <span className="project-card__desc">{project.desc}</span>
+            <div className="project-card__tags">
+                {project.tags.length > 0 && project.tags.map((tag: string) => <Tag>{tag}</Tag>)}
+            </div>
         </Card>
       )}
     </Mutation>

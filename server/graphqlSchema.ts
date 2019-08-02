@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
   
   input ProjectInput {
-    userId: String!
+    user: String!
     title: String
     imgUrl: String
     desc: String
@@ -67,6 +67,7 @@ const typeDefs = gql`
   type Mutation {
     addPost(title: String!, content: String!): Post
     addProject(project: ProjectInput!): Project
+    updateProject(project: ProjectInput!, id: ID!): Project
     removeProject(id: ID!): Project
     createUser(userInput: UserInput!, id: ID!): User
     updateUserInfo(userInfo: UserInfoInput!, id: ID!): User
