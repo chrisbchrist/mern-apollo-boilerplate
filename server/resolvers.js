@@ -53,9 +53,10 @@ const resolvers = {
       return newProject.save();
     },
     updateProject: (parent, args) => {
+      console.log(args);
       const id = args.id;
       const projectData = args.project;
-      return Project.findOneAndUpdate({ _id: id}, { ...project });
+      return Project.findOneAndUpdate({ _id: id}, { ...projectData });
     },
     removeProject: (parent, args) => {
       console.log(args);

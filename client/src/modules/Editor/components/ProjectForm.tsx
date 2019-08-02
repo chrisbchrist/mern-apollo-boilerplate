@@ -58,17 +58,17 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
       onCompleted={(data: Array<Project>) => {
         refetchProjects().then(
           (res: ApolloQueryResult<{ projects: Array<Project> }>) => {
-            openNotificationWithIcon("success", "Projected added!", null);
+            const msg: string = projectToEdit ? "Project updated!" : "Project added!";
+            openNotificationWithIcon("success", msg, null);
           }
         );
       }}
     >
       {(upsertProject: any) => {
-        const projectEditValues: ProjectFormValues | undefined = undefined;
-        console.log(projectToEdit);
+        let projectEditValues: ProjectFormValues | undefined = undefined;
         if (projectToEdit) {
           const { title, imgUrl, desc, tags } = projectToEdit;
-          const projectEditValues = { title, imgUrl, desc, tags };
+          projectEditValues = { title, imgUrl, desc, tags };
         }
         return (
           <Modal
@@ -85,13 +85,17 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
                 actions: FormikActions<ProjectFormValues>
               ) => {
                 values.user = authUser.id;
-                console.log(values);
+                //console.log(values);
                 if (projectToEdit) {
+                  upsertProject({ variables: { project: values, id: projectToEdit._id } });
+                } else {
+                  upsertProject({ variables: { project: values } });
                 }
-                upsertProject({ variables: { project: values } });
+
                 actions.setSubmitting(false);
-                actions.resetForm();
                 toggleModal();
+                actions.resetForm();
+
               }}
               enableReinitialize={true}
               initialValues={projectEditValues ? projectEditValues : initialValues}
@@ -126,8 +130,8 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
                   >
                     Cancel
                   </Button>
-                  <Button type="primary" icon="plus" htmlType="submit">
-                    Add
+                  <Button type="primary" icon={projectToEdit ? "enter" : "plus"} htmlType="submit">
+                    {projectToEdit ? "Update" : "Add"}
                   </Button>
                 </div>
               </Form>

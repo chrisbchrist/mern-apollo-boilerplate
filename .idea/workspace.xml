@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d3e727f-f7e4-4f19-b73c-aa6531ef8af5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/styles/Basic.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/common/components/InputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/common/components/InputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/nav/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/nav/components/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/graphqlSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/graphqlSchema.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../node_modules/.bin" />
+    <property name="last_opened_file_path" value="C:/Spring/demo/pom.xml" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.NodeInterpreter" value="node" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\chris\AppData\Roaming\npm\node_modules\prettier" />
@@ -132,7 +126,8 @@
       <workItem from="1564620525968" duration="47000" />
       <workItem from="1564620623469" duration="298000" />
       <workItem from="1564703580504" duration="603000" />
-      <workItem from="1564705868795" duration="5517000" />
+      <workItem from="1564705868795" duration="5717000" />
+      <workItem from="1564785994968" duration="3433000" />
     </task>
     <task id="LOCAL-00001" summary="Updated lodash">
       <created>1563138370590</created>
@@ -225,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564620757256</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Queries/mutations for editing projects, started configuring add form to upsert">
+      <created>1564712879308</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1564712879308</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +272,8 @@
     <MESSAGE value="Successfully adding/displaying user's project info" />
     <MESSAGE value="Fixed queries/mutations and form for editing/saving general user info" />
     <MESSAGE value="Updated deps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated deps" />
+    <MESSAGE value="Queries/mutations for editing projects, started configuring add form to upsert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Queries/mutations for editing projects, started configuring add form to upsert" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

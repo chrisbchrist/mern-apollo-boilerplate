@@ -29,7 +29,6 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
   const editProject = (project: Project) => {
       setProjectToEdit(project);
       toggleModal();
-
   };
 
   const renderProjects = (
@@ -41,6 +40,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
         <div>
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
             <Button
+                block
               type="primary"
               icon="plus"
               style={{ marginBottom: 10 }}

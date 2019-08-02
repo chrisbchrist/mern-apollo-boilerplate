@@ -8,6 +8,9 @@ export const GET_PROJECTS = gql`
       imgUrl
       desc
       tags
+      user {
+        _id
+      }
     }
   }
 `;
@@ -22,16 +25,18 @@ export const ADD_PROJECT = gql`
 `;
 
 export const UPDATE_PROJECT = gql`
-    mutation updateProject($project: ProjectInput!, $id: ID!) {
-        updateProject(project: $project, id: $id) {
-            _id
-            user
-            title
-            imgUrl
-            desc
-            tags
-        }
+  mutation updateProject($project: ProjectInput!, $id: ID!) {
+    updateProject(project: $project, id: $id) {
+      _id
+      user {
+        _id
+      }
+      title
+      imgUrl
+      desc
+      tags
     }
+  }
 `;
 
 export const REMOVE_PROJECT = gql`

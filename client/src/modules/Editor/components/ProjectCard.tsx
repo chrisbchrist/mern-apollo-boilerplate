@@ -76,7 +76,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
           {error && errorFallback}
             <span className="project-card__desc">{project.desc}</span>
             <div className="project-card__tags">
-                {project.tags.length > 0 && project.tags.map((tag: string) => <Tag>{tag}</Tag>)}
+                {project.tags.length > 0 && project.tags.map((tag: string, index: number) => <Tag key={tag + index}>{tag}</Tag>)}
             </div>
         </Card>
       )}
