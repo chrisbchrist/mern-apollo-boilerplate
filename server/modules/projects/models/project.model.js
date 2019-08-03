@@ -8,7 +8,9 @@ const projectSchema = new mongoose.Schema({
     title: String,
     imgUrl: String,
     desc: String,
-    tags: [{ type: String }]
+    tags: [{ type: String }],
+    demoUrl: String,
+    srcUrl: String,
 
 });
 

@@ -15,7 +15,9 @@ const typeDefs = gql`
     title: String
     imgUrl: String
     desc: String
-    tags: [String] 
+    tags: [String]
+    demoUrl: String
+    srcUrl: String 
   }
   
   input ProjectInput {
@@ -23,7 +25,9 @@ const typeDefs = gql`
     title: String
     imgUrl: String
     desc: String
-    tags: [String] 
+    tags: [String]
+    demoUrl: String
+    srcUrl: String 
   }
   
   type User {

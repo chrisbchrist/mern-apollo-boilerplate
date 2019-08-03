@@ -38,7 +38,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
     if (projects.length >= 1) {
       return (
         <div>
-          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+          <div>
             <Button
                 block
               type="primary"
