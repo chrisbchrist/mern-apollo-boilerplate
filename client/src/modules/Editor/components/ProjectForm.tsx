@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import {
   Modal,
   Form as AntdForm,
@@ -66,14 +66,26 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
   refetchProjects,
   projectToEdit
 }) => {
-
   const [sourcePrivate, setSourcePrivate] = useState<boolean>(false);
 
   const initialValues: ProjectFormValues = {
     title: "",
     imgUrl: "",
     desc: "",
-    tags: []
+    tags: [],
+    demoUrl: "",
+    srcUrl: ""
+  };
+
+  useEffect(() => console.log(projectToEdit), [projectToEdit]);
+
+  useEffect(() => {
+    projectToEdit && setSourcePrivate(projectToEdit.srcUrl === "Private");
+  }, [projectToEdit]);
+
+  const onCheck = (e: any) => {
+    //console.log(e.target.checked);
+    setSourcePrivate(e.target.checked);
   };
 
   return (
@@ -94,8 +106,8 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
       {(upsertProject: any) => {
         let projectEditValues: ProjectFormValues | undefined = undefined;
         if (projectToEdit) {
-          const { title, imgUrl, desc, tags } = projectToEdit;
-          projectEditValues = { title, imgUrl, desc, tags };
+          const { title, imgUrl, desc, tags, demoUrl, srcUrl } = projectToEdit;
+          projectEditValues = { title, imgUrl, desc, tags, demoUrl, srcUrl };
         }
         return (
           <Modal
@@ -122,14 +134,16 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
               ) => {
                 values.user = authUser.id;
                 if (sourcePrivate) values.srcUrl = "Private";
-                //console.log(values);
+                console.log(values);
 
                 if (projectToEdit) {
                   upsertProject({
                     variables: { project: values, id: projectToEdit._id }
-                  });
+                  }).then((res: any) => console.log(res));
                 } else {
-                  upsertProject({ variables: { project: values } });
+                  upsertProject({ variables: { project: values } }).then(
+                    (res: any) => console.log(res)
+                  );
                 }
 
                 actions.setSubmitting(false);
@@ -142,11 +156,6 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
               }
             >
               {(formikProps: any) => {
-                const onCheck = (e: any) => {
-                  console.log(e.target.checked);
-                  setSourcePrivate(e.target.checked);
-                };
-
                 return (
                   <Form>
                     <Field
@@ -192,10 +201,16 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
                       component={InputField}
                       wrapperStyle={{ marginBottom: 10 }}
                       disabled={sourcePrivate}
-                      value={sourcePrivate ? "Private" : formikProps.values.srcUrl}
+                      value={
+                        sourcePrivate ? "Private" : formikProps.values.srcUrl
+                      }
                       info="Link to Github or another way to view the source code"
                     />
-                    <Checkbox style={{ marginBottom: 10 }} onChange={onCheck}>
+                    <Checkbox
+                      style={{ marginBottom: 10 }}
+                      onChange={onCheck}
+                      checked={sourcePrivate}
+                    >
                       Source Private
                       <Tooltip title="This is proprietary code made for an employer/client">
                         <Icon

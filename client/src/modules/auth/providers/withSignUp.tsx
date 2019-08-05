@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo';
 import { UserInput } from '../../../../../types';
 
 const CREATE_USER = gql`
-  mutation($userInput: UserInput) {
+  mutation($userInput: UserInput!) {
     createUser(userInput: $userInput) {
       _id
       token

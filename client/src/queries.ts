@@ -8,6 +8,8 @@ export const GET_PROJECTS = gql`
       imgUrl
       desc
       tags
+      demoUrl
+      srcUrl
       user {
         _id
       }
@@ -35,6 +37,8 @@ export const UPDATE_PROJECT = gql`
       imgUrl
       desc
       tags
+      demoUrl
+      srcUrl
     }
   }
 `;

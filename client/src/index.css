@@ -139,3 +139,15 @@ body {
 .project-card__tags {
     padding-top: 10px;
 }
+
+.project-card__action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.project-card__action-icon {
+    font-size: 18px;
+    width: auto !important;
+    margin-right: 7px;
+}

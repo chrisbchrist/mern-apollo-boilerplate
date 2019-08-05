@@ -5,21 +5,10 @@ import { ProjectsContainer} from "../containers/ProjectsContainer";
 
 const { TabPane } = Tabs;
 
-export const EditDrawer: FunctionComponent<any> = ({
-  drawerVisibility,
-  toggleDrawer
-}) => {
+export const EditMenu: FunctionComponent<any> = () => {
   return (
-    <Drawer
-      placement="left"
-      closable={true}
-      width={500}
-      maskClosable={false}
-      onClose={toggleDrawer}
-      visible={drawerVisibility}
-      mask={false}
-    >
-        <div className="drawer__open" onClick={toggleDrawer}><Icon type="left" className={drawerVisibility ? ' drawer__icon drawer__icon--open' : ' drawer__icon drawer__icon--closed'}/></div>
+
+
       <Tabs defaultActiveKey="1">
         <TabPane
           tab={
@@ -55,6 +44,5 @@ export const EditDrawer: FunctionComponent<any> = ({
               Tab 3
           </TabPane>
       </Tabs>
-    </Drawer>
   );
 };

@@ -8,7 +8,7 @@ interface TemplateProps {
 }
 
 
-const BasicTemplate: FunctionComponent<TemplateProps> = ({ projects, userInfo }) => {
+export const BasicTemplate: FunctionComponent<TemplateProps> = ({ projects, userInfo }) => {
 
     return (
         <div className="basic__wrapper">

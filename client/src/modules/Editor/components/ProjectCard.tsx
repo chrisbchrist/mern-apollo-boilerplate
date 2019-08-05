@@ -13,7 +13,7 @@ interface ProjectCardProps {
 export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
   project,
   refetchProjects,
-    editProject
+  editProject
 }) => {
   const [error, setError] = useState<boolean>(false);
 
@@ -21,7 +21,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
     setError(true);
   };
 
-  useEffect(() => console.log(project), []);
+  // useEffect(() => console.log(project), []);
 
   const errorFallback = (
     <div className="img-fallback__wrapper">
@@ -40,7 +40,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
       mutation={REMOVE_PROJECT}
       ignoreResults
       onCompleted={(data: any) => {
-          console.log(data);
+        console.log(data);
         refetchProjects();
       }}
     >
@@ -56,14 +56,40 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
                 onClick={() => editProject(project)}
               />
               <Divider type="vertical" />
-              <Popconfirm title="Are you sure you want to delete this project?" onConfirm={() => removeProject({ variables: { id: project._id } })}>
-              <Icon
-                className="project-card__icon project-card__action--delete"
-                type="delete"
-              />
+              <Popconfirm
+                title="Are you sure you want to delete this project?"
+                onConfirm={() =>
+                  removeProject({ variables: { id: project._id } })
+                }
+              >
+                <Icon
+                  className="project-card__icon project-card__action--delete"
+                  type="delete"
+                />
               </Popconfirm>
             </div>
           }
+          actions={[
+            <div className="project-card__action">
+              <span>
+                <Icon className="project-card__action-icon" type="github" />{" "}
+                Demo
+              </span>
+            </div>,
+            <div className="project-card__action">
+              {project.srcUrl === "Private" ? (
+                <span style={{ cursor: 'default', opacity: 0.5}}>
+                  <Icon className="project-card__action-icon" type="eye-invisible" />{" "}
+                  Source Private
+                </span>
+              ) : (
+                <span>
+                  <Icon className="project-card__action-icon" type="code" />{" "}
+                  Source
+                </span>
+              )}
+            </div>
+          ]}
         >
           {project.imgUrl && !error && (
             <img
@@ -74,10 +100,13 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
             />
           )}
           {error && errorFallback}
-            <span className="project-card__desc">{project.desc}</span>
-            <div className="project-card__tags">
-                {project.tags.length > 0 && project.tags.map((tag: string, index: number) => <Tag key={tag + index}>{tag}</Tag>)}
-            </div>
+          <span className="project-card__desc">{project.desc}</span>
+          <div className="project-card__tags">
+            {project.tags.length > 0 &&
+              project.tags.map((tag: string, index: number) => (
+                <Tag key={tag + index}>{tag}</Tag>
+              ))}
+          </div>
         </Card>
       )}
     </Mutation>

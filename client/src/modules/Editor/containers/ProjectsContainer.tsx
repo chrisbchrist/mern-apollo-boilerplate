@@ -7,6 +7,7 @@ import React, {
 import { Button, Spin } from "antd";
 import { ProjectForm } from "../components/ProjectForm";
 import { UserContext } from "../../../App";
+import { ProjectContext } from "./EditorContainer";
 import { Query } from "react-apollo";
 import { GET_PROJECTS } from "../../../queries";
 import { Project } from "../../../types";
@@ -21,14 +22,15 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
   const [projectToEdit, setProjectToEdit] = useState<Project>(null);
 
   const authUser = useContext(UserContext);
+  const { loading, error, projects, refetchProjects } = useContext(ProjectContext);
 
   const toggleModal = () => {
     setModalVisibility(!modalVisibility);
   };
 
   const editProject = (project: Project) => {
-      setProjectToEdit(project);
-      toggleModal();
+    setProjectToEdit(project);
+    toggleModal();
   };
 
   const renderProjects = (
@@ -40,25 +42,30 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
         <div>
           <div>
             <Button
-                block
+              block
               type="primary"
               icon="plus"
               style={{ marginBottom: 10 }}
               onClick={() => {
-                  setProjectToEdit(null);
-                  toggleModal();
+                setProjectToEdit(null);
+                toggleModal();
               }}
             >
               New
             </Button>
           </div>
-          <ProjectList projects={projects} refetchProjects={refetch} editProject={editProject}/>
+          <ProjectList
+            projects={projects}
+            refetchProjects={refetch}
+            editProject={editProject}
+          />
         </div>
       );
     } else {
       return (
         <div className="projects__none-wrapper">
           <img
+            alt="No projects"
             src="https://res.cloudinary.com/dgeb3iekh/image/upload/v1564016359/undraw_building_blocks_n0nc_u8zzdz.svg"
             className="projects__start-img"
           />
@@ -85,29 +92,17 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
 
   return (
     <div className="projects__wrapper">
-      <Query<{ projects: Array<Project> }, ProjectsQueryVars>
-        query={GET_PROJECTS}
-        variables={{ userId: authUser.id }}
-      >
-        {({ loading, error, data, refetch }) => {
-          // console.log(data);
-            if (loading) return <div className="projects__loader"><Spin tip="Loading..."/></div>;
-          if (error) return <div className="projects__errors">Error!</div>;
 
-          return (
             <div>
               <ProjectForm
                 modalVisibility={modalVisibility}
                 toggleModal={toggleModal}
                 authUser={authUser}
-                refetchProjects={refetch}
+                refetchProjects={refetchProjects}
                 projectToEdit={projectToEdit}
               />
-              {renderProjects(data.projects, refetch)}
+              {renderProjects(projects, refetchProjects)}
             </div>
-          );
-        }}
-      </Query>
     </div>
   );
 };

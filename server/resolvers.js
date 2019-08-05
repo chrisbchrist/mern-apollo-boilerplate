@@ -49,6 +49,7 @@ const resolvers = {
       return newPost.save();
     },
     addProject: (parent, args) => {
+      console.log(args.project);
       const newProject = new Project({ ...args.project });
       return newProject.save();
     },
@@ -100,7 +101,7 @@ const resolvers = {
         return User.findOneAndUpdate({ _id: args.id}, { info: { ...args.userInfo }});
     },
     login: async (parent, args) => {
-      //console.log(args);
+      console.log(args);
       try {
         if (!validator.isEmail(args.email)) throw new Error('Invalid email.');
 

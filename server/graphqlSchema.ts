@@ -73,7 +73,7 @@ const typeDefs = gql`
     addProject(project: ProjectInput!): Project
     updateProject(project: ProjectInput!, id: ID!): Project
     removeProject(id: ID!): Project
-    createUser(userInput: UserInput!, id: ID!): User
+    createUser(userInput: UserInput!): User
     updateUserInfo(userInfo: UserInfoInput!, id: ID!): User
     login(email: String!, password: String!): User
   }

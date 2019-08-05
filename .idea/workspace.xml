@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d3e727f-f7e4-4f19-b73c-aa6531ef8af5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/BasicProject.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/EditDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/EditMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/components/ProjectForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/EditorContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/containers/ProjectsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/templates/styles/Basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/common/components/InputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/common/components/InputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Editor/templates/Basic/Basic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/auth/providers/withSignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/auth/providers/withSignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/queries.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/graphqlSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/graphqlSchema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/modules/projects/models/project.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/modules/projects/models/project.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/resolvers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +139,13 @@
       <workItem from="1564703580504" duration="603000" />
       <workItem from="1564705868795" duration="5717000" />
       <workItem from="1564785994968" duration="11735000" />
+      <workItem from="1564879258387" duration="1568000" />
+      <workItem from="1564881944543" duration="1158000" />
+      <workItem from="1564887052856" duration="278000" />
+      <workItem from="1564891166577" duration="329000" />
+      <workItem from="1564956561417" duration="1881000" />
+      <workItem from="1564959560035" duration="2823000" />
+      <workItem from="1564965390326" duration="1970000" />
     </task>
     <task id="LOCAL-00001" summary="Updated lodash">
       <created>1563138370590</created>
