@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px;
 }
 
 .basic__photo-wrapper {
@@ -21,14 +22,59 @@
     height: 300px;
 }
 
+.basic__photo {
+    width: 300px;
+}
+
+.basic__name {
+    font-size: 40px;
+}
+
+.basic__location {
+    font-style: italic;
+}
+
+
 .basic__project {
-    display: flex;
-    flex-wrap: wrap;
+    padding: 25px;
 }
 
 .basic__project__even {
     flex-direction: row-reverse;
+    background: #ddd;
 }
+
+.basic__project-wrapper {
+max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.basic__project-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.basic__project-img-wrapper {
+    width: 50%;
+    padding: 0 15px;
+}
+
+.basic__project-img {
+    width: 100%;
+}
+
+.basic__img-placeholder {
+
+}
+
+.basic__project-info {
+    width: 50%;
+    padding: 0 20px;
+}
+
 
 .basic__project-title {
     width: 100%;

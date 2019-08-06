@@ -61,9 +61,9 @@ const App: FunctionComponent = () => {
     <ApolloProvider client={apolloClient}>
       <UserContext.Provider value={authUser}>
         <Router>
-          <Layout>
+          <Layout style={{backgroundColor: "#fff"}}>
             <Navbar authUser={authUser} setAuthUser={setAuthUser} />
-            <Content>
+            <div className="app__main">
               <Switch>
                 <Route
                   exact
@@ -92,7 +92,7 @@ const App: FunctionComponent = () => {
                 {/*  component={EditorContainer}*/}
                 {/*/>*/}
               </Switch>
-            </Content>
+            </div>
           </Layout>
         </Router>
       </UserContext.Provider>

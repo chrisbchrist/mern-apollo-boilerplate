@@ -64,6 +64,7 @@ export const EditorContainer: FunctionComponent<any> = ({ authUser }) => {
                   toggleDrawer={toggleDrawer}
                 />
               </Drawer>
+              <BasicTemplate projects={data.projects}/>
             </div>
           </ProjectContext.Provider>
         );
