@@ -17,4 +17,5 @@ export const verifyToken = async () => {
         id: response.data.verifyToken._id,
         email: response.data.verifyToken.email
     };
+    return user;
 }

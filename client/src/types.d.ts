@@ -24,3 +24,8 @@ export interface Project {
     srcUrl?: string;
     tags: Array<string>;
 }
+
+export interface User {
+    _id: string;
+    info: UserInfo;
+}

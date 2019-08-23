@@ -8,19 +8,19 @@ import {
   Popconfirm,
   message
 } from "antd";
-import { Link } from "react-router-dom";
+import {Link, RouteComponentProps} from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import "../styles/styles.css";
 
 const { Header, Content, Footer } = Layout;
 const { SubMenu } = Menu;
-
-import "../styles/styles.css";
 
 interface NavbarProps {
   authUser: any;
   setAuthUser: any;
 }
 
-const Navbar: FunctionComponent<NavbarProps> = ({ authUser, setAuthUser }) => {
+const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({ authUser, setAuthUser, ...otherProps }) => {
   const [current, setCurrent] = useState("mail");
 
   const handleClick = (e: any) => {
@@ -30,11 +30,12 @@ const Navbar: FunctionComponent<NavbarProps> = ({ authUser, setAuthUser }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setAuthUser(null);
+    otherProps.history.push('/');
   };
 
   const userMenu = (
     <Menu>
-      <Menu.Item>
+      <Menu.Item onClick={handleLogout}>
         <a>
           <Icon type="logout" /> Log out
         </a>
@@ -103,7 +104,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({ authUser, setAuthUser }) => {
         zIndex: 1,
         width: "100%",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+          background: "#fff"
       }}
     >
       <Link to="/">
@@ -116,23 +118,27 @@ const Navbar: FunctionComponent<NavbarProps> = ({ authUser, setAuthUser }) => {
         </div>
       </Link>
       <Menu
-        theme="dark"
+        theme="light"
         mode="horizontal"
         defaultSelectedKeys={[]}
-        style={{ lineHeight: "64px", marginLeft: "auto" }}
+        style={{ lineHeight: "61px", marginLeft: "auto" }}
       >
-        <Menu.Item className="nav-item" key={authUser ? null : "2"}>
+
+        <Menu.Item className="nav-item" key={authUser ? null : "3"}>
           {login}
         </Menu.Item>
-        <Menu.Item className="nav-item" key="1">
+        <Menu.Item className="nav-item" key="2">
           <Link to="/editor">
             <Icon type="edit" /> Editor
           </Link>
         </Menu.Item>
+          <Menu.Item className="nav-item" key="1">
+              <Link to="/"><Icon type="info-circle"/> About</Link>
+          </Menu.Item>
       </Menu>
       {avatar}
     </Header>
   );
 };
 
-export default Navbar;
+export default withRouter(NavbarComponent);

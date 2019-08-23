@@ -6,7 +6,7 @@
   height: 31px;
   margin: 16px 24px 16px 0;
   float: left;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .logo__text {

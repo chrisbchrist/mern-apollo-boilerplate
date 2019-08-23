@@ -1,5 +1,34 @@
 import { gql } from "apollo-boost";
 
+export const GET_USER_AND_PROJECTS = gql`
+  query($userId: String!, $id: ID!) {
+    projects(userId: $userId) {
+      _id
+      title
+      imgUrl
+      desc
+      tags
+      demoUrl
+      srcUrl
+      user {
+        _id
+      }
+    }
+    getUser(id: $id) {
+      _id
+      info {
+        name
+        profilePhoto
+        location
+        about
+        email
+        phone
+        github
+      }
+    }
+  }
+`;
+
 export const GET_PROJECTS = gql`
   query projects($userId: String!) {
     projects(userId: $userId) {

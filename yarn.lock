@@ -7108,6 +7108,11 @@ react-apollo@^2.5.8:
     ts-invariant "^0.4.2"
     tslib "^1.9.3"
 
+react-dom-server@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-dom-server/-/react-dom-server-0.0.5.tgz#75b6c0f5946e08e84db9dda6eca5e48fed25f723"
+  integrity sha1-dbbA9ZRuCOhNud2m7KXkj+0l9yM=
+
 react-dom@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"

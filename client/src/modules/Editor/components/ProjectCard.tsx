@@ -23,6 +23,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
 
   // useEffect(() => console.log(project), []);
 
+    // Placeholder to use if image does not load
   const errorFallback = (
     <div className="img-fallback__wrapper">
       <Icon
@@ -100,7 +101,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
             />
           )}
           {error && errorFallback}
-          <span className="project-card__desc">{project.desc}</span>
+          <span className="project-card__desc">{project.desc.length > 200 ? project.desc.slice(0, 200) + "..." : project.desc }</span>
           <div className="project-card__tags">
             {project.tags.length > 0 &&
               project.tags.map((tag: string, index: number) => (

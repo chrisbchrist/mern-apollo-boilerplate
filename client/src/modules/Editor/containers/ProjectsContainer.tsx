@@ -15,6 +15,7 @@ import { ProjectList } from "../components/ProjectList";
 
 export interface ProjectsQueryVars {
   userId: string;
+  id?: string;
 }
 
 export const ProjectsContainer: FunctionComponent<any> = () => {

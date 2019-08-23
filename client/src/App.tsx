@@ -13,6 +13,7 @@ import LoginForm from "./modules/auth/components/Login";
 import SignUpForm from "./modules/auth/components/SignUp";
 import { EditorContainer } from "./modules/Editor/containers/EditorContainer";
 import { Layout } from "antd";
+import { Home } from "./modules/Home/Home";
 // import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
@@ -65,6 +66,7 @@ const App: FunctionComponent = () => {
             <Navbar authUser={authUser} setAuthUser={setAuthUser} />
             <div className="app__main">
               <Switch>
+                <Route exact path="/" render={props => <Home {...props} authUser={authUser}/>}/>
                 <Route
                   exact
                   path="/login"

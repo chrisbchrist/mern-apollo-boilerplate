@@ -22,6 +22,10 @@ export const BasicProject: FunctionComponent<any> = ({ project, even }) => {
             </div>
             <div className="basic__project-info">
                 <p className="basic__project-desc">{project.desc}</p>
+                { project.tags.length > 0 && <h4 className="basic__tags-label">Technologies</h4>}
+                <div className="basic__project-tags">
+                    {project.tags.length > 0 && project.tags.map((tag: string, index: number) => <div key={tag + index} className="basic__tag">{tag}</div>)}
+                </div>
             </div>
             </div>
         </div>

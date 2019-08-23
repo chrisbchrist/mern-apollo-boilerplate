@@ -47,7 +47,7 @@ export const InfoForm: FunctionComponent<any> = () => {
           >
             {(updateUserInfo: any) => (
               <div className="info__wrapper">
-                <div>
+
                   <Formik
                       enableReinitialize={true}
                     initialValues={data ? data.getUser.info : initialValues}
@@ -126,7 +126,6 @@ export const InfoForm: FunctionComponent<any> = () => {
                     )}}
                   />
                 </div>
-              </div>
             )}
           </Mutation>
         );
