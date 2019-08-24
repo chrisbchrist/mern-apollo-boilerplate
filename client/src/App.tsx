@@ -11,9 +11,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./modules/nav/components/Navbar";
 import LoginForm from "./modules/auth/components/Login";
 import SignUpForm from "./modules/auth/components/SignUp";
-import { EditorContainer } from "./modules/Editor/containers/EditorContainer";
+import EditorContainer from "./modules/Editor/containers/EditorContainer";
 import { Layout } from "antd";
 import { Home } from "./modules/Home/Home";
+import {withAuth} from "./modules/auth/providers/withAuth";
 // import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
@@ -86,7 +87,12 @@ const App: FunctionComponent = () => {
                     <SignUpForm {...props} setAuthUser={setAuthUser} />
                   )}
                 />
-                <Route exact path="/editor" render={(props: any) => <EditorContainer  {...props} authUser={authUser} />}/>
+                <Route exact path="/editor" render={(props: any) => <EditorContainer {...props} authUser={authUser}/>}/>
+
+
+
+
+
                 {/*<PrivateRoute*/}
                 {/*  isAuthenticated={true}*/}
                 {/*  exact*/}
@@ -94,6 +100,7 @@ const App: FunctionComponent = () => {
                 {/*  component={EditorContainer}*/}
                 {/*/>*/}
               </Switch>
+
             </div>
           </Layout>
         </Router>

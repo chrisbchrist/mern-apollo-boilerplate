@@ -25,6 +25,7 @@ export const BasicTemplate: FunctionComponent<TemplateProps> = ({
           )}
         </div>
         {userInfo.name && <h1 className="basic__name">{userInfo.name}</h1>}
+          {userInfo.email && <h3 className="basic__email"><a>{userInfo.email}</a></h3>}
         {userInfo.location && (
           <h2 className="basic__location">{userInfo.location}</h2>
         )}

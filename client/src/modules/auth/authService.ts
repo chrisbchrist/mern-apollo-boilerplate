@@ -11,10 +11,14 @@ export const verifyToken = async () => {
           }
         `;
     const token = localStorage.getItem('token');
+
+    if (!token) {
+        return false;
+    }
     const response = await apolloClient.query({ query: userQuery, variables: { token: token }});
     console.log(response);
     const user = {
-        id: response.data.verifyToken._id,
+        _id: response.data.verifyToken._id,
         email: response.data.verifyToken.email
     };
     return user;

@@ -105,6 +105,7 @@ const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({
         width: "100%",
         display: "flex",
         alignItems: "center",
+          borderBottom: "1px solid #ccc",
           background: "#fff"
       }}
     >

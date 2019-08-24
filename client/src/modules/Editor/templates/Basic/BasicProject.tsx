@@ -1,16 +1,27 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import {Project} from "../../../../types";
+import {Icon} from "antd";
 
 interface ProjectProps {
     project: Project;
     even: boolean;
 }
 
-export const BasicProject: FunctionComponent<any> = ({ project, even }) => {
+export const BasicProject: FunctionComponent<ProjectProps> = ({ project, even }) => {
 
-    const imgPlaceholder = (
-        <div className="basic__img-placeholder"></div>
-    )
+    const [error, setError] = useState<boolean>(false);
+
+    const errorFallback = (
+        <div className="basic__img-fallback">
+            <Icon
+                type="close-circle"
+                theme="twoTone"
+                twoToneColor="#f74856"
+                className="img-fallback__icon"
+            />
+            <p className="img-fallback__text">Invalid image URL!</p>
+        </div>
+    );
 
     return (
         <div className={even ? "basic__project basic__project--even" : "basic__project basic__project--odd"}>
@@ -18,7 +29,7 @@ export const BasicProject: FunctionComponent<any> = ({ project, even }) => {
             <div className="basic__project-wrapper">
                 <h3 className="basic__project-title">{project.title}</h3>
             <div className="basic__project-img-wrapper">
-                { project.imgUrl ? <img alt={project.title} className="basic__project-img" src={project.imgUrl}/> : imgPlaceholder}
+                { !error ? <img alt={project.title}  onError={() => setError(true)} className="basic__project-img" src={project.imgUrl}/> : errorFallback}
             </div>
             <div className="basic__project-info">
                 <p className="basic__project-desc">{project.desc}</p>

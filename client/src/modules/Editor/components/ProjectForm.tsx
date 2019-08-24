@@ -148,7 +148,7 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
 
                 actions.setSubmitting(false);
                 toggleModal();
-                actions.resetForm();
+                !projectToEdit && actions.resetForm();
               }}
               enableReinitialize={true}
               initialValues={

@@ -8,11 +8,12 @@ import { Button, Drawer, Icon, Spin } from "antd";
 import { EditMenu } from "../components/EditMenu";
 import { BasicTemplate } from "../templates/Basic/Basic";
 import { Query } from "react-apollo";
-import {Project, UserInfo} from "../../../types";
+import {AuthUser, Project, UserInfo} from "../../../types";
 import { GET_PROJECTS, GET_USER_AND_PROJECTS } from "../../../queries";
 import { verifyToken } from "../../auth/authService";
 import { UserContext } from "../../../App";
 import { ProjectsQueryVars } from "./ProjectsContainer";
+import { withAuth } from "../../auth/providers/withAuth";
 
 export const ProjectContext = createContext(null);
 
@@ -24,7 +25,11 @@ interface UserProjectQueryData {
   }
 }
 
-export const EditorContainer: FunctionComponent<any> = ({ authUser }) => {
+interface EditorProps {
+  authUser: any
+}
+
+const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
   const [projects, setProjects] = useState([]);
   const [drawerVisibility, setDrawerVisibility] = useState<boolean>(true);
   const [isAuthorized, setAuthorized] = useState(false);
@@ -93,3 +98,5 @@ export const EditorContainer: FunctionComponent<any> = ({ authUser }) => {
     </Query>
   );
 };
+
+export default withAuth(EditorContainer);

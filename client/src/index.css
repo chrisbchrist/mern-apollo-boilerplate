@@ -45,6 +45,10 @@ body {
     color: #fff;
 }
 
+.info__wrapper {
+
+}
+
 .info__wrapper .ant-form-item-label {
     line-height: 30px;
     font-weight: bold;

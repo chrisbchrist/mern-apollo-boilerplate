@@ -36,6 +36,28 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
     </div>
   );
 
+  const cardActions = project.demoUrl || project.srcUrl ? [
+      <div className="project-card__action">
+              <span>
+                <Icon className="project-card__action-icon" type="github" />{" "}
+                  Demo
+              </span>
+      </div>,
+      <div className="project-card__action">
+          {project.srcUrl === "Private" ? (
+              <span style={{ cursor: 'default', opacity: 0.5}}>
+                  <Icon className="project-card__action-icon" type="eye-invisible" />{" "}
+                  Source Private
+                </span>
+          ) : (
+              <span>
+                  <Icon className="project-card__action-icon" type="code" />{" "}
+                  Source
+                </span>
+          )}
+      </div>
+  ] : null;
+
   return (
     <Mutation
       mutation={REMOVE_PROJECT}
@@ -70,27 +92,7 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
               </Popconfirm>
             </div>
           }
-          actions={[
-            <div className="project-card__action">
-              <span>
-                <Icon className="project-card__action-icon" type="github" />{" "}
-                Demo
-              </span>
-            </div>,
-            <div className="project-card__action">
-              {project.srcUrl === "Private" ? (
-                <span style={{ cursor: 'default', opacity: 0.5}}>
-                  <Icon className="project-card__action-icon" type="eye-invisible" />{" "}
-                  Source Private
-                </span>
-              ) : (
-                <span>
-                  <Icon className="project-card__action-icon" type="code" />{" "}
-                  Source
-                </span>
-              )}
-            </div>
-          ]}
+          actions={cardActions}
         >
           {project.imgUrl && !error && (
             <img

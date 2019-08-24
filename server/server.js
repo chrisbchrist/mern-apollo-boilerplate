@@ -37,6 +37,9 @@ const app = express();
 // Use the Express application as middleware in Apollo server
 server.applyMiddleware({ app });
 
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use('view engine', 'ejs');
+
 app.get('/', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/src/index.html'));
 });

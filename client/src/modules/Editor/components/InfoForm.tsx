@@ -65,7 +65,7 @@ export const InfoForm: FunctionComponent<any> = () => {
 
 
                       return (
-                      <Form>
+                      <Form style={{ width: '100%'}}>
                         <Field
                           name="name"
                           label="Name"

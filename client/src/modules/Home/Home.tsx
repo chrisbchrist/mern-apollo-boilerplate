@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, FunctionComponent } from 'react';
-import './Home.css';
+import './Homepage.css';
 import { Button } from 'antd';
 import {AuthUser} from "../../types";
 import { Link } from 'react-router-dom';
