@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { Result, Button } from 'antd';
 import {Link} from "react-router-dom";
 
-export const withAuth: <T, P>(Component: ComponentType<P>) => (props: P) => ReactElement = (Component) => (props) => {
+export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactElement = (Component) => (props) => {
 
     const AuthWrapper: FunctionComponent = (props: any) => {
         const [auth, setAuth] = useState<any>(null);
@@ -18,9 +18,9 @@ export const withAuth: <T, P>(Component: ComponentType<P>) => (props: P) => Reac
 
         if (!auth) return <Result
             status="403"
-            title="403"
+            title="You need an account!"
             subTitle="Sorry, you are not authorized to access this page."
-            extra={<Link to="/"><Button type="primary">Back Home</Button></Link>}
+            extra={<Link to="/login"><Button type="primary">Log In or Register</Button></Link>}
         />;
 
         return (

@@ -89,10 +89,6 @@ const App: FunctionComponent = () => {
                 />
                 <Route exact path="/editor" render={(props: any) => <EditorContainer {...props} authUser={authUser}/>}/>
 
-
-
-
-
                 {/*<PrivateRoute*/}
                 {/*  isAuthenticated={true}*/}
                 {/*  exact*/}

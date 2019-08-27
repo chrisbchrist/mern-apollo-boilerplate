@@ -38,7 +38,7 @@ const app = express();
 server.applyMiddleware({ app });
 
 // app.use(bodyParser.urlencoded({extended: false}));
-// app.use('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/src/index.html'));
