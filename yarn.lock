@@ -1081,6 +1081,13 @@ ansicolors@~0.3.2:
   resolved "https://registry.yarnpkg.com/ansicolors/-/ansicolors-0.3.2.tgz#665597de86a9ffe3aa9bfbe6cae5c6ea426b4979"
   integrity sha1-ZlWX3oap/+Oqm/vmyuXG6kJrSXk=
 
+ant-design-draggable-modal@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/ant-design-draggable-modal/-/ant-design-draggable-modal-0.0.13.tgz#f173c766bbf897c76d76bf8b9603cb489fe01cd0"
+  integrity sha512-C+kseABnwwur1nfwo4YpdPZSxazIN6vl7EaAYNCKyt/T9GBXuRM/OsFq28rwGJaBbgO1jBOKU0c2A1fiGY9gzw==
+  dependencies:
+    react-uid "^2.2.0"
+
 antd@*:
   version "3.20.3"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.20.3.tgz#a9a8acad523933f5a0daeb5931d49b9aa1ce9e29"
@@ -7234,6 +7241,11 @@ react-transition-group@^2.3.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
+
+react-uid@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-uid/-/react-uid-2.2.0.tgz#0f77e1e0594fbf29fc4fe528cc9aa415c5bf9159"
+  integrity sha512-z+g5+hFOQ08hCfrGcJ1PNs+cmvH8Uq2CVzCmPeWBsUi5A4W4NWXR5jouledzy3oSKGMU9HOzf8zFuGi15TXJoQ==
 
 react@^16.9.0:
   version "16.9.0"

@@ -40,5 +40,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin],
+  devServer: {
+    historyApiFallback: true
+  }
 };

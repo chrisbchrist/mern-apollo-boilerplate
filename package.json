@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/react-router-dom": "^4.3.4",
+    "ant-design-draggable-modal": "^0.0.13",
     "antd": "^3.20.5",
     "apollo-boost": "^0.4.3",
     "apollo-cache-inmemory": "^1.6.2",
