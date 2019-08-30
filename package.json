@@ -9,6 +9,7 @@
     "dev": "concurrently \"yarn client\" \"yarn server\""
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
     "@types/react-router-dom": "^4.3.4",
     "ant-design-draggable-modal": "^0.0.13",
     "antd": "^3.20.5",

@@ -62,8 +62,10 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
     }
 
   return (
+      <div className="login__container">
     <div className="login__wrapper">
       <h2 className="login__title">Log In</h2>
+        <div className="login__title-accent"/>
 
       <Formik
         initialValues={initialValues}
@@ -72,7 +74,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
         validateOnBlur={true}
         onSubmit={onSubmit}
         render={(formikBag: FormikProps<ILogin>) => (
-          <Form>
+          <Form className="login__form">
             <Field
               name="email"
               render={({ field, form }: FieldProps<ILogin>) => (
@@ -139,7 +141,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
             <AntdForm.Item>
               <Checkbox>Remember me</Checkbox>
               <a className="login-form-forgot" href="">
-                Forgot password
+                Forgot password?
               </a>
               <Button
                 size="large"
@@ -155,6 +157,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
         )}
       />
     </div>
+      </div>
   );
 };
 

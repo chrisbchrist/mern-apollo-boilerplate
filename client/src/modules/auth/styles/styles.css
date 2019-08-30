@@ -1,16 +1,43 @@
+.login__container {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 8%;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%231890ff' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23194caa' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%234d7ff7' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%233d45a7' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%236d6cea' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23553ca3' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%238656d9' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%2368309c' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%239b3ac3' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23792093' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .login__wrapper {
   padding: 20px;
   margin: auto;
   max-width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  border-radius: 4px;
 }
 
 .login__title {
   font-family: Raleway;
   text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.login-form {
+.login__title-accent {
+  width: 100px;
+  height: 5px;
+  background:  linear-gradient(to right, #1890ff 0%,#7a26ef 49%,#db23d8 99%);
+}
+
+.login__form {
   max-width: 300px;
+  padding-top: 2em;
+  width: 100%;
 }
 .login-form-forgot {
   float: right;

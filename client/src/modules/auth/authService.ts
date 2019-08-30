@@ -1,5 +1,5 @@
 import {gql} from "apollo-boost";
-import apolloClient from "../../settings/createApolloClient";
+import apolloClient from "../../config/createApolloClient";
 
 export const verifyToken = async () => {
     const userQuery = gql`

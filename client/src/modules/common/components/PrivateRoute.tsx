@@ -1,7 +1,7 @@
 import React, {useState, useEffect, FunctionComponent, ComponentType} from 'react';
 import {Route, Redirect, RouteComponentProps} from 'react-router-dom';
 import { RouteProps} from "react-router-dom";
-import client from "../../../settings/createApolloClient";
+import client from "../../../config/createApolloClient";
 import {ApolloQueryResult, gql} from "apollo-boost";
 
 interface PrivateRouteProps extends RouteProps {

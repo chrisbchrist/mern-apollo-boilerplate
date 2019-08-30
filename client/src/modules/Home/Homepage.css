@@ -93,6 +93,7 @@
     max-width: 1000px;
     margin: auto;
     width: 100%;
+    padding: 10px;
 }
 
 .features__icon-wrapper {
@@ -123,6 +124,7 @@
 .features__icon-title {
     font-weight: bold;
     font-size: 22px;
+    text-align: center;
 }
 
 .features__icon-text {

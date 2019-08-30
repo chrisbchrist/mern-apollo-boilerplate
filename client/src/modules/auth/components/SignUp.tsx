@@ -73,8 +73,10 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
     };
 
   return (
+      <div className="login__container">
     <div className="login__wrapper">
       <h2 className="login__title">Sign Up</h2>
+        <div className="login__title-accent"/>
 
       <Formik
         initialValues={initialValues}
@@ -83,7 +85,7 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
         validateOnBlur={true}
         onSubmit={onSubmit}
         render={(formikBag: FormikProps<IRegister>) => (
-          <Form>
+          <Form className="login__form">
             <Field
               name="email"
               render={({ field, form }: FieldProps<IRegister>) => (
@@ -189,9 +191,6 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
             />
             <AntdForm.Item>
               <Checkbox>Remember me</Checkbox>
-              <a className="login-form-forgot" href="">
-                Forgot password
-              </a>
               <Button
                 size="large"
                 type="primary"
@@ -205,6 +204,7 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
         )}
       />
     </div>
+      </div>
   );
 };
 

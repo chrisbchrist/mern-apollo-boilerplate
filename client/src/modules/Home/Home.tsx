@@ -54,7 +54,7 @@ export const Home: FunctionComponent<HomepageProps> = ({ authUser }) => {
                     <div className="features__icon-wrapper">
                         <Icon type="code" className="features__icon" theme="twoTone" twoToneColor="#52c41a"/>
                         <h3 className="features__icon-title">No Coding</h3>
-                        <p className="features__icon-text">Enter all your content and information through our easy-to-use editor and download an automatically generated HTML file that's ready to deploy!</p>
+                        <p className="features__icon-text">Enter all your content and information through our editor and download an automatically generated HTML file that's ready to deploy!</p>
                         <Link to="editor" style={{ height: 0, marginTop: "auto"}}><Button type="primary" ghost className="features__icon-button">Sounds Good!</Button></Link>
                     </div>
                     <div className="features__icon-wrapper">

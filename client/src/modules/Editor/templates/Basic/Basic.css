@@ -7,23 +7,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 6% 25px 25px 25px;
+    padding: 5% 25px 25px 25px;
+}
+
+.basic__photo-frame {
+    border-radius: 50%;
+    padding: 7px;
+    border: 1px dashed #1890ff;
 }
 
 .basic__photo-wrapper {
     overflow: hidden;
     border-radius: 50%;
-    padding: 7px;
     border: 1px solid #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 225px;
-    height: 225px;
+    width: 200px;
+    height: 200px;
 }
 
 .basic__photo {
-    width: 225px;
+    width: 200px;
 }
 
 .basic__name {
@@ -38,7 +43,7 @@
 
 
 .basic__project {
-    padding: 25px;
+    padding: 4em;
 }
 
 .basic__project--even {

@@ -7,11 +7,11 @@ const mongoose = require('./config/database');
 require('dotenv').config();
 
 const auth = require('./modules/auth/helpers');
-// #3 Import GraphQL type definitions
+// Import GraphQL type definitions
 const typeDefs = require('./graphqlSchema.ts');
 
 const HEADER_NAME = 'Authorization';
-// #4 Import GraphQL resolvers
+// Import GraphQL resolvers
 const resolvers = require('./resolvers');
 const server = new ApolloServer({ typeDefs, resolvers, context: async ({ req }) => {
     let authToken = null;
@@ -37,7 +37,7 @@ const app = express();
 // Use the Express application as middleware in Apollo server
 server.applyMiddleware({ app });
 
-// app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {

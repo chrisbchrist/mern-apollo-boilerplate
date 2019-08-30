@@ -5,7 +5,7 @@ import React, {
   useEffect
 } from "react";
 import { ApolloProvider } from "react-apollo";
-import apolloClient from "./settings/createApolloClient";
+import apolloClient from "./config/createApolloClient";
 import { gql } from "apollo-boost";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./modules/nav/components/Navbar";
@@ -87,7 +87,7 @@ const App: FunctionComponent = () => {
                     <SignUpForm {...props} setAuthUser={setAuthUser} />
                   )}
                 />
-                <Route exact path="/editor" render={(props: any) => <EditorContainer {...props} authUser={authUser}/>}/>
+                <Route exact path="/editor" render={(props: any) => <EditorContainer {...props}/>}/>
 
                 {/*<PrivateRoute*/}
                 {/*  isAuthenticated={true}*/}

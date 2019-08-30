@@ -2,7 +2,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: './client/src/index.html'
+  template: './client/src/index.html',
+  favicon: './client/static/icons8-opened-folder-64.png'
 });
 
 module.exports = {

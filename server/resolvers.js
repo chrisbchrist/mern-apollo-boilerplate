@@ -27,7 +27,7 @@ const resolvers = {
 
     },
     verifyToken: async (parent, args) => {
-      console.log(args);
+      //console.log(args);
       try {
         const decoded = jwt.verify(args.token, process.env.SECRET);
         //console.log(decoded);
@@ -95,6 +95,9 @@ const resolvers = {
       const response = { token, password: null, ...user._doc };
       console.log(response);
       return response;
+    },
+    updateUser: (parent, args) => {
+      return User.findOneAndUpdate({ _id: args.id}, {  ...args.user });
     },
     updateUserInfo: (parent, args) => {
       //console.log(args);

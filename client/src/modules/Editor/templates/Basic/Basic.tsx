@@ -19,11 +19,13 @@ export const BasicTemplate: FunctionComponent<TemplateProps> = ({
   return (
     <div className="basic__wrapper">
       <div className="basic__header">
+          <div className="basic__photo-frame">
         <div className="basic__photo-wrapper">
           {userInfo.profilePhoto && (
             <img src={userInfo.profilePhoto} className="basic__photo" />
           )}
         </div>
+          </div>
         {userInfo.name && <h1 className="basic__name">{userInfo.name}</h1>}
           {userInfo.email && <h3 className="basic__email"><a>{userInfo.email}</a></h3>}
         {userInfo.location && (

@@ -41,13 +41,14 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
 
   //Verify that user has a valid token
   useEffect(() => {
-
+    console.log(authUser);
   }, []);
 
   return (
     <Query<UserProjectQueryData>
+        skip={!authUser}
       query={GET_USER_AND_PROJECTS}
-      variables={{ userId: authUser.id, id: authUser.id }}
+      variables={{ userId: authUser._id, id: authUser._id }}
       onCompleted={(data: UserProjectQueryData) => {
 
       }}
