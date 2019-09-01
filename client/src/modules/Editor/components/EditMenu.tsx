@@ -36,7 +36,7 @@ export const EditMenu: FunctionComponent<any> = () => {
               tab={
                   <span>
               <Icon type="edit" />
-              Tab 3
+              Style/Theme
             </span>
               }
               key="3"

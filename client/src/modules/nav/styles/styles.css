@@ -14,10 +14,14 @@
   font-family: 'Raleway';
 }
 
-.ant-menu-horizontal .ant-menu-item {
-  float: right;
-  display: flex;
-  align-items: center;
+/*.ant-menu-horizontal .ant-menu-item {*/
+/*  float: right;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+
+.avatar__wrapper {
+  display: inline-block;
 }
 
 .avatar {

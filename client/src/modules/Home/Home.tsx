@@ -48,7 +48,7 @@ export const Home: FunctionComponent<HomepageProps> = ({ authUser }) => {
                     <div className="features__icon-wrapper">
                         <Icon type="layout" theme="twoTone" twoToneColor="#eb2f96" className="features__icon"/>
                         <h3 className="features__icon-title">Professional Design</h3>
-                        <p className="features__icon-text">Our custom-made and customizable templates will make your site <em>look</em> like it took you a lot longer than it did!</p>
+                        <p className="features__icon-text">Our custom-made and customizable templates will make your site <em>look</em> like a painstaking labor of love!</p>
                         <Link to="editor" style={{ height: 0, marginTop: "auto"}}><Button type="primary" ghost className="features__icon-button">Let's Go!</Button></Link>
                     </div>
                     <div className="features__icon-wrapper">

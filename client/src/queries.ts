@@ -18,6 +18,7 @@ export const GET_USER_AND_PROJECTS = gql`
       _id
       info {
         name
+        title
         profilePhoto
         location
         about
@@ -86,6 +87,7 @@ export const GET_USER = gql`
       _id
       info {
         name
+        title
         profilePhoto
         location
         about
@@ -103,6 +105,7 @@ export const UPDATE_USER_INFO = gql`
       _id
       info {
         name
+        title
         profilePhoto
         location
         about

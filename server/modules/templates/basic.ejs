@@ -1,0 +1,155 @@
+<html>
+<head>
+<title><%= user.name + " - " + user.title %></title>
+
+<link
+      href="https://fonts.googleapis.com/css?family=Raleway|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+<style>
+    .basic__wrapper {
+        font-family: Raleway;
+    }
+
+    .basic__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5% 25px 25px 25px;
+    }
+
+    .basic__photo-frame {
+        border-radius: 50%;
+        padding: 7px;
+        border: 1px dashed #1890ff;
+    }
+
+    .basic__photo-wrapper {
+        overflow: hidden;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+    }
+
+    .basic__photo {
+        width: 200px;
+    }
+
+    .basic__name {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .basic__title {
+        font-size: 28px;
+    }
+
+    .basic__location {
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+
+    .basic__project {
+        padding: 4em;
+    }
+
+    .basic__project--even {
+        background: #eee;
+    }
+
+    .basic__project--even .basic__project-wrapper {
+        flex-direction: row-reverse;
+    }
+
+    .basic__project-wrapper {
+    max-width: 1100px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .basic__project-title {
+        font-size: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding-left: 15px;
+    }
+
+    .basic__project-img-wrapper {
+        width: 50%;
+        padding: 0 15px;
+    }
+
+    .basic__project-img {
+        width: 100%;
+    }
+
+    .basic__img-placeholder {
+
+    }
+
+    .basic__project-info {
+        width: 50%;
+        padding: 0 20px;
+    }
+
+
+    .basic__project-title {
+        width: 100%;
+    }
+
+    .basic__project-tags {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .basic__tag {
+        border-radius: 4px;
+        font-size: 11px;
+        padding: 4px;
+        border: 1px solid #ddd;
+        background: #fafafa;
+        color: #666;
+        margin-right: 5px;
+    }
+
+    .basic__img-fallback {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 25px;
+        background: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        height: 300px;
+    }
+
+    .basic__project-links {
+        display: flex;
+        padding: 1em 0 2em 0;
+    }
+
+    .basic__project-link {
+
+    }
+</style>
+
+
+
+
+
+
+</body>
+
+</html>

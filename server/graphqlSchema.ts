@@ -44,6 +44,7 @@ const typeDefs = gql`
   }
   type UserInfo {
     name: String
+    title: String
     profilePhoto: String
     location: String
     about: String
@@ -53,6 +54,7 @@ const typeDefs = gql`
   }
   input UserInfoInput {
     name: String
+    title: String
     profilePhoto: String
     location: String
     about: String

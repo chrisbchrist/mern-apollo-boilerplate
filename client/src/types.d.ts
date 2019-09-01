@@ -5,6 +5,7 @@ export interface AuthUser {
 
 export interface UserInfo {
     name: string;
+    title: string;
     profilePhoto: string;
     location: string;
     about: string;

@@ -12,6 +12,7 @@ const { TextArea } = Input;
 
 interface IUserInfo {
   name: string;
+  title: string;
   profilePhoto: string;
   location: string;
   about: string;
@@ -25,6 +26,7 @@ export const InfoForm: FunctionComponent<any> = () => {
 
   const initialValues: IUserInfo = {
     name: "",
+    title: "",
     profilePhoto: "",
     location: "",
     about: "",
@@ -71,6 +73,12 @@ export const InfoForm: FunctionComponent<any> = () => {
                           label="Name"
                           placeholder="Name"
                           component={InputField}
+                        />
+                        <Field
+                            name="title"
+                            label="Job Title"
+                            placeholder="Job Title"
+                            component={InputField}
                         />
                         <Field
                           name="profilePhoto"

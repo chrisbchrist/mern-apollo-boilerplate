@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent, FunctionComponent } from "react";
+import React, {useState, MouseEvent, FunctionComponent, useEffect} from "react";
 import {
   Layout,
   Menu,
@@ -27,6 +27,10 @@ const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({
     setCurrent(e.key);
   };
 
+  useEffect(() => {
+     console.log(otherProps.location.pathname);
+  }, [otherProps.location]);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setAuthUser(null);
@@ -40,24 +44,11 @@ const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({
           <Icon type="logout" /> Log out
         </a>
       </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.taobao.com/"
-        >
-          2nd menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.tmall.com/"
-        >
-          3rd menu item
-        </a>
-      </Menu.Item>
+        <Menu.Item onClick={handleLogout}>
+            <a>
+                <Icon type="user" /> Profile
+            </a>
+        </Menu.Item>
     </Menu>
   );
 
