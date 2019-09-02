@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useContext } from "react";
-import { Project, UserInfo } from "../../../../types";
+import {Project, UserInfo, UserStyles} from "../../../../types";
 import { BasicProject } from "./BasicProject";
 import "./Basic.css";
 import { Query } from "react-apollo";
@@ -10,16 +10,18 @@ import { Spin } from "antd";
 interface TemplateProps {
   projects: Array<Project>;
   userInfo: UserInfo;
+  styles: UserStyles;
 }
 
 export const BasicTemplate: FunctionComponent<TemplateProps> = ({
   projects,
-  userInfo
+  userInfo,
+    styles
 }) => {
   return (
-    <div className="basic__wrapper">
+    <div className="basic__wrapper" style={{ fontFamily: styles.font || "Raleway"}}>
       <div className="basic__header">
-          <div className="basic__photo-frame">
+          <div className="basic__photo-frame" style={{ borderColor: styles.color || "#1890ff"}}>
         <div className="basic__photo-wrapper">
           {userInfo.profilePhoto && (
             <img src={userInfo.profilePhoto} className="basic__photo" />

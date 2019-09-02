@@ -36,6 +36,7 @@ const typeDefs = gql`
     token: String!
     projects: [Project]
     info: UserInfo
+    styles: UserStyles
   }
   input UserInput {
     email: String!
@@ -62,6 +63,16 @@ const typeDefs = gql`
     phone: String
     github: String
   }
+  type UserStyles {
+    theme: String
+    color: String
+    font: String
+  }
+  input UserStyleInput {
+    theme: String
+    color: String
+    font: String
+  }
   type Query {
     me: User
     posts: [Post]
@@ -78,6 +89,7 @@ const typeDefs = gql`
     createUser(userInput: UserInput!): User
     updateUser(id: ID!, user: UserInput!): User
     updateUserInfo(userInfo: UserInfoInput!, id: ID!): User
+    updateUserStyles(userStyles: UserStyleInput, id: ID!): User
     login(email: String!, password: String!): User
   }
 `;

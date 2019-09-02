@@ -115,17 +115,18 @@ const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({
         defaultSelectedKeys={[]}
         style={{ lineHeight: "61px", marginLeft: "auto" }}
       >
+          <Menu.Item className="nav-item" key="1">
+              <Link to="/"><Icon type="info-circle"/> About</Link>
+          </Menu.Item>
 
-        <Menu.Item className="nav-item" key={authUser ? null : "3"}>
-          {login}
-        </Menu.Item>
         <Menu.Item className="nav-item" key="2">
           <Link to="/editor">
             <Icon type="edit" /> Editor
           </Link>
         </Menu.Item>
-          <Menu.Item className="nav-item" key="1">
-              <Link to="/"><Icon type="info-circle"/> About</Link>
+
+          <Menu.Item className="nav-item" key={authUser ? null : "3"}>
+              {login}
           </Menu.Item>
       </Menu>
       {avatar}

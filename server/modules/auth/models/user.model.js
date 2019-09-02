@@ -26,7 +26,13 @@ const userSchema = new mongoose.Schema({
     email: String,
     phone: String,
     github: String
+  },
+  styles: {
+    theme: String,
+    color: String,
+    font: String,
   }
+
 });
 
 const User = mongoose.model('User', userSchema);

@@ -1,3 +1,4 @@
+
 export interface AuthUser {
     _id: string,
     email: string
@@ -14,6 +15,11 @@ export interface UserInfo {
     github: string;
 }
 
+export interface UserStyles {
+    theme: string;
+    color: string;
+    font: string;
+}
 
 export interface Project {
     _id: string;

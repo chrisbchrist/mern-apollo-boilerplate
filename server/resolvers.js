@@ -103,6 +103,9 @@ const resolvers = {
       //console.log(args);
         return User.findOneAndUpdate({ _id: args.id}, { info: { ...args.userInfo }});
     },
+    updateUserStyles: (parent, args) => {
+      return User.findOneAndUpdate({ _id: args.id}, { styles: { ...args.userStyles }});
+    },
     login: async (parent, args) => {
       console.log(args);
       try {

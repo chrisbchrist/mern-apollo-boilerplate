@@ -26,6 +26,11 @@ export const GET_USER_AND_PROJECTS = gql`
         phone
         github
       }
+      styles {
+        theme
+        color
+        font
+      }
     }
   }
 `;
@@ -115,4 +120,17 @@ export const UPDATE_USER_INFO = gql`
       }
     }
   }
+`;
+
+export const UPDATE_USER_STYLES = gql`
+    mutation updateUserStyles($userStyles: UserStylesInput!, $id: ID!) {
+        updateUserStyles(userStyles: $userStyles, id: $id) {
+            _id
+            styles {
+                theme
+                color
+                font
+            }
+        }
+    }
 `;

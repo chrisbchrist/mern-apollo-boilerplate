@@ -1,0 +1,28 @@
+.styles__color-label {
+    font-weight: bold;
+}
+
+.ant-tabs {
+    overflow: initial !important;
+}
+
+.styles__color-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.styles__color-swatch {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.twitter-picker {
+    top: 40px;
+    left: -5px;
+    z-index: 10;
+}

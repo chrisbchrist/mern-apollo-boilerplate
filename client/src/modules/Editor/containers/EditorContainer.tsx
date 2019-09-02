@@ -8,7 +8,7 @@ import { Button, Drawer, Icon, Spin } from "antd";
 import { EditMenu } from "../components/EditMenu";
 import { BasicTemplate } from "../templates/Basic/Basic";
 import { Query } from "react-apollo";
-import {AuthUser, Project, UserInfo} from "../../../types";
+import {AuthUser, Project, UserInfo, UserStyles} from "../../../types";
 import { GET_PROJECTS, GET_USER_AND_PROJECTS } from "../../../queries";
 import { verifyToken } from "../../auth/authService";
 import { UserContext } from "../../../App";
@@ -21,7 +21,8 @@ interface UserProjectQueryData {
   projects: Array<Project>;
   getUser: {
     _id: string,
-    info: UserInfo
+    info: UserInfo,
+    styles: UserStyles
   }
 }
 
@@ -30,9 +31,7 @@ interface EditorProps {
 }
 
 const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
-  const [projects, setProjects] = useState([]);
   const [drawerVisibility, setDrawerVisibility] = useState<boolean>(true);
-  const [isAuthorized, setAuthorized] = useState(false);
 
   const toggleDrawer = (): void => {
     setDrawerVisibility(!drawerVisibility);
@@ -91,7 +90,7 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
                   toggleDrawer={toggleDrawer}
                 />
               </Drawer>
-              <BasicTemplate projects={data.projects} userInfo={data.getUser.info}/>
+              <BasicTemplate projects={data.projects} userInfo={data.getUser.info} styles={data.getUser.styles}/>
             </div>
           </ProjectContext.Provider>
         );

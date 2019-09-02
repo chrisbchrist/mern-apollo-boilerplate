@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Drawer, Tabs, Icon } from "antd";
 import { InfoForm } from './InfoForm';
 import { ProjectsContainer} from "../containers/ProjectsContainer";
+import { StyleMenu } from "./StyleMenu";
 
 const { TabPane } = Tabs;
 
@@ -41,7 +42,7 @@ export const EditMenu: FunctionComponent<any> = () => {
               }
               key="3"
           >
-              Tab 3
+              <StyleMenu/>
           </TabPane>
       </Tabs>
   );

@@ -10,10 +10,10 @@ const auth = require('./modules/auth/helpers');
 // Import GraphQL type definitions
 const typeDefs = require('./graphqlSchema.ts');
 
-const HEADER_NAME = 'Authorization';
 // Import GraphQL resolvers
 const resolvers = require('./resolvers');
 const server = new ApolloServer({ typeDefs, resolvers, context: async ({ req }) => {
+        const HEADER_NAME = 'Authorization';
     let authToken = null;
     let currentUser = null;
 
@@ -39,6 +39,7 @@ server.applyMiddleware({ app });
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/modules/templates'));
 
 app.get('/', function(req, res) {
   res.sendFile(path.resolve(__dirname + '/../client/src/index.html'));
@@ -46,6 +47,15 @@ app.get('/', function(req, res) {
 
 app.get('/login', function(req, res) {
   res.redirect('/');
+});
+
+app.get('/download', function(req, res) {
+    const fakeUser = {
+        name: "Bobby",
+        title: "Developer"
+    };
+    res.attachment('filename.html');
+    res.render('basic',{ user: fakeUser });
 });
 
 const port = 3000;

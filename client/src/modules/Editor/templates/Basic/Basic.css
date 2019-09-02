@@ -13,7 +13,7 @@
 .basic__photo-frame {
     border-radius: 50%;
     padding: 7px;
-    border: 1px dashed #1890ff;
+    border: 1px dashed;
 }
 
 .basic__photo-wrapper {

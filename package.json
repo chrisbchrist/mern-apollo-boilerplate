@@ -36,6 +36,7 @@
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-apollo": "^2.5.8",
+    "react-color": "^2.17.3",
     "react-dom": "^16.8.6",
     "react-dom-server": "^0.0.5",
     "react-redux": "^7.1.0",
