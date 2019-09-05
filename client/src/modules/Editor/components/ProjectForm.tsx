@@ -114,10 +114,10 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
             visible={modalVisibility}
             title={
               projectToEdit ? (
-                <span className="projects-modal__title">Edit Project</span>
+                <span className="projects-modal__title"><Icon type="edit" style={{ color: "#1890ff"}}/> Edit Project</span>
               ) : (
                 <span className="projects-modal__title">
-                  Add a New Project!
+                  <Icon type="plus-circle" style={{ color: "#1890ff"}}/> Add a New Project!
                 </span>
               )
             }

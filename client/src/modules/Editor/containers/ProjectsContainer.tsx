@@ -7,7 +7,7 @@ import React, {
 import { Button, Spin } from "antd";
 import { ProjectForm } from "../components/ProjectForm";
 import { UserContext } from "../../../App";
-import { ProjectContext } from "./EditorContainer";
+import { EditorContext } from "./EditorContainer";
 import { Query } from "react-apollo";
 import { GET_PROJECTS } from "../../../queries";
 import { Project } from "../../../types";
@@ -23,7 +23,7 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
   const [projectToEdit, setProjectToEdit] = useState<Project>(null);
 
   const authUser = useContext(UserContext);
-  const { loading, error, projects, refetchProjects } = useContext(ProjectContext);
+  const { loading, error, projects, refetchProjects } = useContext(EditorContext);
 
   const toggleModal = () => {
     setModalVisibility(!modalVisibility);

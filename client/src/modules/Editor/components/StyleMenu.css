@@ -26,3 +26,20 @@
     left: -5px;
     z-index: 10;
 }
+
+.styles__font-wrapper {
+    padding: 10px 0;
+}
+
+.styles__font-select {
+    width: 150px;
+    margin: 0 0 0 15px !important;
+    display: inline-block;
+}
+
+.styles__themes-title {
+    /*font-weight: bold;*/
+    font-size: 20px;
+    margin-top: 1.5em;
+    margin-bottom: 10px;
+}

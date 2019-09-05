@@ -15,7 +15,7 @@ import { UserContext } from "../../../App";
 import { ProjectsQueryVars } from "./ProjectsContainer";
 import { withAuth } from "../../auth/providers/withAuth";
 
-export const ProjectContext = createContext(null);
+export const EditorContext = createContext(null);
 
 interface UserProjectQueryData {
   projects: Array<Project>;
@@ -62,8 +62,8 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
         if (error) return <div className="projects__errors">Error!</div>;
         console.log(data);
         return (
-          <ProjectContext.Provider
-            value={{ loading, error, projects: data.projects, refetchProjects: refetch }}
+          <EditorContext.Provider
+            value={{ loading, error, projects: data.projects, styles: data.getUser.styles, refetchProjects: refetch }}
           >
             <div className="editor__main">
               <Drawer
@@ -92,7 +92,7 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
               </Drawer>
               <BasicTemplate projects={data.projects} userInfo={data.getUser.info} styles={data.getUser.styles}/>
             </div>
-          </ProjectContext.Provider>
+          </EditorContext.Provider>
         );
       }}
     </Query>
