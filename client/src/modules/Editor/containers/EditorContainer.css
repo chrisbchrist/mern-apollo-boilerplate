@@ -1,0 +1,9 @@
+.editor__template-wrapper {
+    position: relative;
+}
+
+.editor__download-wrapper {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}

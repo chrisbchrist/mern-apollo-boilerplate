@@ -5,7 +5,7 @@ import "./StyleMenu.css";
 import { UserContext } from "../../../App";
 import { EditorContext } from "../containers/EditorContainer";
 import { UPDATE_USER_STYLES } from "../../../queries";
-import { Select, Divider, Icon } from 'antd';
+import { Select, Divider, Icon, Slider } from 'antd';
 import client from "../../../config/createApolloClient";
 
 const { Option } = Select;
@@ -19,9 +19,10 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const editorContext = useContext(EditorContext);
 
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>("Basic");
-  const [color, setColor] = useState<string>("");
-  const [font, setFont] = useState<string>("");
+  const [theme, setTheme] = useState<string>(editorContext.styles.theme ? editorContext.styles.theme : "Basic");
+  const [color, setColor] = useState<string>(editorContext.styles.color ? editorContext.styles.color : "#1890ff");
+  const [font, setFont] = useState<string>(editorContext.styles.font ? editorContext.styles.font : "Raleway");
+  const [fontSize, setFontSize] = useState<number>(editorContext.styles.fontSize ? editorContext.styles.fontSize : 16);
 
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, { client });
 
@@ -37,14 +38,15 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     const userStyles = {
       theme: "Basic",
       color,
-      font
+      font,
+      fontSize
     };
     updateStyles({ variables: { userStyles, id: authUser.id}})
   };
 
   useEffect(() => {
     saveStyles();
-  }, [color, font, theme]);
+  }, [color, font, theme, fontSize]);
 
   const onChangeColor = (color: any) => {
     //console.log(color);
@@ -54,6 +56,14 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const onChangeFont = (val: any) => {
     //console.log(val);
     setFont(val);
+  };
+
+  const onChangeFontSize = (val: any) => {
+    setFontSize(val);
+  };
+
+  const fontSizeFormatter = (val: number) => {
+    return `${val}px`;
   };
 
   const popover = {
@@ -73,7 +83,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   return (
     <div className="styles__wrapper">
-      <div className="styles__color-wrapper">
+      <div className="styles__item-wrapper styles__color-wrapper">
         <label className="styles__color-label ant-form-item-label">
           Accent Color:
         </label>
@@ -92,16 +102,29 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         </div>
         {showColorPicker && <div style={cover} onClick={toggleColorPicker} />}
       </div>
-      <div className="styles__font-wrapper">
+      <div className="styles__item-wrapper styles__font-wrapper">
         <label className="styles__color-label ant-form-item-label">
           Font:
         </label>
-        <Select placeholder="Font" onChange={onChangeFont} className="styles__font-select" style={{ fontFamily: font }}>
+        <Select placeholder="Font" onChange={onChangeFont} className="styles__font-select" style={{ fontFamily: font }} value={font}>
           {fonts.map((font, index) => <Option key={font + index} value={font} style={{ fontFamily: font }}>{font}</Option>)}
         </Select>
       </div>
+      <div className="styles__item-wrapper styles__font-size-wrapper">
+        <label className="styles__color-label ant-form-item-label">
+          Font Size:
+        </label>
+        <Slider
+            className="styles__font-slider"
+            min={10}
+            max={20}
+            onChange={onChangeFontSize}
+            tipFormatter={fontSizeFormatter}
+            value={typeof fontSize === 'number' ? fontSize : 0}
+        />
+      </div>
 
-      <div className="styles__themes-wrapper">
+      <div className="styles__item-wrapper styles__themes-wrapper">
         <h3 className="styles__themes-title"><Icon type="layout" theme="twoTone" /> Themes</h3>
       </div>
     </div>

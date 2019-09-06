@@ -67,11 +67,13 @@ const typeDefs = gql`
     theme: String
     color: String
     font: String
+    fontSize: Int
   }
-  input UserStyleInput {
+  input UserStylesInput {
     theme: String
     color: String
     font: String
+    fontSize: Int
   }
   type Query {
     me: User
@@ -89,7 +91,7 @@ const typeDefs = gql`
     createUser(userInput: UserInput!): User
     updateUser(id: ID!, user: UserInput!): User
     updateUserInfo(userInfo: UserInfoInput!, id: ID!): User
-    updateUserStyles(userStyles: UserStyleInput, id: ID!): User
+    updateUserStyles(userStyles: UserStylesInput, id: ID!): User
     login(email: String!, password: String!): User
   }
 `;

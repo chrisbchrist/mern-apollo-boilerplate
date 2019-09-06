@@ -6,6 +6,11 @@
     overflow: initial !important;
 }
 
+.styles__item-wrapper {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
 .styles__color-wrapper {
     display: flex;
     align-items: center;
@@ -42,4 +47,13 @@
     font-size: 20px;
     margin-top: 1.5em;
     margin-bottom: 10px;
+}
+
+.styles__font-size-wrapper {
+    display: flex;
+}
+
+.styles__font-slider {
+    margin-left: 15px !important;
+    flex: 1;
 }

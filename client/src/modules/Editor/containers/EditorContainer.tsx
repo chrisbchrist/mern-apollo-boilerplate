@@ -14,6 +14,7 @@ import { verifyToken } from "../../auth/authService";
 import { UserContext } from "../../../App";
 import { ProjectsQueryVars } from "./ProjectsContainer";
 import { withAuth } from "../../auth/providers/withAuth";
+import "./EditorContainer.css";
 
 export const EditorContext = createContext(null);
 
@@ -90,7 +91,12 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
                   toggleDrawer={toggleDrawer}
                 />
               </Drawer>
+              <div className="editor__template-wrapper">
+                <div className="editor__download-wrapper">
+                  <Button type="primary" icon="cloud-download" shape="round" size="large" className="editor__download-btn">Download!</Button>
+                </div>
               <BasicTemplate projects={data.projects} userInfo={data.getUser.info} styles={data.getUser.styles}/>
+              </div>
             </div>
           </EditorContext.Provider>
         );

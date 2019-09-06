@@ -30,6 +30,7 @@ export const GET_USER_AND_PROJECTS = gql`
         theme
         color
         font
+        fontSize
       }
     }
   }
@@ -130,6 +131,7 @@ export const UPDATE_USER_STYLES = gql`
                 theme
                 color
                 font
+                fontSize
             }
         }
     }

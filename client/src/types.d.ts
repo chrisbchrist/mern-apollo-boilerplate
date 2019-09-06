@@ -19,6 +19,7 @@ export interface UserStyles {
     theme: string;
     color: string;
     font: string;
+    fontSize: number;
 }
 
 export interface Project {

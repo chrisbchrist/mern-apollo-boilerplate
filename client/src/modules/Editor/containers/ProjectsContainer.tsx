@@ -12,6 +12,7 @@ import { Query } from "react-apollo";
 import { GET_PROJECTS } from "../../../queries";
 import { Project } from "../../../types";
 import { ProjectList } from "../components/ProjectList";
+import "./ProjectsContainer.css";
 
 export interface ProjectsQueryVars {
   userId: string;
