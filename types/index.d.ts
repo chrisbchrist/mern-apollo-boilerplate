@@ -4,4 +4,6 @@ export interface UserInput {
   confirm: string;
 }
 
+declare module 'react-redux';
+
 

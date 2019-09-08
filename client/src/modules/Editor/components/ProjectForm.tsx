@@ -25,6 +25,7 @@ import { ApolloQueryResult } from "apollo-client";
 import { Project } from "../../../types";
 import { ProjectsQueryVars } from "../containers/ProjectsContainer";
 import { TextAreaField } from "../../common/components/TextAreaField";
+import { openNotificationWithIcon } from "../../common";
 
 interface ProjectFormProps {
   modalVisibility: boolean;
@@ -45,14 +46,6 @@ interface ProjectFormValues {
   demoUrl?: string;
   srcUrl?: string;
 }
-
-const openNotificationWithIcon = (
-  type: "success" | "error" | "info" | "warning",
-  message: string,
-  description: string
-) => {
-  notification[type]({ message, description });
-};
 
 const formItemLayout = {
   labelCol: { span: 4 },

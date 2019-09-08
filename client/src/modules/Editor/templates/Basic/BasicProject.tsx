@@ -15,6 +15,17 @@ export const BasicProject: FunctionComponent<ProjectProps> = ({
 }) => {
   const [error, setError] = useState<boolean>(false);
 
+  const srcLink =
+    project.srcUrl === "Private" ? (
+      <Button icon="eye-invisible" disabled={true}>
+        Source Private
+      </Button>
+    ) : (
+      <a href={project.srcUrl}>
+        <Button icon="code">Source</Button>
+      </a>
+    );
+
   const errorFallback = (
     <div className="basic__img-fallback">
       <Icon
@@ -71,11 +82,7 @@ export const BasicProject: FunctionComponent<ProjectProps> = ({
                   </Button>
                 </a>
               )}
-              {project.srcUrl && (
-                <a href={project.srcUrl}>
-                  <Button icon="code">Source</Button>
-                </a>
-              )}
+              {project.srcUrl && srcLink}
             </div>
           )}
           <div className="basic__project-tags">

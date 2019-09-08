@@ -37,3 +37,5 @@ export interface User {
     _id: string;
     info: UserInfo;
 }
+
+declare module 'react-redux';

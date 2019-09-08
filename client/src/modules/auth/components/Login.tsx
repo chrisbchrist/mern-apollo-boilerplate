@@ -138,9 +138,9 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
                 </AntdForm.Item>
               )}
             />
-            <AntdForm.Item>
+            <AntdForm.Item style={{ marginBottom: 10 }}>
               <Checkbox>Remember me</Checkbox>
-              <a className="login-form-forgot" href="">
+              <a className="login-form-forgot" href="" onClick={() => alert("For now, that's just too bad.")}>
                 Forgot password?
               </a>
               <Button
@@ -151,7 +151,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
               >
                 Log in
               </Button>
-              Or <Link to="/register">register now!</Link>
+                <span className="login__bottom-link">Or <Link to="/register">register now!</Link></span>
             </AntdForm.Item>
           </Form>
         )}

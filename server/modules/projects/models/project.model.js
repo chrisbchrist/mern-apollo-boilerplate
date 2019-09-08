@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const projectSchema = new mongoose.Schema({
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
     },
     title: String,
     imgUrl: String,
@@ -14,6 +14,6 @@ const projectSchema = new mongoose.Schema({
 
 });
 
-const Project = mongoose.model('project', projectSchema);
+const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;

@@ -13,14 +13,12 @@ import '../styles/styles.css';
 import { InputField } from '../../common/components/InputField';
 import { UserInput } from '../../../../../types';
 import { withSignUp } from '../providers';
-import { RouteComponentProps } from 'react-router-dom';
+import {Link, RouteComponentProps} from 'react-router-dom';
 
-interface SignUpProps {
+interface SignUpProps extends RouteComponentProps {
     createUser: (userInput: UserInput) => any;
     setAuthUser: any;
 }
-
-
 
 interface IRegister {
   email: string;
@@ -53,7 +51,10 @@ const initialValues = {
   confirm: ''
 };
 
-const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ createUser, setAuthUser }) => {
+const SignUpForm: FunctionComponent<SignUpProps> = (props: SignUpProps) => {
+
+    const { createUser, setAuthUser, ...otherProps } = props;
+    console.log("Signupprops",otherProps);
 
     const onSubmit = (values: IRegister, actions: FormikActions<IRegister>) => {
         actions.setSubmitting(true);
@@ -63,9 +64,8 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
                 const user = res.data.createUser;
                 const token = user.token;
                 localStorage.setItem('token', token);
-
                 setAuthUser({ email: user.email, id: user._id})
-
+                otherProps.history.push('/editor');
             });
         });
         console.log({ values, actions });
@@ -200,6 +200,7 @@ const SignUpForm: FunctionComponent<SignUpProps & RouteComponentProps> = ({ crea
                 Log in
               </Button>
             </AntdForm.Item>
+              <span className="login__bottom-link">Have an account? <Link to="/login">Log in!</Link></span>
           </Form>
         )}
       />

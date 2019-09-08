@@ -7,6 +7,7 @@ import { UPDATE_USER_INFO, GET_USER } from "../../../queries";
 import { UserContext } from "../../../App";
 import { InputField } from "../../common/components/InputField";
 import { TextAreaField } from "../../common/components/TextAreaField";
+import { openNotificationWithIcon } from "../../common";
 
 const { TextArea } = Input;
 
@@ -54,14 +55,14 @@ export const InfoForm: FunctionComponent<any> = () => {
                       enableReinitialize={true}
                     initialValues={data ? data.getUser.info : initialValues}
                     onSubmit={(values, actions) => {
-                      setTimeout(() => {
+
                         console.log(values, authUser.id);
                         updateUserInfo({
                           variables: { userInfo: values, id: authUser.id }
                         });
 
                         actions.setSubmitting(false);
-                      }, 1000);
+
                     }}
                     render={(props: FormikProps<IUserInfo>) => {
 

@@ -115,3 +115,5 @@ export const ProjectCard: FunctionComponent<ProjectCardProps> = ({
     </Mutation>
   );
 };
+
+export const MemoizedProjectCard = React.memo(ProjectCard);

@@ -45,6 +45,11 @@
     margin-bottom: 10px;
 }
 
+.basic__about {
+    max-width: 1200px;
+    text-align: center;
+}
+
 
 .basic__project {
     padding: 4em;

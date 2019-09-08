@@ -27,13 +27,13 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, { client });
 
   const toggleColorPicker = (e: React.MouseEvent) => {
-    console.log("OK");
     if (e.target === e.currentTarget) {
         setShowColorPicker(!showColorPicker);
     }
 
   };
 
+  // Automatically send changes to database on each style change
   const saveStyles = () => {
     const userStyles = {
       theme: "Basic",
@@ -120,7 +120,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
             max={20}
             onChange={onChangeFontSize}
             tipFormatter={fontSizeFormatter}
-            value={typeof fontSize === 'number' ? fontSize : 0}
+            value={fontSize}
         />
       </div>
 

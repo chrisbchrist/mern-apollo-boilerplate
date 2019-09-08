@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import {Result, Button, Spin} from 'antd';
 import {Link} from "react-router-dom";
 
+// Wraps a component to verify that the user possesses a valid token before rendering
 export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactElement = (Component) => (props) => {
 
     const AuthWrapper: FunctionComponent = (props: any) => {
@@ -18,7 +19,7 @@ export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactEl
         }, []);
 
         useEffect(() => {
-                setLoading(false);
+                auth && setLoading(false);
         }, [auth]);
 
         if (loading) {
