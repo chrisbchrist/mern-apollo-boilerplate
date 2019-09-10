@@ -220,6 +220,7 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
                         icon="close-circle"
                         style={{ marginRight: 15 }}
                         onClick={toggleModal}
+                        htmlType="reset"
                       >
                         Cancel
                       </Button>

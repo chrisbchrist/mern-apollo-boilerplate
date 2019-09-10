@@ -3,11 +3,15 @@
 <title><%= user.info.name + " - " + user.info.title %></title>
 
 <link
-      href="https://fonts.googleapis.com/css?family=Raleway|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
+      href="https://fonts.googleapis.com/css?family=Raleway|Oswald|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/3d74128c62.js"></script>
 
     <style>
+        p {
+            color: rgba(0, 0, 0, 0.65);
+        }
         .basic__wrapper {
             font-family: Raleway;
         }
@@ -44,15 +48,25 @@
         .basic__name {
             font-size: 40px;
             margin-bottom: 10px;
+            margin-top: 0;
+            font-weight: 500;
         }
 
         .basic__title {
             font-size: 28px;
+            margin: 0 0 10px 0;
+            font-weight: 500;
+        }
+
+        .basic__email {
+            margin: 0 0 10px 0;
+            font-weight: 500;
         }
 
         .basic__location {
             font-style: italic;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
+            font-weight: 500;
         }
 
         .basic__about {
@@ -90,6 +104,7 @@
         .basic__project-img-wrapper {
             width: 50%;
             padding: 0 15px;
+            box-sizing: border-box;
         }
 
         .basic__project-img {
@@ -103,6 +118,7 @@
         .basic__project-info {
             width: 50%;
             padding: 0 20px;
+            box-sizing: border-box;
         }
 
 
@@ -153,11 +169,11 @@
     </style>
 </head>
 
-<body style="font-family: <%= user.styles.font %>">
+<body>
 
-<div class="basic__wrapper">
+<div class="basic__wrapper" style="font-family: <%= user.styles.font %>; font-size: <%= user.styles.fontSize %>px">
     <div class="basic__header">
-        <div class="basic__photo-frame">
+        <div class="basic__photo-frame" style="border-color: <%= user.styles.color %>">
             <div class="basic__photo-wrapper">
                 <% if (user.info.profilePhoto) { %>
                     <img alt="<%= user.info.name %>" src="<%= user.info.profilePhoto %>" class="basic__photo"/>
@@ -172,7 +188,7 @@
         <% }%>
         <% if (user.info.email) { %>
             <h3 class="basic__email">
-                <a><%=user.info.email%></a>
+                <a href="<%= user.info.email %>" style="color: <%=user.styles.color %>"><%=user.info.email%></a>
             </h3>
         <% }%>
         <% if (user.info.location) { %>
@@ -192,7 +208,10 @@
                 <div class="basic__project-wrapper">
                     <h3 class="basic__project-title"><%= projects[i].title %></h3>
                     <div class="basic__project-img-wrapper">
+                        <% if (projects[i].imgUrl) { %>
                         <img src="<%= projects[i].imgUrl %>" alt="<%= projects[i].title %>" class="basic__project-img"/>
+                        <% } else { %>
+                        <% } %>
                     </div>
                     <div class="basic__project-info">
                         <p class="basic__project-desc"><%= projects[i].desc %></p>

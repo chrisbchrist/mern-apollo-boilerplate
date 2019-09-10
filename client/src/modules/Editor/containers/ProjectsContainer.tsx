@@ -47,7 +47,8 @@ export const ProjectsContainer: FunctionComponent<any> = () => {
               block
               type="primary"
               icon="plus"
-              style={{ marginBottom: 10 }}
+              size="large"
+              style={{ marginBottom: 15 }}
               onClick={() => {
                 setProjectToEdit(null);
                 toggleModal();

@@ -41,6 +41,7 @@ export const InfoForm: FunctionComponent<any> = () => {
       {({ loading, error, data, refetch }: any) => {
         if (loading) return <div className="projects__loader"><Spin tip="Loading..."/></div>;
         if (!loading && !error) delete data.getUser.info.__typename;
+
         return (
           <Mutation
             mutation={ UPDATE_USER_INFO }
@@ -69,6 +70,16 @@ export const InfoForm: FunctionComponent<any> = () => {
 
                       return (
                       <Form style={{ width: '100%'}}>
+                        <Button
+                            htmlType="submit"
+                            type="primary"
+                            shape="round"
+                            icon="save"
+                            size="large"
+                            style={{ display: "block", marginBottom: 10 }}
+                        >
+                          Save
+                        </Button>
                         <Field
                           name="name"
                           label="Name"
@@ -121,16 +132,6 @@ export const InfoForm: FunctionComponent<any> = () => {
                         {props.errors.name && (
                           <div id="feedback">{props.errors.name}</div>
                         )}
-                        <Button
-                          htmlType="submit"
-                          type="primary"
-                          shape="round"
-                          icon="save"
-                          size="large"
-                          style={{ display: "block", margin: "auto" }}
-                        >
-                          Save
-                        </Button>
                       </Form>
                     )}}
                   />

@@ -1,36 +1,65 @@
-import React, { FunctionComponent, useState, useContext, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useContext,
+  useEffect
+} from "react";
 import { BlockPicker, ChromePicker, TwitterPicker } from "react-color";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import "./StyleMenu.css";
 import { UserContext } from "../../../App";
 import { EditorContext } from "../containers/EditorContainer";
-import { UPDATE_USER_STYLES } from "../../../queries";
-import { Select, Divider, Icon, Slider } from 'antd';
+import { UPDATE_USER_STYLES, GET_USER_AND_PROJECTS } from "../../../queries";
+import { Select, Divider, Icon, Slider } from "antd";
 import client from "../../../config/createApolloClient";
+import { FetchResult } from "react-apollo";
 
 const { Option } = Select;
 
-const fonts: string[] = ["Raleway", "Oswald", "Cutive Mono", "Roboto", "Open Sans Condensed", "Ubuntu"];
+const fonts: string[] = [
+  "Raleway",
+  "Oswald",
+  "Cutive Mono",
+  "Roboto",
+  "Open Sans Condensed",
+  "Ubuntu",
+  "Shadows Into Light"
+];
 
 export const StyleMenu: FunctionComponent<any> = (props: any) => {
-
   // Import user ID for mutations & current styles from contexts
   const authUser = useContext(UserContext);
   const editorContext = useContext(EditorContext);
 
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>(editorContext.styles.theme ? editorContext.styles.theme : "Basic");
-  const [color, setColor] = useState<string>(editorContext.styles.color ? editorContext.styles.color : "#1890ff");
-  const [font, setFont] = useState<string>(editorContext.styles.font ? editorContext.styles.font : "Raleway");
-  const [fontSize, setFontSize] = useState<number>(editorContext.styles.fontSize ? editorContext.styles.fontSize : 16);
+  const [theme, setTheme] = useState<string>(
+    editorContext.styles.theme ? editorContext.styles.theme : "Basic"
+  );
+  const [color, setColor] = useState<string>(
+    editorContext.styles.color ? editorContext.styles.color : "#1890ff"
+  );
+  const [font, setFont] = useState<string>(
+    editorContext.styles.font ? editorContext.styles.font : "Raleway"
+  );
+  const [fontSize, setFontSize] = useState<number>(
+    editorContext.styles.fontSize ? editorContext.styles.fontSize : 16
+  );
 
-  const [updateStyles] = useMutation(UPDATE_USER_STYLES, { client });
+  const [updateStyles] = useMutation(UPDATE_USER_STYLES, {
+    client,
+    // Return array of queries to update after mutation is completed
+    refetchQueries: (mutationResult: FetchResult) => [
+      {
+        query: GET_USER_AND_PROJECTS,
+        variables: { userId: authUser.id, id: authUser.id }
+      }
+    ]
+  });
 
   const toggleColorPicker = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-        setShowColorPicker(!showColorPicker);
+      setShowColorPicker(!showColorPicker);
     }
-
   };
 
   // Automatically send changes to database on each style change
@@ -41,7 +70,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       font,
       fontSize
     };
-    updateStyles({ variables: { userStyles, id: authUser.id}})
+    updateStyles({ variables: { userStyles, id: authUser.id } });
   };
 
   useEffect(() => {
@@ -80,7 +109,6 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     zIndex: 0
   } as React.CSSProperties;
 
-
   return (
     <div className="styles__wrapper">
       <div className="styles__item-wrapper styles__color-wrapper">
@@ -103,11 +131,23 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         {showColorPicker && <div style={cover} onClick={toggleColorPicker} />}
       </div>
       <div className="styles__item-wrapper styles__font-wrapper">
-        <label className="styles__color-label ant-form-item-label">
-          Font:
-        </label>
-        <Select placeholder="Font" onChange={onChangeFont} className="styles__font-select" style={{ fontFamily: font }} value={font}>
-          {fonts.map((font, index) => <Option key={font + index} value={font} style={{ fontFamily: font }}>{font}</Option>)}
+        <label className="styles__color-label ant-form-item-label">Font:</label>
+        <Select
+          placeholder="Font"
+          onChange={onChangeFont}
+          className="styles__font-select"
+          style={{ fontFamily: font }}
+          value={font}
+        >
+          {fonts.map((font, index) => (
+            <Option
+              key={font + index}
+              value={font}
+              style={{ fontFamily: font }}
+            >
+              {font}
+            </Option>
+          ))}
         </Select>
       </div>
       <div className="styles__item-wrapper styles__font-size-wrapper">
@@ -115,17 +155,19 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
           Font Size:
         </label>
         <Slider
-            className="styles__font-slider"
-            min={10}
-            max={20}
-            onChange={onChangeFontSize}
-            tipFormatter={fontSizeFormatter}
-            value={fontSize}
+          className="styles__font-slider"
+          min={10}
+          max={20}
+          onChange={onChangeFontSize}
+          tipFormatter={fontSizeFormatter}
+          value={fontSize}
         />
       </div>
 
       <div className="styles__item-wrapper styles__themes-wrapper">
-        <h3 className="styles__themes-title"><Icon type="layout" theme="twoTone" /> Themes</h3>
+        <h3 className="styles__themes-title">
+          <Icon type="layout" theme="twoTone" /> Themes
+        </h3>
       </div>
     </div>
   );
