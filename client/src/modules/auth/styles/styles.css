@@ -1,7 +1,7 @@
 .login__container {
   position: relative;
   min-height: calc(100vh - 64px);
-  padding-top: 8%;
+  padding-top: 6%;
   background-color: #ffffff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%231890ff' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23194caa' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%234d7ff7' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%233d45a7' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%236d6cea' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23553ca3' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%238656d9' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%2368309c' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%239b3ac3' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23792093' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
   background-attachment: fixed;
@@ -54,4 +54,37 @@
 .login__bottom-link {
   text-align: center;
   display: block;
+}
+
+.login__github-wrapper {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.login__github {
+  background-image: linear-gradient(-180deg,#34d058,#28a745 90%);
+  background-color: #28a745;
+  color: white;
+  border: 1px solid rgba(27,31,35,.2);
+  border-radius: 4px;
+  padding: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.login__github:hover {
+  background-image: linear-gradient(-180deg,#2fcb53,#269f42 90%);
+  border-color: rgba(27,31,35,.5);
+  background-position: -.5em;
+}
+
+.login__github-text {
+  font-size: 12px;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
 }

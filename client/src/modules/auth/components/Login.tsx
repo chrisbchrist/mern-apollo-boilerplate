@@ -1,5 +1,5 @@
 import React, { useState, FunctionComponent } from 'react';
-import { Form as AntdForm, Icon, Input, Button, Checkbox } from 'antd';
+import { Form as AntdForm, Icon, Input, Button, Checkbox, Divider } from 'antd';
 import { Link, Redirect } from 'react-router-dom';
 import { withLogin } from '../providers/withLogin';
 import {
@@ -66,7 +66,11 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
     <div className="login__wrapper">
       <h2 className="login__title">Log In</h2>
         <div className="login__title-accent"/>
-
+        <div className="login__github-wrapper">
+            <a style={{ width: '100%'}} target="_blank" href={`https://github.com/login/oauth/authorize?client_id=5f158844f5e6d27d534a`}><button className="login__github"><Icon type="github"/> Log in with Github</button></a>
+            <span className="login__github-text">(And automatically integrate your projects!)</span>
+        </div>
+        <Divider>OR</Divider>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
