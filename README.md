@@ -1,1 +1,3 @@
-A MERN app boilerplate with GraphQL/Apollo for future projects configured following [Sysgears' Guide](https://sysgears.com/articles/how-to-create-an-apollo-react-express-application/). I resolved issues with webpack and import paths, added Typescript support and authentication with GraphQL/JSON Web Tokens that may or may not be secure.
+A portfolio generator app built with the MERN stack using TypeScript and GraphQL with Apollo Server/Client.  UI is built mostly with Ant Design's React component library and Formik/Yup for forms and validation.
+
+Uses JSON web tokens in local storage for simple authentication/authorization, and Github profile integration through OAuth for accessing its API.  Portfolios are currently generated as downloadable HTML files rendered from EJS templates.
