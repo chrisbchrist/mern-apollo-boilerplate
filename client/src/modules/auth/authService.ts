@@ -7,10 +7,11 @@ export const verifyToken = async () => {
             verifyToken(token: $token) {
               email
               _id
+              rememberMe
             }
           }
         `;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     if (!token) {
         return false;
@@ -19,7 +20,8 @@ export const verifyToken = async () => {
     console.log(response);
     const user = {
         _id: response.data.verifyToken._id,
-        email: response.data.verifyToken.email
+        email: response.data.verifyToken.email,
+        rememberMe: response.data.verifyToken.rememberMe
     };
     return user;
 }

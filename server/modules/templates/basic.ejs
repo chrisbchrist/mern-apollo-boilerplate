@@ -76,7 +76,7 @@
 
 
         .basic__project {
-            padding: 4em;
+            padding: 2em 4em;
         }
 
         .basic__project--even {
@@ -166,10 +166,84 @@
         .basic__button:hover {
             opacity: 0.7;
         }
+
+        .basic__button--normal {
+            line-height: 1.499;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: center;
+            background-image: none;
+            border: 1px solid transparent;
+            -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+            cursor: pointer;
+            -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            height: 32px;
+            padding: 0 15px;
+            font-size: 14px;
+            border-radius: 4px;
+            color: rgba(0, 0, 0, 0.65);
+            background-color: #fff;
+            border-color: #d9d9d9;
+        }
+
+        .basic__button--primary {
+            margin-right: 15px;
+            color: #fff;
+            background-color: #1890ff;
+            border: 1px solid;
+            border-color: #1890ff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+            -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.04);
+            line-height: 1.499;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: center;
+            background-image: none;
+            cursor: pointer;
+            -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            height: 32px;
+            padding: 0 15px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .basic__link {
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
 <body>
+
+<script type="text/javascript">
+    const buttons = document.querySelectorAll('.basic__button');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', (e) => {
+            e.preventDefault();
+        })
+    }
+</script>
 
 <div class="basic__wrapper" style="font-family: <%= user.styles.font %>; font-size: <%= user.styles.fontSize %>px">
     <div class="basic__header">
@@ -204,17 +278,32 @@
 
     <section class="basic__projects">
         <% for (let i = 0; i < projects.length; i++) { %>
+        <% let project = projects[i]; %>
             <div class="<%= i % 2 !== 0 ? 'basic__project basic__project--even' : 'basic__project basic__project--odd'%>">
                 <div class="basic__project-wrapper">
-                    <h3 class="basic__project-title"><%= projects[i].title %></h3>
+                    <h3 class="basic__project-title"><%= project.title %></h3>
                     <div class="basic__project-img-wrapper">
-                        <% if (projects[i].imgUrl) { %>
-                        <img src="<%= projects[i].imgUrl %>" alt="<%= projects[i].title %>" class="basic__project-img"/>
+                        <% if (project.imgUrl) { %>
+                        <img src="<%= project.imgUrl %>" alt="<%= project.title %>" class="basic__project-img"/>
                         <% } else { %>
                         <% } %>
                     </div>
                     <div class="basic__project-info">
-                        <p class="basic__project-desc"><%= projects[i].desc %></p>
+                        <p class="basic__project-desc"><%= project.desc %></p>
+                        <% if (project.srcUrl || project.demoUrl) { %>
+                            <div className="basic__project-links">
+                            <% if (project.demoUrl) { %>
+                                <a class="basic__link" target="_blank" href="<%= project.demoUrl %>"><button class=" basic__button basic__button--primary">Demo</button>
+                                </a>
+                            <% } %>
+
+                                <% if (project.srcUrl) { %>
+                                    <a target="_blank" class="basic__link" href="<%= project.srcUrl %>">
+                                        <button class=" basic__button basic__button--normal">Source</button>
+                                    </a>
+                                <% } %>
+                        </div>
+                        <% } %>
                     </div>
                 </div>
 

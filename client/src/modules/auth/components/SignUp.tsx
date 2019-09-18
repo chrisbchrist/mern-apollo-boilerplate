@@ -63,7 +63,7 @@ const SignUpForm: FunctionComponent<SignUpProps> = (props: SignUpProps) => {
                 console.log(res);
                 const user = res.data.createUser;
                 const token = user.token;
-                localStorage.setItem('token', token);
+                sessionStorage.setItem('token', token);
                 setAuthUser({ email: user.email, id: user._id})
                 otherProps.history.push('/editor');
             });

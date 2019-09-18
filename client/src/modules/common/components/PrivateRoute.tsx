@@ -13,7 +13,7 @@ export const PrivateRoute: FunctionComponent<PrivateRouteProps> = ({component, i
     const [isAuth, setIsAuth] = useState<boolean>(false);
 
     const verifyToken = async () => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         if (token) {
             const auth = await client.query({
                 query: gql`

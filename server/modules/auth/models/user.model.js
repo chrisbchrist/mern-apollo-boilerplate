@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
     min: 8,
     max: 32
   },
+  rememberMe: Boolean,
   projects: [
     {
       type: mongoose.Schema.Types.ObjectId,

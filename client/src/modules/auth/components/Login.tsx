@@ -48,7 +48,7 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
                 console.log(res);
                 const user = res.data.login;
                 const token = user.token;
-                localStorage.setItem('token', token);
+                sessionStorage.setItem('token', token);
 
                 setAuthUser({ email: user.email, id: user._id});
 

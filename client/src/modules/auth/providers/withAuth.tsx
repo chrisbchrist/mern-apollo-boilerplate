@@ -13,13 +13,13 @@ export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactEl
 
         useEffect(() => {
             verifyToken().then(res => {
-                console.log(res);
+                console.log("verified?", res);
                 setAuth(res);
             })
         }, []);
 
         useEffect(() => {
-                auth && setLoading(false);
+                setLoading(false);
         }, [auth]);
 
         if (loading) {

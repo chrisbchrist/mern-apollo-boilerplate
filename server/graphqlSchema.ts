@@ -37,6 +37,7 @@ const typeDefs = gql`
     projects: [Project]
     info: UserInfo
     styles: UserStyles
+    rememberMe: Boolean
   }
   input UserInput {
     email: String!
