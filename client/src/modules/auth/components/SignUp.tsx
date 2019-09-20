@@ -14,6 +14,10 @@ import { InputField } from '../../common/components/InputField';
 import { UserInput } from '../../../../../types';
 import { withSignUp } from '../providers';
 import {Link, RouteComponentProps} from 'react-router-dom';
+import {openNotificationWithIcon} from "../../common";
+import {GraphQLError} from "graphql";
+import {MutationResult} from "react-apollo";
+import {ApolloError} from "apollo-client";
 
 interface SignUpProps extends RouteComponentProps {
     createUser: (userInput: UserInput) => any;
@@ -63,10 +67,14 @@ const SignUpForm: FunctionComponent<SignUpProps> = (props: SignUpProps) => {
                 console.log(res);
                 const user = res.data.createUser;
                 const token = user.token;
-                sessionStorage.setItem('token', token);
+                localStorage.setItem('token', token);
                 setAuthUser({ email: user.email, id: user._id})
                 otherProps.history.push('/editor');
-            });
+            })
+                .catch((err: ApolloError) => {
+                    const msg = err.graphQLErrors[0].message;
+                    openNotificationWithIcon('error', 'Registration failed!', msg);
+                })
         });
         console.log({ values, actions });
         actions.setSubmitting(false);

@@ -13,6 +13,7 @@ import { UPDATE_USER_STYLES, GET_USER_AND_PROJECTS } from "../../../queries";
 import { Select, Divider, Icon, Slider } from "antd";
 import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
+import { Theme } from "./Theme";
 
 const { Option } = Select;
 
@@ -24,6 +25,17 @@ const fonts: string[] = [
   "Open Sans Condensed",
   "Ubuntu",
   "Shadows Into Light"
+];
+
+const themes = [
+  {
+    name: "Basic",
+    img:
+      "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_485/v1568863467/basic_ei3qre.png",
+    desc:
+      "This is your plain Jane, vanilla portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, clean and professional efficency.",
+    link: "#"
+  }
 ];
 
 export const StyleMenu: FunctionComponent<any> = (props: any) => {
@@ -168,6 +180,9 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         <h3 className="styles__themes-title">
           <Icon type="layout" theme="twoTone" /> Themes
         </h3>
+        {themes.map(theme => (
+          <Theme theme={theme} />
+        ))}
       </div>
     </div>
   );

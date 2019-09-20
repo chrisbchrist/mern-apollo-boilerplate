@@ -2,6 +2,7 @@ import React, { useState, FunctionComponent } from 'react';
 import { Form as AntdForm, Icon, Input, Button, Checkbox, Divider } from 'antd';
 import { Link, Redirect } from 'react-router-dom';
 import { withLogin } from '../providers/withLogin';
+import { openNotificationWithIcon } from "../../common";
 import {
   Formik,
   Field,
@@ -12,10 +13,13 @@ import {
 } from 'formik';
 import * as yup from 'yup';
 import '../styles/styles.css';
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import {ApolloError} from "apollo-client";
 
 interface ILogin {
   email: string;
   password: string;
+  rememberMe: boolean;
 }
 
 const validationSchema = yup.object().shape({
@@ -34,7 +38,8 @@ const validationSchema = yup.object().shape({
 
 const initialValues = {
   email: '',
-  password: ''
+  password: '',
+    rememberMe: false
 };
 
 
@@ -45,14 +50,16 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
         actions.validateForm().then(res => {
             const { email, password } = values;
             login(email, password).then((res: any) => {
-                console.log(res);
+                //console.log("hey", res);
                 const user = res.data.login;
                 const token = user.token;
-                sessionStorage.setItem('token', token);
+                localStorage.setItem('token', token);
+                setAuthUser({ email: user.email, id: user._id, rememberMe: user.rememberMe});
 
-                setAuthUser({ email: user.email, id: user._id});
-
-            });
+            }).catch((err: ApolloError) => {
+                const msg = err.graphQLErrors[0].message;
+                openNotificationWithIcon('error', 'Login failed!', msg);
+            })
         });
         actions.setSubmitting(false);
     };
@@ -143,7 +150,14 @@ const LoginForm: FunctionComponent<any> = ({ login, authUser, setAuthUser }) => 
               )}
             />
             <AntdForm.Item style={{ marginBottom: 10 }}>
-              <Checkbox>Remember me</Checkbox>
+              <Field name="rememberMe"
+                     render={({ field, form }: FieldProps<ILogin>) => (
+                         <Checkbox checked={field.value}
+                                   onChange={(e: CheckboxChangeEvent) => {
+                                       form.setFieldValue(field.name, e.target.checked);
+                                   }}>
+                             Remember Me</Checkbox>
+                     )}/>
               <a className="login-form-forgot" href="" onClick={() => alert("For now, that's just too bad.")}>
                 Forgot password?
               </a>

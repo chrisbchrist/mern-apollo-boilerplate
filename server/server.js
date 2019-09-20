@@ -91,6 +91,7 @@ app.get("/callback", (req, res) => {
       accept: "application/json"
     }
   }).then(response => {
+    console.log(response.data);
     const accessToken = response.data.access_token;
     res.redirect(`/?access_token=${accessToken}`);
   });

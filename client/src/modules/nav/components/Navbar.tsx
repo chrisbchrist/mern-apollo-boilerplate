@@ -32,7 +32,7 @@ const NavbarComponent: FunctionComponent<NavbarProps & RouteComponentProps> = ({
   }, [otherProps.location]);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     setAuthUser(null);
     otherProps.history.push('/');
   };

@@ -20,6 +20,8 @@ async function tradeTokenForUser(token) {
     }
 }
  const authenticated = next => (root, args, context, info) => {
+    console.log("currentUser:", context.currentUser);
+
     if (!context.currentUser) {
         throw new Error(`Unauthenticated!`);
     }

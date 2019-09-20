@@ -11,7 +11,7 @@ export const verifyToken = async () => {
             }
           }
         `;
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (!token) {
         return false;

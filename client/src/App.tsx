@@ -50,7 +50,7 @@ const App: FunctionComponent = () => {
       setAuthUser(user);
     }
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     console.log(token);
     if (token) {
       autoLogin(token);
