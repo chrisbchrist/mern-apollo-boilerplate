@@ -8,6 +8,8 @@
     align-items: center;
     justify-content: center;
     padding: 5% 25px 25px 25px;
+    height: 100vh;
+
 }
 
 .modern__photo-frame {

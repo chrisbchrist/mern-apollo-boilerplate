@@ -36,6 +36,7 @@ const userSchema = new mongoose.Schema({
     color: String,
     font: String,
     fontSize: Number,
+    bgPhoto: String,
   }
 
 });

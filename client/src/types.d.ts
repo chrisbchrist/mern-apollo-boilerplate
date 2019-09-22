@@ -20,6 +20,7 @@ export interface UserStyles {
     color: string;
     font: string;
     fontSize: number;
+    bgPhoto: string;
 }
 
 export interface Project {

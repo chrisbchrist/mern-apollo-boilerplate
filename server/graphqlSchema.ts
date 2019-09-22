@@ -69,12 +69,14 @@ const typeDefs = gql`
     color: String
     font: String
     fontSize: Int
+    bgPhoto: String
   }
   input UserStylesInput {
     theme: String
     color: String
     font: String
     fontSize: Int
+    bgPhoto: String
   }
   type Query {
     me: User

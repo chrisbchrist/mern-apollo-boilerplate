@@ -7,3 +7,13 @@ export const openNotificationWithIcon = (
 ) => {
     notification[type]({ message, description });
 };
+
+export const fonts: string[] = [
+    "Raleway",
+    "Oswald",
+    "Cutive Mono",
+    "Roboto",
+    "Open Sans Condensed",
+    "Ubuntu",
+    "Shadows Into Light"
+];

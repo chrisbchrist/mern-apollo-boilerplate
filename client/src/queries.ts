@@ -31,6 +31,7 @@ export const GET_USER_AND_PROJECTS = gql`
         color
         font
         fontSize
+        bgPhoto
       }
     }
   }
@@ -132,6 +133,7 @@ export const UPDATE_USER_STYLES = gql`
                 color
                 font
                 fontSize
+                bgPhoto
             }
         }
     }

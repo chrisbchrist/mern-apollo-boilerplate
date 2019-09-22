@@ -7,12 +7,11 @@ import React, {
 import { Button, Drawer, Icon, Spin } from "antd";
 import { EditMenu } from "../components/EditMenu";
 import { BasicTemplate } from "../templates/Basic/Basic";
+import { ModernTemplate } from "../templates/Modern/Modern";
 import { Query } from "react-apollo";
 import { AuthUser, Project, UserInfo, UserStyles } from "../../../types";
 import { GET_PROJECTS, GET_USER_AND_PROJECTS } from "../../../queries";
-import { verifyToken } from "../../auth/authService";
-import { UserContext } from "../../../App";
-import { ProjectsQueryVars } from "./ProjectsContainer";
+
 import { withAuth } from "../../auth/providers/withAuth";
 import "./EditorContainer.css";
 
@@ -115,11 +114,16 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
                     </Button>
                   </a>
                 </div>
-                <BasicTemplate
-                  projects={data.projects}
-                  userInfo={data.getUser.info}
-                  styles={data.getUser.styles}
-                />
+                { data.getUser.styles.theme === "Basic" && <BasicTemplate
+                    projects={data.projects}
+                    userInfo={data.getUser.info}
+                    styles={data.getUser.styles}
+                />}
+                { data.getUser.styles.theme === "Modern" && <ModernTemplate
+                    projects={data.projects}
+                    userInfo={data.getUser.info}
+                    styles={data.getUser.styles}
+                />}
               </div>
             </div>
           </EditorContext.Provider>

@@ -4,7 +4,9 @@ import React, {
   useContext,
   useEffect
 } from "react";
-import { BlockPicker, ChromePicker, TwitterPicker } from "react-color";
+import { ColorPicker } from "./style_options/ColorPicker";
+import { FontSelect } from "./style_options/FontSelect";
+import { PhotoPicker } from "./style_options/PhotoPicker";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import "./StyleMenu.css";
 import { UserContext } from "../../../App";
@@ -14,19 +16,11 @@ import { Select, Divider, Icon, Slider } from "antd";
 import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
+import { fonts } from "../../common";
 import data from '../gradients';
 
 const { Option } = Select;
 
-const fonts: string[] = [
-  "Raleway",
-  "Oswald",
-  "Cutive Mono",
-  "Roboto",
-  "Open Sans Condensed",
-  "Ubuntu",
-  "Shadows Into Light"
-];
 
 const themes = [
   {
@@ -36,6 +30,14 @@ const themes = [
     desc:
       "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
     link: "#"
+  },
+  {
+    name: "Modern",
+    img:
+        "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
+    desc:
+        "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
+    link: "#"
   }
 ];
 
@@ -44,9 +46,8 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const authUser = useContext(UserContext);
   const editorContext = useContext(EditorContext);
 
-  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   const [selectedTheme, setSelectedTheme] = useState<any>(
-    editorContext.styles.theme ? editorContext.styles.theme : "Basic"
+    editorContext.styles.theme ? themes.filter(t => t.name === editorContext.styles.theme)[0] : themes[0]
   );
   const [color, setColor] = useState<string>(
     editorContext.styles.color ? editorContext.styles.color : "#1890ff"
@@ -69,19 +70,16 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     ]
   });
 
-  const toggleColorPicker = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      setShowColorPicker(!showColorPicker);
-    }
-  };
+
 
   // Automatically send changes to database on each style change
   const saveStyles = () => {
     const userStyles = {
-      theme: "Basic",
+      theme: selectedTheme.name,
       color,
       font,
-      fontSize
+      fontSize,
+      bgPhoto: "",
     };
     updateStyles({ variables: { userStyles, id: authUser.id } });
   };
@@ -91,7 +89,6 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   }, [color, font, selectedTheme, fontSize]);
 
   const onChangeColor = (color: any) => {
-    //console.log(color);
     setColor(color.hex);
   };
 
@@ -112,60 +109,15 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     setSelectedTheme(theme);
   }
 
-  const popover = {
-    position: "absolute",
-    zIndex: 10
-  } as React.CSSProperties;
 
-  const cover = {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 0
-  } as React.CSSProperties;
 
   return (
     <div className="styles__wrapper">
       <div className="styles__item-wrapper styles__color-wrapper">
-        <label className="styles__color-label ant-form-item-label">
-          Accent Color:
-        </label>
-        <div
-          className="styles__color-swatch"
-          onClick={toggleColorPicker}
-          style={{ background: color || "#1890ff" }}
-        >
-          {showColorPicker && (
-            <TwitterPicker
-              color={color}
-              onChange={onChangeColor}
-              style={{ position: "absolute", top: "35px" }}
-            />
-          )}
-        </div>
-        {showColorPicker && <div style={cover} onClick={toggleColorPicker} />}
+        <ColorPicker color={color} onChange={onChangeColor} label="Color"/>
       </div>
       <div className="styles__item-wrapper styles__font-wrapper">
-        <label className="styles__color-label ant-form-item-label">Font:</label>
-        <Select
-          placeholder="Font"
-          onChange={onChangeFont}
-          className="styles__font-select"
-          style={{ fontFamily: font }}
-          value={font}
-        >
-          {fonts.map((font, index) => (
-            <Option
-              key={font + index}
-              value={font}
-              style={{ fontFamily: font }}
-            >
-              {font}
-            </Option>
-          ))}
-        </Select>
+        <FontSelect font={font} onChange={onChangeFont} options={fonts}/>
       </div>
       <div className="styles__item-wrapper styles__font-size-wrapper" style={{ borderBottom: 'none'}}>
         <label className="styles__color-label ant-form-item-label">
@@ -184,7 +136,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       <div className="styles__themes-wrapper">
         <Divider><span className="styles__themes-title">Themes</span></Divider>
         {themes.map((theme, i) => (
-          <Theme theme={theme} onClick={() => setSelectedTheme(themes[i])} selected={theme.name === selectedTheme.name}/>
+          <Theme key={theme.name} theme={theme} onClick={() => setSelectedTheme(themes[i])} selected={theme.name === selectedTheme.name}/>
         ))}
       </div>
     </div>
