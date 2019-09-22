@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export const GET_USER_AND_PROJECTS = gql`
-  query($userId: String!, $id: ID!) {
+  query($userId: ID!) {
     projects(userId: $userId) {
       _id
       title
@@ -14,7 +14,7 @@ export const GET_USER_AND_PROJECTS = gql`
         _id
       }
     }
-    getUser(id: $id) {
+    getUser(id: $userId) {
       _id
       info {
         name

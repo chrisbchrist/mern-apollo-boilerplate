@@ -7,7 +7,7 @@ import { UPDATE_USER_INFO, GET_USER } from "../../../queries";
 import { UserContext } from "../../../App";
 import { InputField } from "../../common/components/InputField";
 import { TextAreaField } from "../../common/components/TextAreaField";
-import { openNotificationWithIcon } from "../../common";
+import "./InfoForm.css";
 
 const { TextArea } = Input;
 

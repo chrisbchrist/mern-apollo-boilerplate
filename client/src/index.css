@@ -72,10 +72,32 @@ body {
 
 }
 
-.info__wrapper .ant-form-item-label {
+.ant-form-item-label {
     line-height: 30px;
     font-weight: bold;
-    color: #1890ff;
+    text-transform: uppercase;
+}
+
+.ant-form-item-label > label {
+    color: #888 !important;
+}
+
+.ant-input {
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    transition: all .3s;
+
+}
+
+.ant-input, textarea {
+    background: #f6f6f6;
+}
+
+.ant-input:focus {
+    border-bottom-color: #1890ff;
+    outline: none;
+    box-shadow: none;
 }
 
 .ant-tag {

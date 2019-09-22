@@ -81,7 +81,7 @@ const typeDefs = gql`
     posts: [Post]
     users: [User] 
     getUser(id: ID!): User
-    projects(userId: String!): [Project]
+    projects(userId: ID!): [Project]
     verifyToken(token: String!): User
   }
   type Mutation {

@@ -14,6 +14,7 @@ import { Select, Divider, Icon, Slider } from "antd";
 import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
+import data from '../gradients';
 
 const { Option } = Select;
 
@@ -31,9 +32,9 @@ const themes = [
   {
     name: "Basic",
     img:
-      "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_485/v1568863467/basic_ei3qre.png",
+      "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
     desc:
-      "This is your plain Jane, vanilla portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, clean and professional efficency.",
+      "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
     link: "#"
   }
 ];
@@ -44,7 +45,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const editorContext = useContext(EditorContext);
 
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const [theme, setTheme] = useState<string>(
+  const [selectedTheme, setSelectedTheme] = useState<any>(
     editorContext.styles.theme ? editorContext.styles.theme : "Basic"
   );
   const [color, setColor] = useState<string>(
@@ -87,7 +88,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   useEffect(() => {
     saveStyles();
-  }, [color, font, theme, fontSize]);
+  }, [color, font, selectedTheme, fontSize]);
 
   const onChangeColor = (color: any) => {
     //console.log(color);
@@ -106,6 +107,10 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const fontSizeFormatter = (val: number) => {
     return `${val}px`;
   };
+
+  const selectTheme = (theme: any) => {
+    setSelectedTheme(theme);
+  }
 
   const popover = {
     position: "absolute",
@@ -162,7 +167,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
           ))}
         </Select>
       </div>
-      <div className="styles__item-wrapper styles__font-size-wrapper">
+      <div className="styles__item-wrapper styles__font-size-wrapper" style={{ borderBottom: 'none'}}>
         <label className="styles__color-label ant-form-item-label">
           Font Size:
         </label>
@@ -176,12 +181,10 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         />
       </div>
 
-      <div className="styles__item-wrapper styles__themes-wrapper">
-        <h3 className="styles__themes-title">
-          <Icon type="layout" theme="twoTone" /> Themes
-        </h3>
-        {themes.map(theme => (
-          <Theme theme={theme} />
+      <div className="styles__themes-wrapper">
+        <Divider><span className="styles__themes-title">Themes</span></Divider>
+        {themes.map((theme, i) => (
+          <Theme theme={theme} onClick={() => setSelectedTheme(themes[i])} selected={theme.name === selectedTheme.name}/>
         ))}
       </div>
     </div>

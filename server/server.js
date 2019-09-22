@@ -66,12 +66,12 @@ app.get("/download/:id", (req, res) => {
     if (err) {
       console.log("Error!:", err);
     } else {
-      console.log(user);
+      //console.log(user);
       Project.find({ user: userId }, (err, projects) => {
         if (err) {
           console.log("Error!:", err);
         } else {
-          console.log(projects);
+          //console.log(projects);
           res.attachment("index.html");
           res.render("basic", { user, projects });
         }

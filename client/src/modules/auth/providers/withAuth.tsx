@@ -13,14 +13,18 @@ export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactEl
 
         useEffect(() => {
             verifyToken().then(res => {
-                console.log("verified?", res);
+                console.log("verified?", !!res);
                 setAuth(res);
+                setLoading(false);
             })
         }, []);
 
-        useEffect(() => {
-                setLoading(false);
-        }, [auth]);
+        // useEffect(() => {
+        //     if (auth) {
+        //         setLoading(false);
+        //     }
+        //
+        // }, [auth]);
 
         if (loading) {
             return <div className="projects__loader">

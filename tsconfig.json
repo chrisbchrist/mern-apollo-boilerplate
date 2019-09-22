@@ -11,6 +11,7 @@
     "target": "es6",
     "jsx": "react",
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "types": [
       "node",
       "react",

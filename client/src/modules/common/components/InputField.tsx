@@ -36,6 +36,7 @@ export const InputField: FunctionComponent<any> = ({
       validateStatus={validateStatus}
       label={label}
       style={wrapperStyle}
+      colon={false}
     >
       <Input
         value={field.value}

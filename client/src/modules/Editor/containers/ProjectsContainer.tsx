@@ -8,8 +8,6 @@ import { Button, Spin } from "antd";
 import { ProjectForm } from "../components/ProjectForm";
 import { UserContext } from "../../../App";
 import { EditorContext } from "./EditorContainer";
-import { Query } from "react-apollo";
-import { GET_PROJECTS } from "../../../queries";
 import { Project } from "../../../types";
 import { ProjectList } from "../components/ProjectList";
 import "./ProjectsContainer.css";

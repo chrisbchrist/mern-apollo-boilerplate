@@ -242,3 +242,4 @@ export const ProjectForm: FunctionComponent<ProjectFormProps> = ({
     </Mutation>
   );
 };
+

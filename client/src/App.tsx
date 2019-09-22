@@ -15,11 +15,14 @@ import EditorContainer from "./modules/Editor/containers/EditorContainer";
 import { Layout } from "antd";
 import { Home } from "./modules/Home/Home";
 import {withAuth} from "./modules/auth/providers/withAuth";
+import {object} from "yup";
+import { Form } from 'antd';
 // import { PrivateRoute } from "./modules/common/components/PrivateRoute";
 
 const { Content } = Layout;
 
 export const UserContext = createContext(null);
+
 
 const App: FunctionComponent = () => {
   const [authUser, setAuthUser] = useState(null);

@@ -60,7 +60,7 @@ export const Home: FunctionComponent<HomepageProps> = ({ authUser }) => {
                     <div className="features__icon-wrapper">
                         <Icon type="smile" theme="twoTone" twoToneColor="#6614e0" className="features__icon"/>
                         <h3 className="features__icon-title">Guaranteed Self-Actualization</h3>
-                        <p className="features__icon-text">This website is guaranteed by the government of America to transform your hellish existence into a god damned utopia of boundless joy and constant euphoria.</p>
+                        <p className="features__icon-text">This website is guaranteed by the government to transform the endless drudgery of your mundane existence into a god damn utopia of boundless joy which is, in every way, superior to the life you are living now.</p>
                         <Link to="editor" style={{ height: 0, marginTop: "auto"}}><Button type="primary" ghost className="features__icon-button">OK?</Button></Link>
                     </div>
                 </div>
@@ -68,3 +68,6 @@ export const Home: FunctionComponent<HomepageProps> = ({ authUser }) => {
         </div>
     )
 };
+
+
+

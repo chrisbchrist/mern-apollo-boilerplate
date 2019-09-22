@@ -47,7 +47,7 @@ const EditorContainer: FunctionComponent<EditorProps> = ({ authUser }) => {
     <Query<UserProjectQueryData>
       skip={!authUser}
       query={GET_USER_AND_PROJECTS}
-      variables={{ userId: authUser._id, id: authUser._id }}
+      variables={{ userId: authUser._id }}
       onCompleted={(data: UserProjectQueryData) => {}}
     >
       {({ loading, error, data, refetch }) => {

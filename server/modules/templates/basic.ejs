@@ -3,7 +3,7 @@
 <title><%= user.info.name + " - " + user.info.title %></title>
 
 <link
-      href="https://fonts.googleapis.com/css?family=Raleway|Oswald|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
+      href="https://fonts.googleapis.com/css?family=Raleway|Oswald|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed:300|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
       rel="stylesheet"
     />
     <script src="https://kit.fontawesome.com/3d74128c62.js"></script>
@@ -33,12 +33,12 @@
         .basic__photo-wrapper {
             overflow: hidden;
             border-radius: 50%;
-            border: 1px solid #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 200px;
             height: 200px;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.35);
         }
 
         .basic__photo {
@@ -46,14 +46,15 @@
         }
 
         .basic__name {
-            font-size: 40px;
+            font-size: 2.5em;
             margin-bottom: 10px;
             margin-top: 0;
             font-weight: 500;
+            text-align: center;
         }
 
         .basic__title {
-            font-size: 28px;
+            font-size: 1.9em;
             margin: 0 0 10px 0;
             font-weight: 500;
         }
@@ -189,7 +190,7 @@
             touch-action: manipulation;
             height: 32px;
             padding: 0 15px;
-            font-size: 14px;
+            font-size: 1em;
             border-radius: 4px;
             color: rgba(0, 0, 0, 0.65);
             background-color: #fff;
@@ -223,12 +224,34 @@
             touch-action: manipulation;
             height: 32px;
             padding: 0 15px;
-            font-size: 14px;
+            font-size: 1em;
             border-radius: 4px;
         }
 
         .basic__link {
             text-decoration: none;
+        }
+
+        @media screen and (max-width: 768px) {
+
+
+            .basic__project-wrapper {
+                flex-direction: column;
+            }
+
+            .basic__project-img-wrapper {
+                width: 100%;
+                padding-bottom: 20px;
+            }
+
+            .basic__project-info {
+                width: 100%;
+            }
+
+            .basic__project-links {
+                justify-content: center;
+            }
+
         }
 
     </style>
@@ -291,7 +314,7 @@
                     <div class="basic__project-info">
                         <p class="basic__project-desc"><%= project.desc %></p>
                         <% if (project.srcUrl || project.demoUrl) { %>
-                            <div className="basic__project-links">
+                            <div class="basic__project-links">
                             <% if (project.demoUrl) { %>
                                 <a class="basic__link" target="_blank" href="<%= project.demoUrl %>"><button class=" basic__button basic__button--primary">Demo</button>
                                 </a>
