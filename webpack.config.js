@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv').config({path: __dirname + './.env'});
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: './client/src/index.html',
@@ -35,13 +37,24 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: [{
+            loader: 'url-loader',
+          options: {
+              limit: 8192
+          }
+        }]
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
-  plugins: [htmlPlugin],
+  plugins: [htmlPlugin, new webpack.DefinePlugin({
+    'process.env': dotenv.parsed
+  })],
   devServer: {
     historyApiFallback: true
   }

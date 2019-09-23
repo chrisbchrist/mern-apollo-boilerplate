@@ -1,0 +1,70 @@
+.pexels__wrapper {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.pexels__logo {
+    width: 28px;
+    margin: 0 6px 0 10px;
+}
+
+.pexels__link {
+    color: #666;
+}
+
+.photo-picker__title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    /* color: #1890ff; */
+    display: block;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.photo-picker__default {
+    padding: 15px 0;
+}
+
+.photo-picker__modal .ant-modal-header {
+    background:  linear-gradient(to bottom, #1890ff 0%,#4371db 100%);
+}
+
+.thumbnail__wrapper {
+    padding: 10px;
+    width: calc(25% - 10px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin: 5px;
+}
+
+.thumbnail__img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail__img-wrapper::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .2s;
+}
+
+.thumbnail__img-wrapper:hover::before {
+    opacity: 1;
+}
+
+.thumbnail__img {
+    width: 100%;
+}

@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import { ColorPicker } from "./style_options/ColorPicker";
 import { FontSelect } from "./style_options/FontSelect";
-import { PhotoPicker } from "./style_options/PhotoPicker";
+import { PhotoPicker } from "./style_options/PhotoPicker/PhotoPicker";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import "./StyleMenu.css";
 import { UserContext } from "../../../App";
@@ -59,6 +59,8 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     editorContext.styles.fontSize ? editorContext.styles.fontSize : 16
   );
 
+  const [bgPhoto, setBgPhoto] = useState<string>("");
+
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, {
     client,
     // Return array of queries to update after mutation is completed
@@ -79,7 +81,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       color,
       font,
       fontSize,
-      bgPhoto: "",
+      bgPhoto,
     };
     updateStyles({ variables: { userStyles, id: authUser.id } });
   };
@@ -113,12 +115,15 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   return (
     <div className="styles__wrapper">
-      <div className="styles__item-wrapper styles__color-wrapper">
+      <div className="styles__item-wrapper" style={{display: 'flex', justifyContent: 'space-between'}}>
+      <div>
         <ColorPicker color={color} onChange={onChangeColor} label="Color"/>
       </div>
-      <div className="styles__item-wrapper styles__font-wrapper">
+      <div>
         <FontSelect font={font} onChange={onChangeFont} options={fonts}/>
       </div>
+      </div>
+      {selectedTheme.name === "Modern" && <div className="styles__item-wrapper"><PhotoPicker/></div>}
       <div className="styles__item-wrapper styles__font-size-wrapper" style={{ borderBottom: 'none'}}>
         <label className="styles__color-label ant-form-item-label">
           Font Size:
