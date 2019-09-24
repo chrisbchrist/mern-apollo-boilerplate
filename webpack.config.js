@@ -53,7 +53,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   plugins: [htmlPlugin, new webpack.DefinePlugin({
-    'process.env': dotenv.parsed
+    TEST: JSON.stringify('test')
   })],
   devServer: {
     historyApiFallback: true

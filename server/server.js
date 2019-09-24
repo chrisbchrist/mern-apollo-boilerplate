@@ -44,11 +44,14 @@ const app = express();
 // Use the Express application as middleware in Apollo server
 server.applyMiddleware({ app });
 
+app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/modules/templates"));
 
 app.use(express.static("dist"));
+
 
 app.get("/", (req, res) => {
   const accessToken = req.query.access_token;
@@ -80,6 +83,7 @@ app.get("/download/:id", (req, res) => {
   });
 });
 
+// OAuth callback URL for Github API authorization
 app.get("/callback", (req, res) => {
   const requestToken = req.query.code;
   const clientId = process.env.GH_CLIENT_ID;
@@ -95,6 +99,27 @@ app.get("/callback", (req, res) => {
     const accessToken = response.data.access_token;
     res.redirect(`/?access_token=${accessToken}`);
   });
+});
+
+// Call Pexels API on the back end to obfuscate API key
+app.get('/photos', (req, res) => {
+  const search = req.query.search;
+  axios
+      .get(
+          `https://api.pexels.com/v1/search?query=${encodeURIComponent(
+              search
+          )}&per_page=12&page=1`,
+          {
+            headers: {
+              'Authorization':
+              process.env.PEXELS_API_KEY
+            }
+          }
+      )
+      .then(data => {
+        //console.log(data.data);
+        res.send(data.data);
+      });
 });
 
 const port = 3000;

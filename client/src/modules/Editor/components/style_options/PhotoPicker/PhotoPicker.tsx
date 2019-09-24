@@ -8,12 +8,12 @@ import { PreviewThumbnail } from "./PreviewThumbnail";
 const { Search } = Input;
 
 const defaultPhotos = [
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1569115437/glaciers.jpg",
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1569115393/island.jpg",
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1569109242/skyscrapers.jpg",
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1569109237/leaves.jpg",
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1569109230/hot-air-balloon.jpg",
-  "https://res.cloudinary.com/dgeb3iekh/image/upload/v1558826020/astrology-astronomy-background-image-956981_1_x1s9n0.jpg"
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1569115437/glaciers.jpg",
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1569115393/island.jpg",
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1569109242/skyscrapers.jpg",
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1569109237/leaves.jpg",
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1569109230/hot-air-balloon.jpg",
+  "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1558826020/astrology-astronomy-background-image-956981_1_x1s9n0.jpg"
 ];
 
 export const PhotoPicker: FunctionComponent<any> = () => {
@@ -21,15 +21,30 @@ export const PhotoPicker: FunctionComponent<any> = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [photos, setPhotos] = useState<Array<any>>([]);
 
-  console.log("API", process.env);
+  // Test of DefinePlugin variables -- It works! But TS will still flag as undefined, so it needs to be ignored
+  // for the time being
+  //@ts-ignore
+  // const wtf: string = TEST;
+  // console.log("VAR TEST", wtf);
 
   const getPhotos = async () => {
-      axios.get(`https://api.pexels.com/v1/search?query=${searchTerm}&per_page=15&page=1`)
+    axios
+      .get(
+        `http://localhost:3000/photos?search=${encodeURIComponent(searchTerm)}`
+      )
+      .then(res => {
+        console.log(res);
+        setPhotos(res.data.photos);
+      });
   };
 
   const onSearch = (val: string) => {
     setSearchTerm(val);
   };
+
+  useEffect(() => {
+    searchTerm && getPhotos();
+  }, [searchTerm]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -41,35 +56,57 @@ export const PhotoPicker: FunctionComponent<any> = () => {
         Background Photo
       </Button>
       <Modal
-    okText="Create"
-    visible={showModal}
-    width={875}
-    className="photo-picker__modal"
-    title={<h4 className="photo-picker__title"><Icon type="picture" style={{ color: '#fff', opacity: 0.7, fontSize: 24}}/> Choose a Background Photo</h4>}
-    onCancel={toggleModal}
-    onOk={() => console.log("OK")}
-    footer={
-        <div className="pexels__wrapper">
+        okText="Create"
+        visible={showModal}
+        width={875}
+        className="photo-picker__modal"
+        title={
+          <h4 className="photo-picker__title">
+            <Icon
+              type="picture"
+              style={{ color: "#fff", opacity: 0.7, fontSize: 24 }}
+            />{" "}
+            Choose a Background Photo
+          </h4>
+        }
+        onCancel={toggleModal}
+        onOk={() => console.log("OK")}
+        footer={
+          <div className="pexels__wrapper">
             Dynamic photos through{" "}
             <a
-                className="pexels__link"
-                target="_blank"
-                href="https://www.pexels.com"
+              className="pexels__link"
+              target="_blank"
+              href="https://www.pexels.com"
             >
-                <img className="pexels__logo" src={pexels}/>
-                <strong>Pexels</strong>
+              <img className="pexels__logo" src={pexels} />
+              <strong>Pexels</strong>
             </a>
-        </div>
-    }
+          </div>
+        }
       >
-          <div className="photo-picker__input-wrapper">
-              <p>You can select one of our gorgeous pre-selected cover photos, or search for thousands of other options through the Pexels API!</p>
-              <Search size="large" className="photo-picker__search" placeholder="Image keyword, e.g. nature, code" onSearch={onSearch}/>
-          </div>
-          <div className="photo-picker__default">
-              {defaultPhotos.map(photo => (<PreviewThumbnail url={photo}/>))}
-
-          </div>
+        <div className="photo-picker__input-wrapper">
+          <p>
+            You can select one of these pre-selected cover photos, or search for
+            thousands of other options through the Pexels API!
+          </p>
+          <Search
+            size="large"
+            className="photo-picker__search"
+            placeholder="Image keyword, e.g. nature, code"
+            onSearch={onSearch}
+          />
+        </div>
+        <div className="photo-picker__default">
+          {photos.length < 1 &&
+            defaultPhotos.map((photo, i) => (
+              <PreviewThumbnail key={photo + i} url={photo} />
+            ))}
+          {photos &&
+            photos.map((photo, i) => (
+              <PreviewThumbnail key={photo + i} url={photo.src.tiny} />
+            ))}
+        </div>
       </Modal>
     </div>
   );

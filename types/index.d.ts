@@ -6,4 +6,6 @@ export interface UserInput {
 
 declare module 'react-redux';
 
+declare var TEST: string;
+
 
