@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Modal, Input, Icon } from "antd";
+import { Button, Modal, Input, Icon, Spin } from "antd";
 import "./PhotoPicker.css";
 const pexels = require("../../../../../../static/pexels.jpg");
 import { PreviewThumbnail } from "./PreviewThumbnail";
+import { PhotoDetails } from "./PhotoDetails";
+import { UPDATE_USER_STYLES } from "../../../../../queries";
 
 const { Search } = Input;
 
@@ -18,8 +20,12 @@ const defaultPhotos = [
 
 export const PhotoPicker: FunctionComponent<any> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [photos, setPhotos] = useState<Array<any>>([]);
+  const [selectedPhoto, setSelectedPhoto] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
 
   // Test of DefinePlugin variables -- It works! But TS will still flag as undefined, so it needs to be ignored
   // for the time being
@@ -28,6 +34,7 @@ export const PhotoPicker: FunctionComponent<any> = () => {
   // console.log("VAR TEST", wtf);
 
   const getPhotos = async () => {
+    setLoading(true);
     axios
       .get(
         `http://localhost:3000/photos?search=${encodeURIComponent(searchTerm)}`
@@ -35,6 +42,7 @@ export const PhotoPicker: FunctionComponent<any> = () => {
       .then(res => {
         console.log(res);
         setPhotos(res.data.photos);
+        setLoading(false);
       });
   };
 
@@ -46,8 +54,24 @@ export const PhotoPicker: FunctionComponent<any> = () => {
     searchTerm && getPhotos();
   }, [searchTerm]);
 
+  useEffect(() => {
+    selectedPhoto && setShowDetails(true);
+  }, [selectedPhoto])
+
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+
+  const selectPhoto = (e: React.MouseEvent, url: string) => {
+      setSelectedPhoto(url)
+  };
+
+  const choose = () => {
+
   };
 
   return (
@@ -73,7 +97,7 @@ export const PhotoPicker: FunctionComponent<any> = () => {
         onOk={() => console.log("OK")}
         footer={
           <div className="pexels__wrapper">
-            Dynamic photos through{" "}
+            Photos provided by{" "}
             <a
               className="pexels__link"
               target="_blank"
@@ -98,15 +122,17 @@ export const PhotoPicker: FunctionComponent<any> = () => {
           />
         </div>
         <div className="photo-picker__default">
-          {photos.length < 1 &&
+          {(photos.length < 1 && !loading) &&
             defaultPhotos.map((photo, i) => (
               <PreviewThumbnail key={photo + i} url={photo} />
             ))}
-          {photos &&
+          {(photos && !loading) &&
             photos.map((photo, i) => (
-              <PreviewThumbnail key={photo + i} url={photo.src.tiny} />
+              <PreviewThumbnail key={photo + i} url={photo.src.tiny} selectPhoto={(e: React.MouseEvent) => selectPhoto(e, photo.src.landscape)}/>
             ))}
         </div>
+        {loading && <div className="photos__loader"><Spin tip="Loading..."/></div>}
+        {selectedPhoto && <PhotoDetails show={showDetails} img={selectedPhoto} close={toggleDetails}/>}
       </Modal>
     </div>
   );
