@@ -2,7 +2,7 @@ import React, {
   FunctionComponent,
   useState,
   useContext,
-  useEffect
+  useEffect, createContext
 } from "react";
 import { ColorPicker } from "./style_options/ColorPicker";
 import { FontSelect } from "./style_options/FontSelect";
@@ -18,6 +18,7 @@ import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
 import { fonts } from "../../common";
 import data from '../gradients';
+import {GradientPicker} from "./style_options/GradientPicker/GradientPicker";
 
 const { Option } = Select;
 
@@ -41,10 +42,15 @@ const themes = [
   }
 ];
 
+//Create context with mutation to update styles from within any child component
+export const StyleContext = createContext(null);
+
 export const StyleMenu: FunctionComponent<any> = (props: any) => {
   // Import user ID for mutations & current styles from contexts
   const authUser = useContext(UserContext);
   const editorContext = useContext(EditorContext);
+
+
 
   const [selectedTheme, setSelectedTheme] = useState<any>(
     editorContext.styles.theme ? themes.filter(t => t.name === editorContext.styles.theme)[0] : themes[0]
@@ -94,7 +100,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     setColor(color.hex);
   };
 
-  const onChangeFont = (val: any) => {
+  const onChangeFont = (val: string) => {
     //console.log(val);
     setFont(val);
   };
@@ -103,14 +109,13 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     setFontSize(val);
   };
 
+  const onChangeBgPhoto = (url: string) => {
+    setBgPhoto(url);
+  };
+
   const fontSizeFormatter = (val: number) => {
     return `${val}px`;
   };
-
-  const selectTheme = (theme: any) => {
-    setSelectedTheme(theme);
-  }
-
 
 
   return (
@@ -124,6 +129,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       </div>
       </div>
       {selectedTheme.name === "Modern" && <div className="styles__item-wrapper"><PhotoPicker/></div>}
+      {selectedTheme.name === "Modern" && <div className="styles__item-wrapper"><GradientPicker/></div>}
       <div className="styles__item-wrapper styles__font-size-wrapper" style={{ borderBottom: 'none'}}>
         <label className="styles__color-label ant-form-item-label">
           Font Size:

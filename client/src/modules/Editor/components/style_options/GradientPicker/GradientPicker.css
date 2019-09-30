@@ -1,0 +1,61 @@
+.gradients__modal .ant-modal-header {
+    background:  linear-gradient(to bottom, #1890ff 0%,#4371db 100%);
+}
+
+.uigradients__logo {
+    padding-left: 10px;
+}
+
+.gradients__preview-wrapper {
+    padding-bottom: 16px;
+}
+
+.gradients__preview {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown .5s ease-in-out;
+    border-radius: 5px;
+}
+
+@keyframes slideDown {
+    from {height: 0}
+    to {height: 250px}
+}
+
+.gradients__preview-name {
+    color: white;
+    opacity: 0.7;
+    font-size: 18px;
+}
+
+.gradients__options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gradient__option {
+    height: 100px;
+    width: calc(33.3333% - 10px);
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 3px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.gradient__option:hover {
+    transform: scale(1.1)
+}
+
+.gradient__option-name {
+    color: white;
+    opacity: 0.75;
+    font-size: 18px;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+}

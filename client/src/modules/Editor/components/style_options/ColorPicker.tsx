@@ -1,21 +1,23 @@
 import React, {FunctionComponent, useState} from 'react';
-import {TwitterPicker} from "react-color";
+import { TwitterPicker } from "react-color";
 
-const popover = {
-    position: "absolute",
-    zIndex: 10
-} as React.CSSProperties;
+interface ColorPickerProps {
+    color: any;
+    onChange: (color: any) => void;
+    label: string;
+}
 
-const cover = {
-    position: "fixed",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 0
-} as React.CSSProperties;
+export const ColorPicker: FunctionComponent<ColorPickerProps> = ({ color, onChange, label}) => {
 
-export const ColorPicker: FunctionComponent<any> = ({ color, onChange, label}) => {
+    // Styles for color picker invisible overlay to allow closing the picker by clicking outside it
+    const cover = {
+        position: "fixed",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        zIndex: 0
+    } as React.CSSProperties;
 
     const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
 
