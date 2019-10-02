@@ -18,7 +18,7 @@ const defaultPhotos = [
   "https://res.cloudinary.com/dgeb3iekh/image/upload/c_thumb,w_200,g_face/v1558826020/astrology-astronomy-background-image-956981_1_x1s9n0.jpg"
 ];
 
-export const PhotoPicker: FunctionComponent<any> = () => {
+export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
