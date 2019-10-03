@@ -64,12 +64,28 @@ const typeDefs = gql`
     phone: String
     github: String
   }
+  
+  type Gradient {
+    colors: [String]
+    name: String
+    direction: String
+    opacity: String
+  }
+  
+  input GradientInput {
+    colors: [String]
+    name: String
+    direction: String
+    opacity: String
+  }
+  
   type UserStyles {
     theme: String
     color: String
     font: String
     fontSize: Int
     bgPhoto: String
+    gradient: Gradient
   }
   input UserStylesInput {
     theme: String
@@ -77,6 +93,7 @@ const typeDefs = gql`
     font: String
     fontSize: Int
     bgPhoto: String
+    gradient: GradientInput
   }
   type Query {
     me: User

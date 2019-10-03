@@ -1463,7 +1463,7 @@ export default [
   },
   {
     "name": "Elate The Euge",
-    "colors": ["#8BDEDA", "43ADD0", "998EE0", "E17DC2", "EF9393"]
+    "colors": ["#8BDEDA", "#43ADD0", "#998EE0", "#E17DC2", "#EF9393"]
   },
   {
     "name": "Peach Sea",

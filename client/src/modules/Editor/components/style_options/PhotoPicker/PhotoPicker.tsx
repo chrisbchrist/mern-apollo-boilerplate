@@ -70,8 +70,8 @@ export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
       setSelectedPhoto(url)
   };
 
-  const choose = () => {
-
+  const confirm = () => {
+    onChange(selectedPhoto);
   };
 
   return (
@@ -132,7 +132,7 @@ export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
             ))}
         </div>
         {loading && <div className="photos__loader"><Spin tip="Loading..."/></div>}
-        {selectedPhoto && <PhotoDetails show={showDetails} img={selectedPhoto} close={toggleDetails}/>}
+        {selectedPhoto && <PhotoDetails show={showDetails} img={selectedPhoto} close={toggleDetails} confirm={confirm}/>}
       </Modal>
     </div>
   );

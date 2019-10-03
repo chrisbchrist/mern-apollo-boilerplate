@@ -32,6 +32,12 @@ export const GET_USER_AND_PROJECTS = gql`
         font
         fontSize
         bgPhoto
+        gradient {
+            colors
+            name
+            direction
+            opacity
+        }
       }
     }
   }
@@ -134,6 +140,12 @@ export const UPDATE_USER_STYLES = gql`
                 font
                 fontSize
                 bgPhoto
+                gradient {
+                    colors
+                    name
+                    direction
+                    opacity
+                }
             }
         }
     }

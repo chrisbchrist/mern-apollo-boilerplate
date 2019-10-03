@@ -2,7 +2,8 @@ import React, {
   FunctionComponent,
   useState,
   useContext,
-  useEffect, createContext
+  useEffect,
+  createContext
 } from "react";
 import { ColorPicker } from "./style_options/ColorPicker";
 import { FontSelect } from "./style_options/FontSelect";
@@ -17,11 +18,10 @@ import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
 import { fonts } from "../../common";
-import data from '../gradients';
-import {GradientPicker} from "./style_options/GradientPicker/GradientPicker";
+import data from "../gradients";
+import { GradientPicker, Gradient } from "./style_options/GradientPicker/GradientPicker";
 
 const { Option } = Select;
-
 
 const themes = [
   {
@@ -35,9 +35,9 @@ const themes = [
   {
     name: "Modern",
     img:
-        "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
+      "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
     desc:
-        "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
+      "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
     link: "#"
   }
 ];
@@ -50,10 +50,10 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   const authUser = useContext(UserContext);
   const editorContext = useContext(EditorContext);
 
-
-
   const [selectedTheme, setSelectedTheme] = useState<any>(
-    editorContext.styles.theme ? themes.filter(t => t.name === editorContext.styles.theme)[0] : themes[0]
+    editorContext.styles.theme
+      ? themes.filter(t => t.name === editorContext.styles.theme)[0]
+      : themes[0]
   );
   const [color, setColor] = useState<string>(
     editorContext.styles.color ? editorContext.styles.color : "#1890ff"
@@ -65,7 +65,11 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     editorContext.styles.fontSize ? editorContext.styles.fontSize : 16
   );
 
-  const [bgPhoto, setBgPhoto] = useState<string>("");
+  const [bgPhoto, setBgPhoto] = useState<string>(
+    editorContext.styles.bgPhoto ? editorContext.styles.bgPhoto : null
+  );
+
+  const [gradient, setGradient] = useState<any>(null);
 
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, {
     client,
@@ -78,8 +82,6 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     ]
   });
 
-
-
   // Automatically send changes to database on each style change
   const saveStyles = () => {
     const userStyles = {
@@ -87,7 +89,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       color,
       font,
       fontSize,
-      bgPhoto,
+      bgPhoto
     };
     updateStyles({ variables: { userStyles, id: authUser.id } });
   };
@@ -117,20 +119,33 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     return `${val}px`;
   };
 
-
   return (
     <div className="styles__wrapper">
-      <div className="styles__item-wrapper" style={{display: 'flex', justifyContent: 'space-between'}}>
-      <div>
-        <ColorPicker color={color} onChange={onChangeColor} label="Color"/>
+      <div
+        className="styles__item-wrapper"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <div>
+          <ColorPicker color={color} onChange={onChangeColor} label="Color" />
+        </div>
+        <div>
+          <FontSelect font={font} onChange={onChangeFont} options={fonts} />
+        </div>
       </div>
-      <div>
-        <FontSelect font={font} onChange={onChangeFont} options={fonts}/>
-      </div>
-      </div>
-      {selectedTheme.name === "Modern" && <div className="styles__item-wrapper"><PhotoPicker/></div>}
-      {selectedTheme.name === "Modern" && <div className="styles__item-wrapper"><GradientPicker/></div>}
-      <div className="styles__item-wrapper styles__font-size-wrapper" style={{ borderBottom: 'none'}}>
+      {selectedTheme.name === "Modern" && (
+        <div className="styles__item-wrapper">
+          <PhotoPicker onChange={onChangeBgPhoto} />
+        </div>
+      )}
+      {selectedTheme.name === "Modern" && (
+        <div className="styles__item-wrapper">
+          <GradientPicker setGradient={setGradient}/>
+        </div>
+      )}
+      <div
+        className="styles__item-wrapper styles__font-size-wrapper"
+        style={{ borderBottom: "none" }}
+      >
         <label className="styles__color-label ant-form-item-label">
           Font Size:
         </label>
@@ -145,9 +160,16 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       </div>
 
       <div className="styles__themes-wrapper">
-        <Divider><span className="styles__themes-title">Themes</span></Divider>
+        <Divider>
+          <span className="styles__themes-title">Themes</span>
+        </Divider>
         {themes.map((theme, i) => (
-          <Theme key={theme.name} theme={theme} onClick={() => setSelectedTheme(themes[i])} selected={theme.name === selectedTheme.name}/>
+          <Theme
+            key={theme.name}
+            theme={theme}
+            onClick={() => setSelectedTheme(themes[i])}
+            selected={theme.name === selectedTheme.name}
+          />
         ))}
       </div>
     </div>

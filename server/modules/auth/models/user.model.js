@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema({
     font: String,
     fontSize: Number,
     bgPhoto: String,
+    gradient: {
+      colors: [{ type: String }],
+      name: String,
+      direction: String,
+      opacity: Number
+    }
   }
 
 });

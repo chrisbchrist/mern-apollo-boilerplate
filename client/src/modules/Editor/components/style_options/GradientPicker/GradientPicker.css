@@ -1,61 +1,181 @@
 .gradients__modal .ant-modal-header {
-    background:  linear-gradient(to bottom, #1890ff 0%,#4371db 100%);
+  background: linear-gradient(to bottom, #1890ff 0%, #4371db 100%);
 }
 
 .uigradients__logo {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
-.gradients__preview-wrapper {
-    padding-bottom: 16px;
+.gradient__preview-wrapper {
+  margin-bottom: 16px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 }
 
 .gradients__preview {
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: slideDown .5s ease-in-out;
-    border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideDown 0.3s ease-in-out;
+  border-radius: 5px;
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.gradients__preview-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
 }
 
 @keyframes slideDown {
-    from {height: 0}
-    to {height: 250px}
+  from {
+    height: 0;
+  }
+  to {
+    height: 200px;
+  }
 }
 
 .gradients__preview-name {
-    color: white;
-    opacity: 0.7;
-    font-size: 18px;
+  color: white;
+  opacity: 0.7;
+  font-size: 24px;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
 }
 
 .gradients__options {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex !important;
+  flex-wrap: wrap;
 }
 
 .gradient__option {
-    height: 100px;
-    width: calc(33.3333% - 10px);
-    margin: 5px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 3px 8px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: all .3s;
+  height: 100px;
+  width: calc(33.3333% - 10px);
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .gradient__option:hover {
-    transform: scale(1.1)
+  transform: scale(1.1);
 }
 
 .gradient__option-name {
-    color: white;
-    opacity: 0.75;
-    font-size: 18px;
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.4);
+  color: white;
+  opacity: 0.75;
+  font-size: 18px;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.gradients__pagination-wrapper {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.gradient__rotate-wrapper {
+    position: absolute;
+    display: flex;
+    width: 60px;
+    height: 60px;
+    /*transform: translateX(-100%);*/
+    /*background: rgba(255,255,255,0.5);*/
+    top: 0;
+    left: 0;
+    transition: all .3s;
+    padding: 10px;
+  z-index: 5;
+}
+
+/*.gradient__preview-wrapper:hover .gradient__rotate-wrapper {*/
+/*    transform: translateX(0);*/
+
+/*}*/
+
+.gradient__rotate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  /*border-bottom: 1px solid white;*/
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,0.3);
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+
+}
+
+.gradient__icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+.gradient__icon svg {
+  fill: #fff;
+  filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.35));
+  transition: all .3s;
+}
+
+.gradient__rotate:hover svg {
+  fill: #1890ff;
+}
+
+.gradient__alpha-wrapper {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  /*transform: translateY(100%);*/
+  background: rgba(255,255,255,0.5);
+  bottom: 0;
+  left: 0;
+  transition: all .3s;
+  padding: 7px 10px 7px 7px;
+  border-top-right-radius: 5px;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*.gradient__preview-wrapper:hover .gradient__alpha-wrapper {*/
+/*  transform: translateY(0);*/
+
+/*}*/
+
+.gradient__alpha-wrapper .ant-slider {
+  width: 100%;
+  margin: 7px 0 7px 0;
+}
+
+.gradient__alpha-label {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 12px;
+  display: block;
 }
