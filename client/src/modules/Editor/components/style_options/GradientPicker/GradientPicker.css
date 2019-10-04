@@ -2,6 +2,10 @@
   background: linear-gradient(to bottom, #1890ff 0%, #4371db 100%);
 }
 
+.gradients__modal .ant-modal-content .ant-modal-close {
+  color: white;
+}
+
 .uigradients__logo {
   padding-left: 10px;
 }

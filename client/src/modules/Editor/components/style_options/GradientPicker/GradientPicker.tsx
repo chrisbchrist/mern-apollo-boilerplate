@@ -9,6 +9,7 @@ import { Button, Icon, Modal, Carousel, Pagination, Tooltip, Slider } from "antd
 import gradients from "../../../gradients";
 import "./GradientPicker.css";
 import { GradientModalContent } from "./GradientModalContent";
+import {GradientCarousel } from "./GradientPages";
 
 export type Gradient = {
   name: string;
@@ -189,9 +190,7 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
         )}
 
         <div className="gradients__carousel-wrapper">
-          <Carousel dots={false} ref={carousel}>
-            {generatePages(gradients, pageSize)}
-          </Carousel>
+          <GradientCarousel ref={carousel} gradients={gradients} pageSize={pageSize} setSelectedGradient={setSelectedGradient}/>
           <div className="gradients__pagination-wrapper">
             <Pagination
               size="small"

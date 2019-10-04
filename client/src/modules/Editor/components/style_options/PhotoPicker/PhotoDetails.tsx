@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import {Modal, Spin, Button} from 'antd';
 
-export const PhotoDetails: FunctionComponent<any> = ({ show, img, close, confirm }) => {
+export const PhotoDetails: FunctionComponent<any> = ({ show, img, close, confirm, closeParent }) => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -15,6 +15,7 @@ export const PhotoDetails: FunctionComponent<any> = ({ show, img, close, confirm
     const handleClick = (e: React.MouseEvent) => {
         confirm();
         close();
+        closeParent();
     }
 
     const footer = (<div className="photo-details__footer">
