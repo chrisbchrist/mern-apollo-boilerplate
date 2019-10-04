@@ -96,7 +96,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   useEffect(() => {
     saveStyles();
-  }, [color, font, selectedTheme, fontSize]);
+  }, [color, font, selectedTheme, fontSize, bgPhoto]);
 
   const onChangeColor = (color: any) => {
     setColor(color.hex);
@@ -133,12 +133,8 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         </div>
       </div>
       {selectedTheme.name === "Modern" && (
-        <div className="styles__item-wrapper">
+          <div className="styles__item-wrapper" style={{display: 'flex'}}>
           <PhotoPicker onChange={onChangeBgPhoto} />
-        </div>
-      )}
-      {selectedTheme.name === "Modern" && (
-        <div className="styles__item-wrapper">
           <GradientPicker setGradient={setGradient}/>
         </div>
       )}
