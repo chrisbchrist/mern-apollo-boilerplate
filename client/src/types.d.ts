@@ -21,6 +21,14 @@ export interface UserStyles {
     font: string;
     fontSize: number;
     bgPhoto: string;
+    gradient: Gradient
+}
+
+type Gradient = {
+    name: string;
+    colors: string[];
+    direction: string;
+    opacity: number;
 }
 
 export interface Project {

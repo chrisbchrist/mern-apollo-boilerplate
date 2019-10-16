@@ -8,27 +8,14 @@ import React, {
 import { Button, Icon, Modal, Carousel, Pagination, Tooltip, Slider } from "antd";
 import gradients from "../../../gradients";
 import "./GradientPicker.css";
-import { GradientModalContent } from "./GradientModalContent";
 import {GradientCarousel } from "./GradientPages";
+import { formatColors } from "../../../../common";
 
 export type Gradient = {
   name: string;
   colors: string[];
   opacity?: number;
   direction?: string;
-};
-
-// Transforms array of hex colors into comma-separated values to insert into CSS
-const formatColors: (colors: string[]) => string = colors => {
-  let output: string = "";
-  for (let i = 0; i < colors.length; i++) {
-    if (i === colors.length - 1) {
-      output += colors[i];
-    } else {
-      output += `${colors[i]}, `;
-    }
-  }
-  return output;
 };
 
 const directions: string[] = ["to top", "to right", "to bottom", "to left"];
@@ -62,6 +49,7 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
   };
 
   const handleSliderChange = (value: number) => {
+    let realVal = Number(value * 0.01);
     setOpacity(value * 0.01);
   };
 
@@ -71,45 +59,8 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
         direction,
         opacity
     };
-    console.log(gradient);
     setGradient(gradient);
-  }
-
-  // Generate page-sized divs for use with AntD carousel containing gradient options
-  const generatePages: (
-    gradients: Gradient[],
-    pageSize: number
-  ) => ReactElement[] = (gradients, pageSize) => {
-    let pages: ReactElement[] = [];
-    for (let i = 0; i < Math.ceil(gradients.length / pageSize); i++) {
-      const min: number = i * pageSize;
-      const max: number = (i + 1) * pageSize;
-      pages.push(
-        <div className="gradients__options" key={"page" + i}>
-          {gradients
-            .slice(min, max)
-            .map((gradient: Gradient, index: number) => {
-              const trueIndex = min + index;
-              return (
-                <div
-                    key={gradient.name}
-                  className="gradient__option"
-                  style={{
-                    background: `linear-gradient(to top, ${formatColors(
-                      gradient.colors
-                    )})`
-                  }}
-                  onClick={() => setSelectedGradient(gradients[trueIndex])}
-                >
-                  <span className="gradient__option-name">{gradient.name}</span>
-                </div>
-              );
-            })}
-        </div>
-      );
-    }
-
-    return pages;
+    setShowModal(false);
   };
 
   const onChangePage = (page: number, pageSize: number) => {
@@ -118,7 +69,7 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
 
   return (
     <div>
-      <Button onClick={toggleModal}>Gradient</Button>
+      <Button onClick={toggleModal} icon="bg-colors" className="gradient__btn">Gradient</Button>
       <Modal
         className="gradients__modal"
         visible={showModal}
@@ -169,6 +120,9 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
             <div className="gradient__alpha-wrapper">
               <span className="gradient__alpha-label">Opacity</span>
               <Slider defaultValue={100} max={100} min={1} onChange={handleSliderChange}/>
+            </div>
+            <div className="gradient__confirm-wrapper">
+              <Button icon="check" type="primary" shape="round" className="gradient__confirm" onClick={confirm}>Select</Button>
             </div>
             <div style={{ position: 'relative', width: '100%' }}>
             <div

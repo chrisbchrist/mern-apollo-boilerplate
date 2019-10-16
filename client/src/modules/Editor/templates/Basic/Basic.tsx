@@ -24,16 +24,15 @@ export const BasicTemplate: FunctionComponent<TemplateProps> = ({
       style={{ fontFamily: styles.font || "Raleway", fontSize: styles.fontSize + "px" }}
     >
       <div className="basic__header">
-        <div
-          className="basic__photo-frame"
-          style={{ borderColor: styles.color || "#1890ff" }}
+        {userInfo.profilePhoto && (<div
+            className="basic__photo-frame"
+            style={{ borderColor: styles.color || "#1890ff" }}
         >
           <div className="basic__photo-wrapper">
-            {userInfo.profilePhoto && (
-              <img src={userInfo.profilePhoto} className="basic__photo" />
-            )}
+            <img src={userInfo.profilePhoto} className="basic__photo" />
           </div>
-        </div>
+        </div>)}
+
         {userInfo.name && <h1 className="basic__name">{userInfo.name}</h1>}
         {userInfo.title && <h2 className="basic__title">{userInfo.title}</h2>}
         {userInfo.email && (

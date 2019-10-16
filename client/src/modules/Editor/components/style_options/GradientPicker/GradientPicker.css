@@ -1,3 +1,7 @@
+.gradient__btn {
+  margin-left: 20px;
+}
+
 .gradients__modal .ant-modal-header {
   background: linear-gradient(to bottom, #1890ff 0%, #4371db 100%);
 }
@@ -182,4 +186,20 @@
   font-weight: 500;
   font-size: 12px;
   display: block;
+}
+
+.gradient__confirm-wrapper {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(calc(100% + 10px));
+  transition: all .3s;
+  z-index: 5;
+}
+
+.gradient__preview-wrapper:hover .gradient__confirm-wrapper {
+  transform: translateX(0);
 }

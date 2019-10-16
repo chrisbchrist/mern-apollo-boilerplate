@@ -18,7 +18,6 @@ import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
 import { fonts } from "../../common";
-import data from "../gradients";
 import { GradientPicker, Gradient } from "./style_options/GradientPicker/GradientPicker";
 
 const { Option } = Select;
@@ -34,10 +33,11 @@ const themes = [
   },
   {
     name: "Modern",
+    displayName: "Dynamic",
     img:
       "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
     desc:
-      "This is your classic, clean portfolio that sacrifices fancy-shmancy bells and whistles for ruthless, professional efficency.",
+      "Built to offer as eye-catching individuality as possible by adjusting a few ",
     link: "#"
   }
 ];
@@ -69,7 +69,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
     editorContext.styles.bgPhoto ? editorContext.styles.bgPhoto : null
   );
 
-  const [gradient, setGradient] = useState<any>(null);
+  const [gradient, setGradient] = useState<any>(editorContext.styles.gradient ? editorContext.styles.gradient : null);
 
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, {
     client,
@@ -84,19 +84,27 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   // Automatically send changes to database on each style change
   const saveStyles = () => {
+    // Format input for GraphQL
+    if (gradient) {
+      if (gradient.opacity) {
+        gradient.opacity = gradient.opacity.toString();
+      }
+      delete gradient.__typename;
+    }
     const userStyles = {
       theme: selectedTheme.name,
       color,
       font,
       fontSize,
-      bgPhoto
+      bgPhoto,
+      gradient
     };
     updateStyles({ variables: { userStyles, id: authUser.id } });
   };
 
   useEffect(() => {
     saveStyles();
-  }, [color, font, selectedTheme, fontSize, bgPhoto]);
+  }, [color, font, selectedTheme, fontSize, bgPhoto, gradient]);
 
   const onChangeColor = (color: any) => {
     setColor(color.hex);
@@ -148,7 +156,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
         <Slider
           className="styles__font-slider"
           min={10}
-          max={20}
+          max={35}
           onChange={onChangeFontSize}
           tipFormatter={fontSizeFormatter}
           value={fontSize}

@@ -66,12 +66,18 @@ export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
     setShowDetails(!showDetails);
   };
 
-  const selectPhoto = (e: React.MouseEvent, url: string) => {
-      setSelectedPhoto(url)
+  const selectPhoto = (e: React.MouseEvent, photoData: string) => {
+      setSelectedPhoto(photoData)
   };
 
   const confirm = () => {
-    onChange(selectedPhoto);
+    console.log(selectedPhoto);
+    const originalHeight = selectedPhoto.height;
+    const originalWidth = selectedPhoto.width;
+    const newHeight = Math.round((1920 * originalHeight) / originalWidth);
+    const sizeQueryParams = `&h=${newHeight}&w=1920`;
+    const customSizeUrl = selectedPhoto.src.original + "?auto=compress&cs=tinysrgb" + sizeQueryParams;
+    onChange(customSizeUrl);
   };
 
   return (
@@ -128,11 +134,11 @@ export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
             ))}
           {(photos && !loading) &&
             photos.map((photo, i) => (
-              <PreviewThumbnail key={photo + i} url={photo.src.tiny} selectPhoto={(e: React.MouseEvent) => selectPhoto(e, photo.src.landscape)}/>
+              <PreviewThumbnail key={photo + i} url={photo.src.tiny} selectPhoto={(e: React.MouseEvent) => selectPhoto(e, photo)}/>
             ))}
         </div>
         {loading && <div className="photos__loader"><Spin tip="Loading..."/></div>}
-        {selectedPhoto && <PhotoDetails show={showDetails} img={selectedPhoto} close={toggleDetails} closeParent={toggleModal} confirm={confirm}/>}
+        {selectedPhoto && <PhotoDetails show={showDetails} img={selectedPhoto.src.landscape} close={toggleDetails} closeParent={toggleModal} confirm={confirm}/>}
       </Modal>
     </div>
   );

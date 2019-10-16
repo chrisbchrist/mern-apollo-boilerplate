@@ -7,6 +7,7 @@ interface ThumbnailProps {
 }
 
 export const PreviewThumbnail: FunctionComponent<ThumbnailProps> = ({url, selectPhoto}) => {
+    
 
     return (
         <div className="thumbnail__wrapper">

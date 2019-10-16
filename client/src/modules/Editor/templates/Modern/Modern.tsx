@@ -2,6 +2,7 @@ import React, { FunctionComponent, useContext } from "react";
 import { Project, UserInfo, UserStyles } from "../../../../types";
 import { ModernProject } from "./ModernProject";
 import "./Modern.css";
+import { formatColors } from "../../../common";
 
 interface TemplateProps {
   projects: Array<Project>;
@@ -14,6 +15,11 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
   userInfo,
   styles
 }) => {
+  const gradientStyles = {
+    background: `linear-gradient(${styles.gradient.direction}, ${formatColors(styles.gradient.colors)})`,
+    opacity: Number(styles.gradient.opacity)
+  };
+
   return (
     <div
       className="modern__wrapper"
@@ -22,33 +28,36 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
         fontSize: styles.fontSize + "px"
       }}
     >
-      <div className="modern__header">
-        <div
+      <div className="modern__header" style={{ backgroundImage: `url("${styles.bgPhoto}")`}}>
+        <div className="modern__overlay" style={gradientStyles}/>
+        <div className="modern__header-content">
+          { userInfo.profilePhoto && <div
           className="modern__photo-frame"
           style={{ borderColor: styles.color || "#1890ff" }}
         >
           <div className="modern__photo-wrapper">
-            {userInfo.profilePhoto && (
               <img src={userInfo.profilePhoto} className="modern__photo" />
-            )}
           </div>
-        </div>
+        </div>}
         {userInfo.name && <h1 className="modern__name">{userInfo.name}</h1>}
         {userInfo.title && <h2 className="modern__title">{userInfo.title}</h2>}
+        </div>
+      </div>
+      <section className="modern__info">
         {userInfo.email && (
-          <h3 className="modern__email">
-            <a>{userInfo.email}</a>
-          </h3>
+            <h3 className="modern__email">
+              <a>{userInfo.email}</a>
+            </h3>
         )}
         {userInfo.location && (
-          <h3 className="modern__location">{userInfo.location}</h3>
+            <h3 className="modern__location">{userInfo.location}</h3>
         )}
         {userInfo.about && (
-          <div className="modern__about-wrapper">
-            <p className="modern__about">{userInfo.about}</p>
-          </div>
+            <div className="modern__about-wrapper">
+              <p className="modern__about">{userInfo.about}</p>
+            </div>
         )}
-      </div>
+      </section>
       <section className="modern__projects">
         {projects.length > 0 &&
           projects.map((project: Project, index: number) => {

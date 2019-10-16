@@ -6,9 +6,12 @@
     position: sticky;
     display: flex;
     justify-content: flex-end;
-    padding-top: 20px;
     padding-right: 20px;
     right: 25px;
     top: 25px;
     height: 0;
+}
+
+.editor__download-btn {
+    transform: translateY(20px);
 }

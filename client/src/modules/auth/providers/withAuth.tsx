@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import {Result, Button, Spin} from 'antd';
 import {Link} from "react-router-dom";
 
+
 // Wraps a component to verify that the user possesses a valid token before rendering
 export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactElement = (Component) => (props) => {
 
@@ -46,6 +47,6 @@ export const withAuth: <P>(Component: ComponentType<P>) => (props: P) => ReactEl
         )
     };
 
-    return <AuthWrapper {...props}/>;
+    return <div><AuthWrapper {...props}/></div>;
 
 };

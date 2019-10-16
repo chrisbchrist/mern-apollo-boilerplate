@@ -7,13 +7,14 @@ interface ThemeProps {
     img: string;
     desc: string;
     link: string;
+    displayName?: string;
   };
   onClick: any;
   selected: boolean;
 }
 
 export const Theme: FunctionComponent<ThemeProps> = ({
-  theme: { name, img, desc, link },
+  theme: { name, img, desc, link, displayName },
   selected,
     onClick
 }) => {
@@ -40,7 +41,7 @@ export const Theme: FunctionComponent<ThemeProps> = ({
         onClick={onClick}
       >
           <Icon type="check-circle" theme="twoTone" className="theme__check" />
-        <div className="theme__header"><h4 className="theme__name">{name}</h4></div>
+        <div className="theme__header"><h4 className="theme__name">{displayName ? displayName : name}</h4></div>
         <div className="theme__img-wrapper">
           <img src={img} className="theme__img" />
         </div>

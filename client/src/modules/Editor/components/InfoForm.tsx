@@ -97,6 +97,7 @@ export const InfoForm: FunctionComponent<any> = () => {
                           label="Profile Photo"
                           placeholder="Profile picture URL"
                           component={InputField}
+                          allowClear
                         />
                         <Field
                           name="location"
