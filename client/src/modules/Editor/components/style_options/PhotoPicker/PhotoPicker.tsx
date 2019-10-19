@@ -7,6 +7,12 @@ import { PreviewThumbnail } from "./PreviewThumbnail";
 import { PhotoDetails } from "./PhotoDetails";
 import { UPDATE_USER_STYLES } from "../../../../../queries";
 
+export interface Photo {
+  height: number;
+  width: number;
+
+}
+
 const { Search } = Input;
 
 const defaultPhotos = [
@@ -134,7 +140,7 @@ export const PhotoPicker: FunctionComponent<any> = ({ onChange }) => {
             ))}
           {(photos && !loading) &&
             photos.map((photo, i) => (
-              <PreviewThumbnail key={photo + i} url={photo.src.tiny} selectPhoto={(e: React.MouseEvent) => selectPhoto(e, photo)}/>
+              <PreviewThumbnail key={photo + i} url={photo.src.tiny} dimensions={`${photo.width} x ${photo.height}`} selectPhoto={(e: React.MouseEvent) => selectPhoto(e, photo)}/>
             ))}
         </div>
         {loading && <div className="photos__loader"><Spin tip="Loading..."/></div>}

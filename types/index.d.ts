@@ -4,8 +4,6 @@ export interface UserInput {
   confirm: string;
 }
 
-declare module 'react-redux';
-
 declare var TEST: string;
 
 

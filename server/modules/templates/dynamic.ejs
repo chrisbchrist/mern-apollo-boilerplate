@@ -1,10 +1,10 @@
 <html lang="en">
 <head>
-<title><%= user.info.name + " - " + user.info.title %></title>
+    <title><%= user.info.name + " - " + user.info.title %></title>
 
-<link
-      href="https://fonts.googleapis.com/css?family=Raleway|Oswald|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed:300|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
-      rel="stylesheet"
+    <link
+            href="https://fonts.googleapis.com/css?family=Raleway|Oswald|Raleway+Dots|EB+Garamond|Cutive+Mono|Open+Sans+Condensed:300|Ubuntu|Roboto|Shadows+Into+Light&display=swap"
+            rel="stylesheet"
     />
     <script src="https://kit.fontawesome.com/3d74128c62.js"></script>
 
@@ -164,10 +164,6 @@
 
         }
 
-        .basic__button {
-            font-size: 14px;
-        }
-
         .basic__button:hover {
             opacity: 0.7;
         }
@@ -194,7 +190,7 @@
             touch-action: manipulation;
             height: 32px;
             padding: 0 15px;
-            /*font-size: 1em;*/
+            font-size: 1em;
             border-radius: 4px;
             color: rgba(0, 0, 0, 0.65);
             background-color: #fff;
@@ -228,7 +224,7 @@
             touch-action: manipulation;
             height: 32px;
             padding: 0 15px;
-            /*font-size: 1em;*/
+            font-size: 1em;
             border-radius: 4px;
         }
 
@@ -305,39 +301,29 @@
 
     <section class="basic__projects">
         <% for (let i = 0; i < projects.length; i++) { %>
-        <% let project = projects[i]; %>
+            <% let project = projects[i]; %>
             <div class="<%= i % 2 !== 0 ? 'basic__project basic__project--even' : 'basic__project basic__project--odd'%>">
                 <div class="basic__project-wrapper">
                     <h3 class="basic__project-title"><%= project.title %></h3>
                     <div class="basic__project-img-wrapper">
                         <% if (project.imgUrl) { %>
-                        <img src="<%= project.imgUrl %>" alt="<%= project.title %>" class="basic__project-img"/>
+                            <img src="<%= project.imgUrl %>" alt="<%= project.title %>" class="basic__project-img"/>
                         <% } else { %>
                         <% } %>
                     </div>
                     <div class="basic__project-info">
                         <p class="basic__project-desc"><%= project.desc %></p>
-
                         <% if (project.srcUrl || project.demoUrl) { %>
                             <div class="basic__project-links">
-                            <% if (project.demoUrl) { %>
-                                <a class="basic__link" target="_blank" href="<%= project.demoUrl %>"><button style="font-family: <%= user.styles.font %>" class="basic__button basic__button--primary"><i class="fas fa-code"></i> Demo</button>
-                                </a>
-                            <% } %>
-
+                                <% if (project.demoUrl) { %>
+                                    <a class="basic__link" target="_blank" href="<%= project.demoUrl %>"><button class=" basic__button basic__button--primary">Demo</button>
+                                    </a>
+                                <% } %>
 
                                 <% if (project.srcUrl) { %>
                                     <a target="_blank" class="basic__link" href="<%= project.srcUrl %>">
-                                        <button style="font-family: <%= user.styles.font %>" class="basic__button basic__button--normal"> <i class="fab fa-github"></i> Source</button>
+                                        <button class=" basic__button basic__button--normal">Source</button>
                                     </a>
-                                <% } %>
-                        </div>
-                        <% } %>
-
-                        <% if (project.tags.length > 0) { %>
-                            <div class="basic__project-tags">
-                                <% for (let j = 0; j < project.tags.length; j++) { %>
-                                    <div class="basic__tag"><%= project.tags[j] %></div>
                                 <% } %>
                             </div>
                         <% } %>

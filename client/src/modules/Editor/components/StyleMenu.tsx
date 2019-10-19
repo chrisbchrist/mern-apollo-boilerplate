@@ -20,6 +20,7 @@ import { Theme } from "./Theme";
 import { fonts } from "../../common";
 import { GradientPicker, Gradient } from "./style_options/GradientPicker/GradientPicker";
 import {Header} from "../../../types";
+import {HeaderStyles} from "./style_options/HeaderStyles/HeaderStyles";
 
 const { Option } = Select;
 
@@ -38,7 +39,7 @@ const themes = [
     img:
       "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
     desc:
-      "Modern design built for eye-catching individuality with a few simple customizations.",
+      "Modern design with a full screen splash header built for eye-catching individuality with a few simple customizations.",
     link: "#"
   }
 ];
@@ -86,6 +87,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   });
 
   // Automatically send changes to database on each style change
+  // TODO: Find an efficient way to update only the field that's changed
   const saveStyles = () => {
     // Format input for GraphQL
     if (gradient) {
@@ -132,11 +134,13 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   return (
     <div className="styles__wrapper">
-      <Collapse onChange={(key) => console.log(key)}>
-        <Collapse.Panel header="Header" key="1">
-          <p>Header Stuff</p>
-        </Collapse.Panel>
-      </Collapse>
+      {selectedTheme.name === "Modern" && (
+          <Collapse onChange={(key) => console.log(key)}>
+            <Collapse.Panel header="Header" key="1">
+             <HeaderStyles header={headerStyles}/>
+            </Collapse.Panel>
+         </Collapse>
+      )}
       <div
         className="styles__item-wrapper"
         style={{ display: "flex", justifyContent: "space-between" }}

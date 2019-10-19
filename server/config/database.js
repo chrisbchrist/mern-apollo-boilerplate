@@ -14,5 +14,5 @@ mongoose.connection.once('open', () =>
 );
 mongoose.connection.on('error', error => console.error(error));
 
-// Export mongoose. You’ll use it in server/server.js file
+// Export mongoose.
 module.exports = mongoose;
