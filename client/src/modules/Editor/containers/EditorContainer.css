@@ -10,6 +10,7 @@
     right: 25px;
     top: 25px;
     height: 0;
+    z-index: 99;
 }
 
 .editor__download-btn {

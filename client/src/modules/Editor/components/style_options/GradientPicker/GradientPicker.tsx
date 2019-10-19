@@ -73,7 +73,7 @@ export const GradientPicker: FunctionComponent<GradientPickerProps> = ({
       <Modal
         className="gradients__modal"
         visible={showModal}
-        width={800}
+        width={700}
         onCancel={toggleModal}
         title={
           <h4 className="photo-picker__title">

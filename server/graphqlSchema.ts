@@ -79,6 +79,20 @@ const typeDefs = gql`
     opacity: String
   }
   
+  type Header {
+    colors: [String]
+    size: Int
+    fonts: [String]
+    borderRadius: String
+  }
+  
+  input HeaderInput {
+    colors: [String]
+    size: Int
+    fonts: [String]
+    borderRadius: String
+  }
+  
   type UserStyles {
     theme: String
     color: String
@@ -86,6 +100,7 @@ const typeDefs = gql`
     fontSize: Int
     bgPhoto: String
     gradient: Gradient
+    header: Header
   }
   input UserStylesInput {
     theme: String
@@ -94,6 +109,7 @@ const typeDefs = gql`
     fontSize: Int
     bgPhoto: String
     gradient: GradientInput
+    header: HeaderInput
   }
   type Query {
     me: User

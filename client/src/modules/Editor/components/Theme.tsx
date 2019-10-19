@@ -31,7 +31,7 @@ export const Theme: FunctionComponent<ThemeProps> = ({
   );
 
   return (
-    <Popover content={popOverContent} title={name} style={{ width: 300 }} placement="right">
+    <Popover content={popOverContent} title={displayName ? displayName : name} style={{ width: 300 }} placement="right">
       <div
         className={
           selected

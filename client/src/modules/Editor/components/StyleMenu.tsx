@@ -13,12 +13,13 @@ import "./StyleMenu.css";
 import { UserContext } from "../../../App";
 import { EditorContext } from "../containers/EditorContainer";
 import { UPDATE_USER_STYLES, GET_USER_AND_PROJECTS } from "../../../queries";
-import { Select, Divider, Icon, Slider } from "antd";
+import { Select, Divider, Icon, Slider, Collapse } from "antd";
 import client from "../../../config/createApolloClient";
 import { FetchResult } from "react-apollo";
 import { Theme } from "./Theme";
 import { fonts } from "../../common";
 import { GradientPicker, Gradient } from "./style_options/GradientPicker/GradientPicker";
+import {Header} from "../../../types";
 
 const { Option } = Select;
 
@@ -37,7 +38,7 @@ const themes = [
     img:
       "https://res.cloudinary.com/dgeb3iekh/image/upload/c_scale,w_470/v1568942227/basic_ei3qre.png",
     desc:
-      "Built to offer as eye-catching individuality as possible by adjusting a few ",
+      "Modern design built for eye-catching individuality with a few simple customizations.",
     link: "#"
   }
 ];
@@ -70,6 +71,8 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
   );
 
   const [gradient, setGradient] = useState<any>(editorContext.styles.gradient ? editorContext.styles.gradient : null);
+
+  const [headerStyles, setHeaderStyles] = useState<Header>(editorContext.styles.header ? editorContext.styles.header : null);
 
   const [updateStyles] = useMutation(UPDATE_USER_STYLES, {
     client,
@@ -129,6 +132,11 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
 
   return (
     <div className="styles__wrapper">
+      <Collapse onChange={(key) => console.log(key)}>
+        <Collapse.Panel header="Header" key="1">
+          <p>Header Stuff</p>
+        </Collapse.Panel>
+      </Collapse>
       <div
         className="styles__item-wrapper"
         style={{ display: "flex", justifyContent: "space-between" }}

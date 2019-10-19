@@ -4,7 +4,7 @@ import { TwitterPicker } from "react-color";
 interface ColorPickerProps {
     color: any;
     onChange: (color: any) => void;
-    label: string;
+    label?: string;
 }
 
 export const ColorPicker: FunctionComponent<ColorPickerProps> = ({ color, onChange, label}) => {
@@ -29,9 +29,9 @@ export const ColorPicker: FunctionComponent<ColorPickerProps> = ({ color, onChan
 
     return (
         <div style={{ display: 'flex', alignItems: 'center'}}>
-            <label className="styles__color-label ant-form-item-label">
+            {label && <label className="styles__color-label ant-form-item-label">
                 {label + ":"}
-            </label>
+            </label>}
             <div
                 className="styles__color-swatch"
                 onClick={toggleColorPicker}

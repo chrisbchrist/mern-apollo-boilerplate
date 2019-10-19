@@ -38,6 +38,12 @@ export const GET_USER_AND_PROJECTS = gql`
             direction
             opacity
         }
+        header {
+            colors
+            size
+            fonts
+            borderRadius
+        }
       }
     }
   }
@@ -145,6 +151,12 @@ export const UPDATE_USER_STYLES = gql`
                     name
                     direction
                     opacity
+                }
+                header {
+                    colors
+                    size
+                    fonts
+                    borderRadius
                 }
             }
         }

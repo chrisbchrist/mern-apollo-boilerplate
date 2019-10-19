@@ -30,7 +30,7 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
     >
       <div className="modern__header" style={{ backgroundImage: `url("${styles.bgPhoto}")`}}>
         <div className="modern__overlay" style={gradientStyles}/>
-        <div className="modern__header-content">
+        <div className="modern__header-content" style={{ borderRadius: userInfo.profilePhoto ? '10px' : '50%'}}>
           { userInfo.profilePhoto && <div
           className="modern__photo-frame"
           style={{ borderColor: styles.color || "#1890ff" }}
@@ -41,6 +41,11 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
         </div>}
         {userInfo.name && <h1 className="modern__name">{userInfo.name}</h1>}
         {userInfo.title && <h2 className="modern__title">{userInfo.title}</h2>}
+          {projects.length > 0 && (
+              <div className="work__btn-wrapper">
+                <div className="ghost-btn">My Work</div>
+              </div>
+          )}
         </div>
       </div>
       <section className="modern__info">

@@ -42,6 +42,13 @@ const userSchema = new mongoose.Schema({
       name: String,
       direction: String,
       opacity: Number
+    },
+    header: {
+      colors: [{type: String}],
+      size: Number,
+      fonts: [{ type: String }],
+      borderRadius: String,
+
     }
   }
 

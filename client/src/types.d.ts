@@ -22,6 +22,7 @@ export interface UserStyles {
     fontSize: number;
     bgPhoto: string;
     gradient: Gradient
+    header: Header
 }
 
 type Gradient = {
@@ -29,6 +30,13 @@ type Gradient = {
     colors: string[];
     direction: string;
     opacity: number;
+}
+
+export type Header = {
+    colors: string[];
+    size: number;
+    fonts: string[];
+    borderRadius: string;
 }
 
 export interface Project {

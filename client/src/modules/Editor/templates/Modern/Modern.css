@@ -77,7 +77,69 @@
     font-size: 1.6em;
     margin: 0 0 10px 0;
     font-weight: 500;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.8);
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+}
+
+.ghost-btn {
+    position: relative;
+    overflow: hidden;
+    /*   text-transform: uppercase; */
+    font-family: Raleway;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    border-radius: 50px;
+    /*   border: 2px solid rgba(255,255,255,0.5); */
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    padding: 10px 7px;
+    text-align: center;
+    width: 180px;
+    transition: all .4s;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.35);
+    margin-top: 35px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ghost-btn::before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    /*   background: rgba(255,255,255,0.3); */
+    background: #fff;
+    opacity: 0.3;
+    transform: translateX(-100%);
+    transition: all .4s;
+    z-index: 2;
+}
+
+.ghost-btn::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50%;
+    /*   background: rgba(255,255,255,0.3); */
+    background: #fff;
+    opacity: 0.3;
+    transform: translateX(100%);
+    transition: all .4s;
+    z-index: 2;
+}
+
+.ghost-btn:hover {
+    /*   background: #18d184; */
+    color: white;
+    text-decoration: none;
+}
+
+.ghost-btn:hover::before, .ghost-btn:hover::after {
+    transform: translateX(0);
 }
 
 .modern__email {
