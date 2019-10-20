@@ -1,3 +1,7 @@
 .info__wrapper .ant-form-item {
     margin-bottom: 14px;
 }
+
+.info__collapse {
+    margin-bottom: 15px;
+}

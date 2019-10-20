@@ -25,6 +25,13 @@ export const GET_USER_AND_PROJECTS = gql`
         email
         phone
         github
+        social {
+            facebook
+            linkedIn
+            twitter
+            stackOverflow
+            codepen
+        }
       }
       styles {
         theme
@@ -113,6 +120,13 @@ export const GET_USER = gql`
         email
         phone
         github
+        social {
+            facebook
+            linkedIn
+            twitter
+            stackOverflow
+            codepen
+        }
       }
     }
   }
@@ -131,6 +145,13 @@ export const UPDATE_USER_INFO = gql`
         email
         phone
         github
+        social {
+            facebook
+            linkedIn
+            twitter
+            stackOverflow
+            codepen
+        }
       }
     }
   }

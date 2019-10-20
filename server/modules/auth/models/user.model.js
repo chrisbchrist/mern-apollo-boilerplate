@@ -29,7 +29,14 @@ const userSchema = new mongoose.Schema({
     about: String,
     email: String,
     phone: String,
-    github: String
+    github: String,
+    social: {
+      facebook: String,
+      linkedIn: String,
+      stackOverflow: String,
+      twitter: String,
+      codepen: String,
+    }
   },
   styles: {
     theme: String,

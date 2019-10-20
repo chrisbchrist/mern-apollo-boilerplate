@@ -1,5 +1,5 @@
 import React, { useState, useContext, FunctionComponent } from "react";
-import {Form as AntdForm, Input, Button, Spin} from "antd";
+import {Form as AntdForm, Input, Button, Spin, Collapse} from "antd";
 import { Formik, Form, Field, FormikProps } from "formik";
 import * as yup from "yup";
 import { Mutation, Query } from "react-apollo";
@@ -8,8 +8,17 @@ import { UserContext } from "../../../App";
 import { InputField } from "../../common/components/InputField";
 import { TextAreaField } from "../../common/components/TextAreaField";
 import "./InfoForm.css";
+import {HeaderStyles} from "./style_options/HeaderStyles/HeaderStyles";
 
 const { TextArea } = Input;
+
+interface SocialData {
+  facebook?: string;
+  linkedIn?: string;
+  twitter?: string;
+  stackOverflow?: string;
+  codepen?: string;
+}
 
 interface IUserInfo {
   name: string;
@@ -20,6 +29,7 @@ interface IUserInfo {
   email: string;
   phone: string;
   github: string;
+  social?: SocialData;
 }
 
 export const InfoForm: FunctionComponent<any> = () => {
@@ -33,7 +43,10 @@ export const InfoForm: FunctionComponent<any> = () => {
     about: "",
     email: "",
     phone: "",
-    github: ""
+    github: "",
+    social: {
+
+    }
   };
 
   return (
@@ -80,6 +93,40 @@ export const InfoForm: FunctionComponent<any> = () => {
                         >
                           Save
                         </Button>
+                        <Collapse onChange={(key) => console.log(key)} >
+                          <Collapse.Panel header="Social Media" key="1" className="info__collapse">
+                            <Field
+                                name="social.facebook"
+                                label="Facebook"
+                                placeholder="Profile URL"
+                                component={InputField}
+                            />
+                            <Field
+                                name="social.linkedIn"
+                                label="LinkedIn"
+                                placeholder="Profile URL"
+                                component={InputField}
+                            />
+                            <Field
+                                name="social.twitter"
+                                label="Twitter"
+                                placeholder="Profile URL"
+                                component={InputField}
+                            />
+                            <Field
+                                name="social.stackOverflow"
+                                label="Stack Overflow"
+                                placeholder="Profile URL"
+                                component={InputField}
+                            />
+                            <Field
+                                name="social.twitter"
+                                label="Twitter"
+                                placeholder="Profile URL"
+                                component={InputField}
+                            />
+                          </Collapse.Panel>
+                        </Collapse>
                         <Field
                           name="name"
                           label="Name"

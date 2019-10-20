@@ -53,6 +53,7 @@ const typeDefs = gql`
     email: String
     phone: String
     github: String
+    social: Socials
   }
   input UserInfoInput {
     name: String
@@ -63,6 +64,7 @@ const typeDefs = gql`
     email: String
     phone: String
     github: String
+    social: SocialsInput
   }
   
   type Gradient {
@@ -111,6 +113,23 @@ const typeDefs = gql`
     gradient: GradientInput
     header: HeaderInput
   }
+  
+  type Socials {
+    facebook: String
+    linkedIn: String
+    twitter: String
+    stackOverflow: String
+    codepen: String
+  }
+  input SocialsInput {
+    facebook: String
+    linkedIn: String
+    twitter: String
+    stackOverflow: String
+    codepen: String
+  }
+  
+  
   type Query {
     me: User
     posts: [Post]
