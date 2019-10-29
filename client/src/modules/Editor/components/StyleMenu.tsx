@@ -137,7 +137,7 @@ export const StyleMenu: FunctionComponent<any> = (props: any) => {
       {selectedTheme.name === "Modern" && (
           <Collapse onChange={(key) => console.log(key)}>
             <Collapse.Panel header="Header" key="1">
-             <HeaderStyles header={headerStyles}/>
+             <HeaderStyles header={headerStyles} numColors={selectedTheme.name === "Modern" && 2}/>
             </Collapse.Panel>
          </Collapse>
       )}

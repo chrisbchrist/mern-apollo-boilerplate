@@ -71,6 +71,7 @@ export const InfoForm: FunctionComponent<any> = () => {
                     onSubmit={(values, actions) => {
 
                         console.log(values, authUser.id);
+                        delete values.social.__typename;
                         updateUserInfo({
                           variables: { userInfo: values, id: authUser.id }
                         });
@@ -116,12 +117,6 @@ export const InfoForm: FunctionComponent<any> = () => {
                             <Field
                                 name="social.stackOverflow"
                                 label="Stack Overflow"
-                                placeholder="Profile URL"
-                                component={InputField}
-                            />
-                            <Field
-                                name="social.twitter"
-                                label="Twitter"
                                 placeholder="Profile URL"
                                 component={InputField}
                             />

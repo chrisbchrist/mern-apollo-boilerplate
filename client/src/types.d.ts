@@ -13,6 +13,7 @@ export interface UserInfo {
     email: string;
     phone: string;
     github: string;
+    social: any;
 }
 
 export interface UserStyles {

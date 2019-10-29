@@ -37,7 +37,7 @@
     border-radius: 50%;
     width: 500px;
     height: 500px;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.15);
 }
 
 .modern__photo-frame {
@@ -75,10 +75,41 @@
 
 .modern__title {
     font-size: 1.6em;
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
     font-weight: 500;
     color: rgba(255,255,255,0.8);
     text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+}
+
+.modern__socials {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.75);
+}
+
+.social__link {
+    color: #fff;
+    padding: 0 7px;
+    opacity: 0.75;
+    transition: all .3s;
+}
+
+.social__link:hover {
+    opacity: 1;
+}
+
+.modern__social {
+    font-size: 26px;
+}
+
+.modern__social:last-of-type {
+    margin: 0;
+}
+
+.modern__social svg {
+    fill: #fff;
 }
 
 .ghost-btn {

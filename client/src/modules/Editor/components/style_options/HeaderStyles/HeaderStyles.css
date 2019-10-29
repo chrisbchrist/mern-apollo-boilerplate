@@ -1,3 +1,7 @@
 .header__colors {
+ display: flex;
+}
 
+.ant-collapse-content, .ant-collapse-content-box {
+    overflow: visible !important;
 }

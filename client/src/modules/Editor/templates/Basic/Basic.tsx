@@ -5,7 +5,15 @@ import "./Basic.css";
 import { Query } from "react-apollo";
 import { GET_USER } from "../../../../queries";
 import { UserContext } from "../../../../App";
-import { Spin } from "antd";
+import {Icon, Spin} from "antd";
+
+const socialIconDictionary = {
+  facebook: "facebook",
+  linkedIn: "linkedin",
+  twitter: "twitter",
+  codepen: "codepen",
+  stackOverflow: "database"
+}
 
 interface TemplateProps {
   projects: Array<Project>;
@@ -35,6 +43,17 @@ export const BasicTemplate: FunctionComponent<TemplateProps> = ({
 
         {userInfo.name && <h1 className="basic__name">{userInfo.name}</h1>}
         {userInfo.title && <h2 className="basic__title">{userInfo.title}</h2>}
+        {userInfo.social && (<div className="basic__socials">
+          {Object.keys(userInfo.social).map((social: string) => {
+            if (userInfo.social[social] && social !== '__typename') {
+              return (
+                  <a className="social__link" target="_blank" href={userInfo.social[social]}>
+                    <Icon className="basic__social" type={(socialIconDictionary as any)[social]}/>
+                  </a>
+              )
+            }
+          })}
+        </div>)}
         {userInfo.email && (
           <h3 className="basic__email">
             <a>{userInfo.email}</a>
@@ -65,3 +84,4 @@ export const BasicTemplate: FunctionComponent<TemplateProps> = ({
     </div>
   );
 };
+

@@ -1,5 +1,15 @@
 import { gql } from "apollo-boost";
 
+function myComponent(a: string): any {
+    const element = document.createElement('div');
+
+    element.innerText = "sefsdfsdfsdfs";
+
+    return element;
+}
+
+document.body.appendChild(myComponent("asda"));
+
 export const GET_USER_AND_PROJECTS = gql`
   query($userId: ID!) {
     projects(userId: $userId) {

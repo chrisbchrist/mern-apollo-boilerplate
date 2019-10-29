@@ -24,6 +24,7 @@
     position: relative;
     cursor: pointer;
     margin-left: 15px;
+    border: 1px solid #eee;
 }
 
 .twitter-picker {

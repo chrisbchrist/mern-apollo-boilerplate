@@ -45,6 +45,22 @@
     font-weight: 500;
 }
 
+.basic__socials {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.basic__social {
+ font-size: 30px;
+}
+
+
+.social__link {
+    color: #333;
+    padding: 0 7px;
+}
+
 .basic__email {
     margin: 0 0 10px 0;
     font-weight: 500;

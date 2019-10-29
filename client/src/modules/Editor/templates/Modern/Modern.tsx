@@ -3,6 +3,15 @@ import { Project, UserInfo, UserStyles } from "../../../../types";
 import { ModernProject } from "./ModernProject";
 import "./Modern.css";
 import { formatColors } from "../../../common";
+import { Icon } from "antd";
+
+const socialIconDictionary = {
+  facebook: "facebook",
+  linkedIn: "linkedin",
+  twitter: "twitter",
+  codepen: "codepen",
+  stackOverflow: "database"
+};
 
 interface TemplateProps {
   projects: Array<Project>;
@@ -41,6 +50,18 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
         </div>}
         {userInfo.name && <h1 className="modern__name">{userInfo.name}</h1>}
         {userInfo.title && <h2 className="modern__title">{userInfo.title}</h2>}
+          {(userInfo.social || userInfo.email) && (<div className="modern__socials">
+            {Object.keys(userInfo.social).map((social: string) => {
+              if (userInfo.social[social] && social !== '__typename') {
+                return (
+                    <a className="social__link" target="_blank" href={userInfo.social[social]}>
+                      <Icon className="modern__social" type={(socialIconDictionary as any)[social]}/>
+                    </a>
+                )
+              }
+            })}
+            {userInfo.email && <a className="social__link" href={`mailto: ${userInfo.email}`}><Icon className="modern__social" type="mail"/></a>}
+          </div>)}
           {projects.length > 0 && (
               <div className="work__btn-wrapper">
                 <div className="ghost-btn">My Work</div>
@@ -49,11 +70,11 @@ export const ModernTemplate: FunctionComponent<TemplateProps> = ({
         </div>
       </div>
       <section className="modern__info">
-        {userInfo.email && (
-            <h3 className="modern__email">
-              <a>{userInfo.email}</a>
-            </h3>
-        )}
+        {/*{userInfo.email && (*/}
+        {/*    <h3 className="modern__email">*/}
+        {/*      <a>{userInfo.email}</a>*/}
+        {/*    </h3>*/}
+        {/*)}*/}
         {userInfo.location && (
             <h3 className="modern__location">{userInfo.location}</h3>
         )}
