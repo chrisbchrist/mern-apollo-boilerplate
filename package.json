@@ -44,7 +44,7 @@
     "react-router-dom": "^5.0.1",
     "url-loader": "^2.1.0",
     "validator": "^11.1.0",
-    "yarn": "^1.17.3",
+    "yarn": "^1.22.0",
     "yup": "^0.27.0"
   },
   "devDependencies": {
