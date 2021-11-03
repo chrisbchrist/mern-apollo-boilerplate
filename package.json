@@ -43,7 +43,7 @@
     "react-dom-server": "^0.0.5",
     "react-router-dom": "^5.0.1",
     "url-loader": "^2.1.0",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "yarn": "^1.17.3",
     "yup": "^0.27.0"
   },
